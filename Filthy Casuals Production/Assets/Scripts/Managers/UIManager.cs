@@ -24,8 +24,10 @@ public class UIManager : MonoBehaviour
     // List of screens to iterate through
     public List<Screen> Screens = new List<Screen>();
 
-    // Counter int to track the current screen in the list
+    public AudioClip Confirm;
+    public bool IsPaused = false;
     public int CurrentScreen;
+    public string PreviousScreenName = "Main";
 
     #endregion
 
@@ -42,6 +44,7 @@ public class UIManager : MonoBehaviour
         {
             GameObject.Destroy(gameObject);
         }
+        DontDestroyOnLoad(this.gameObject);
     }
 
     void Start()
@@ -61,6 +64,7 @@ public class UIManager : MonoBehaviour
     // Displays the screen with the given name
     public void ShowScreen(string name)
     {
+        PreviousScreenName = Screens[CurrentScreen].name;
         for (int i = 0; i < Screens.Count; i++)
         {
             if (Screens[i].name.Equals(name))
@@ -89,6 +93,31 @@ public class UIManager : MonoBehaviour
     {
         Application.Quit();
         Debug.Log("Quitting Game");
+    }
+
+    // Pauses game for menu that requires it
+    public void PauseGame()
+    {
+        Debug.Log("Game Paused");
+        Time.timeScale = 0;
+        IsPaused = true;
+        AudioManager.main.MusicSource.Pause();
+    }
+
+    // UnPauses game from menu
+    public void UnPauseGame()
+    {
+        Debug.Log("Game UnPaused");
+        Time.timeScale = 1;
+        IsPaused = false;
+        Screens[CurrentScreen].screen.SetActive(false);
+        AudioManager.main.MusicSource.UnPause();
+    }
+
+    // Continues game from last saved Level
+    public void ContinueGame()
+    {
+        Debug.Log("Continuing Game");
     }
 
     #endregion
