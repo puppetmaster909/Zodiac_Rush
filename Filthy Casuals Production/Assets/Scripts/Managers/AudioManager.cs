@@ -12,6 +12,15 @@ public class AudioManager : MonoBehaviour
 
     #endregion
 
+    #region Runtime Members
+
+    public AudioSource FxSource;
+    public AudioSource MusicSource;
+
+    private string SceneName = "";
+
+    #endregion
+
     #region MonoBehavior
 
     private void Awake()
@@ -39,15 +48,6 @@ public class AudioManager : MonoBehaviour
     {
 
     }
-
-    #endregion
-
-    #region Runtime Members
-
-    public AudioSource FxSource;
-    public AudioSource MusicSource;
-
-    private string SceneName = "";
 
     #endregion
 
