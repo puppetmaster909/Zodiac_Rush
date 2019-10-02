@@ -31,13 +31,13 @@ public class AudioManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     #endregion
@@ -73,10 +73,31 @@ public class AudioManager : MonoBehaviour
 
     private void OnEnable()
     {
-        //SceneManager.sceneLoaded += OnLevelFinishedLoading;
+        SceneManager.sceneLoaded += OnLevelFinishedLoading;
     }
 
-    // ADD AUDIO MANAGER FUNCTIONALITY FOR PLAY SCENE MUSIC WHEN LOADED SCENE
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnLevelFinishedLoading;
+    }
+
+    private void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
+    {
+        switch (scene.name)
+        {
+            case "Main Menu":
+                // PlayMusic(mainMenuMusic);
+                break;
+
+            case "Level Selection":
+                // PlayMusic(levelSelectMusic);
+                break;
+
+            default:
+                // PlayMusic(mainMenuMusic);
+                break;
+        }
+    }
 
     #endregion
 }
