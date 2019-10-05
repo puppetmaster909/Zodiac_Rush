@@ -5,6 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - Button
+  - BurstIcon
+  - DiamondIcon
+  - HeartIcon
+  - HexagonIcon
+  - OrbIcon
+  - StarIcon
+  - Board
   layers:
   - Default
   - TransparentFX
