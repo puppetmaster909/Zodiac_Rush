@@ -515,7 +515,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Screens:
   - name: Main
-    screen: {fileID: 0}
+    screen: {fileID: 4604226755780505310}
     screenAnimator: {fileID: 0}
   - name: Settings
     screen: {fileID: 1336070651508020107}
