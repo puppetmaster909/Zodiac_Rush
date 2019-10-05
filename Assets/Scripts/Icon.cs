@@ -35,7 +35,7 @@ public class Icon : MonoBehaviour
         if(isMatched)
         {
             SpriteRenderer mySprite = GetComponent<SpriteRenderer>();
-            mySprite.color = new Color(0, 0, 0, .2f);
+            mySprite.color = new Color(0f, 0f, 0f, .2f);
         }
         targetX = column;
         targetY = row;
@@ -121,6 +121,7 @@ public class Icon : MonoBehaviour
 
     void findMatches()
     {
+        //Find Horizontal Matches
         if(column > 0 && column < board.width - 1)
         {
             GameObject leftIcon1 = board.allIcons[column - 1, row];
@@ -130,6 +131,19 @@ public class Icon : MonoBehaviour
             {
                 leftIcon1.GetComponent<Icon>().isMatched = true;
                 rightIcon1.GetComponent<Icon>().isMatched = true;
+                isMatched = true;
+            }
+        }
+
+        if (row > 0 && row < board.height - 1)
+        {
+            GameObject upIcon1 = board.allIcons[column, row + 1];
+            GameObject downIcon1 = board.allIcons[column, row - 1];
+
+            if (upIcon1.tag == this.gameObject.tag && downIcon1.tag == this.gameObject.tag)
+            {
+                upIcon1.GetComponent<Icon>().isMatched = true;
+                downIcon1.GetComponent<Icon>().isMatched = true;
                 isMatched = true;
             }
         }
