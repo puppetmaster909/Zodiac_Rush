@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+// ADD A SMALL SOUND EFFECT AFTER A VOLUME BAR IS CHANGED
 public class SettingsMenu : MonoBehaviour
 {
     #region MonoBehavior
@@ -37,12 +37,12 @@ public class SettingsMenu : MonoBehaviour
 
     public void SetBGMVolume()
     {
-        
+        AudioManager.main.Mixer.SetFloat("BGMVol", BGM.value);
     }
 
     public void SetSFXVolume()
     {
-
+        AudioManager.main.Mixer.SetFloat("SFXVol", SFX.value);
     }
 
     #endregion

@@ -14,8 +14,13 @@ public class AudioManager : MonoBehaviour
 
     #region Runtime Members
 
+    public AudioMixer Mixer;
+
     public AudioSource FxSource;
     public AudioSource MusicSource;
+
+    public AudioClip MainMenuMusic;
+    public AudioClip TigerMusic;
 
     private string SceneName = "";
 
@@ -85,12 +90,16 @@ public class AudioManager : MonoBehaviour
     {
         switch (scene.name)
         {
-            case "Main Menu":
-                // PlayMusic(mainMenuMusic);
+            case "MainMenu":
+                 PlayMusic(MainMenuMusic);
                 break;
 
-            case "Level Selection":
+            case "LevelSelection":
                 // PlayMusic(levelSelectMusic);
+                break;
+
+            case "Tiger":
+                PlayMusic(TigerMusic);
                 break;
 
             default:
