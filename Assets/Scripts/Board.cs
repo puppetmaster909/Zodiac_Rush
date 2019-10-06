@@ -187,7 +187,94 @@ public class Board : MonoBehaviour
             yield return new WaitForSeconds(.5f);
             DestroyMatches();
         }
+        findMatches.CurrentMatches.Clear();
         yield return new WaitForSeconds(.5f);
         currentState = GameState.move;
+    }
+
+    private void SwitchPieces(int column, int row, Vector2 direction)
+    {
+        //Take the first piece and save it in a holder
+        GameObject holder = allIcons[column + (int)direction.x, row + (int)direction.y] as GameObject;
+        //Switching the first piece to be the second position
+        allIcons[column + (int)direction.x, row + (int)direction.y] = allIcons[column, row];
+        //Set the first piece to be the second piece
+        allIcons[column, row] = holder;
+    }
+
+    private bool CheckForMatches()
+    {
+        for (int i = 0; i < width; i++)
+        {
+            for(int j = 0; j < height; j++)
+            {
+                if (allIcons[i, j] != null)
+                {
+                    //Make sure that one and two to the right are in the board
+                    if (i < width - 1)
+                    {
+                        //Check if the pieces to the right and two to the right exist
+                        if (allIcons[i + 1, j] != null && allIcons[i + 2, j] != null)
+                        {
+                            if (allIcons[i + 1, j].tag == allIcons[i, j].tag && allIcons[i + 2, j].tag == allIcons[i, j].tag)
+                            {
+                                return true;
+                            }
+                        }
+                    }
+                    if (j < height)
+                    {
+                        //Check if the pieces above exist
+                        if (allIcons[i, j + 1] != null && allIcons[i, j + 2] != null)
+                        {
+                            if (allIcons[i, j + 1].tag == allIcons[i, j].tag && allIcons[i, j + 2].tag == allIcons[i, j].tag)
+                            {
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    private bool SwitchAndCheck(int column, int row, Vector2 direction)
+    {
+        SwitchPieces(column, row, direction);
+        if(CheckForMatches())
+        {
+            SwitchPieces(column, row, direction);
+        }
+        SwitchPieces(column, row, direction);
+        return false;
+    }
+
+    private bool IsDeadlocked()
+    {
+        for(int i = 0; i < width; i++)
+        {
+            for (int j = 0; j < height; j++)
+            {
+                if (allIcons[i, j] != null)
+                {
+                    if(i < width - 1)
+                    {
+                        if(SwitchAndCheck(i, j, Vector2.right))
+                        {
+                            return false;
+                        }
+                    }
+                    if (j < height - 1)
+                    {
+                        if(SwitchAndCheck(i, j, Vector2.up))
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+        return true;
     }
 }
