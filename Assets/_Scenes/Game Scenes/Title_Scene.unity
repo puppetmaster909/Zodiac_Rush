@@ -555,6 +555,16 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 8120603386938824612, guid: 3da70683161b1444f979d74c4606bf4e,
+        type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624640449369058443, guid: 3da70683161b1444f979d74c4606bf4e,
+        type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 466037500634836852, guid: 3da70683161b1444f979d74c4606bf4e,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -608,12 +618,17 @@ PrefabInstance:
     - target: {fileID: 9021144998285035247, guid: 3da70683161b1444f979d74c4606bf4e,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 200
+      value: 366.67
       objectReference: {fileID: 0}
     - target: {fileID: 9021144998285035247, guid: 3da70683161b1444f979d74c4606bf4e,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 200
+      value: 435.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5887792080028217940, guid: 3da70683161b1444f979d74c4606bf4e,
+        type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8558926354225860052, guid: 3da70683161b1444f979d74c4606bf4e, type: 3}
@@ -816,7 +831,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 20
+  m_Spacing: 15
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
