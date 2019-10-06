@@ -22,15 +22,12 @@ public class MainMenu : MonoBehaviour
 
     public void Settings()
     {
-        Debug.Log("Showing Settings Menu!");
         UIManager.main.ShowScreen("Settings");
     }
 
     public void LevelSelection()
     {
-        Debug.Log("Showing Level Selection!");
-        //UIManager.main.ShowScreen("Level Selection");
-        // switch scene to level selection
+        UIManager.main.ShowScreen("Level Selection");
     }
 
     public void ContinueGame()
