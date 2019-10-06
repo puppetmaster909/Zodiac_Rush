@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SliderChange : MonoBehaviour
 {
     private float currentScore;
+    private float i;
     public float addScore;
     public float maxScore;
     public Slider slider;
@@ -17,11 +18,13 @@ public class SliderChange : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (currentScore >= 0)
-            {
-                currentScore += addScore;
-            }
+        
+                if (currentScore >= 0)
+                {
+                    currentScore += addScore;
+                }
 
+            Debug.Log(currentScore);
         }
 
         if (currentScore == maxScore)
