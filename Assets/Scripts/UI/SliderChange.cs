@@ -16,15 +16,16 @@ public class SliderChange : MonoBehaviour
         slider.value = CalculateSliderValue();
         
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && currentScore >= 0)
         {
         
-                if (currentScore >= 0)
+                if (currentScore <= maxScore)
                 {
                     currentScore += addScore;
                 }
 
             Debug.Log(currentScore);
+            Debug.Log("Pressing Button");
         }
 
         if (currentScore == maxScore)
