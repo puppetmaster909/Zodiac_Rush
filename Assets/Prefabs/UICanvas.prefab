@@ -32,7 +32,6 @@ RectTransform:
   - {fileID: 2069754008}
   - {fileID: 785596910}
   - {fileID: 2145714264}
-  - {fileID: 6895713806754802830}
   - {fileID: 39214129892262648}
   - {fileID: 2502730891659090280}
   - {fileID: 601035928}
@@ -306,7 +305,7 @@ RectTransform:
   - {fileID: 827413122}
   - {fileID: 1054104635}
   m_Father: {fileID: 413196626}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1540,7 +1539,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.48812282}
-  m_AnchoredPosition: {x: 0, y: -0.0048828125}
+  m_AnchoredPosition: {x: 0, y: -0.00390625}
   m_SizeDelta: {x: 0, y: -0.010132}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2145714266
@@ -3074,79 +3073,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BGM: {fileID: 1336070652261127279}
   SFX: {fileID: 1336070651600202138}
---- !u!1 &1627185387828939439
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6895713806754802830}
-  - component: {fileID: 2713028977487969810}
-  - component: {fileID: 6342661131858258723}
-  m_Layer: 5
-  m_Name: Board
-  m_TagString: Board
-  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6895713806754802830
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1627185387828939439}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 413196626}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2713028977487969810
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1627185387828939439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 960a8003c0a428d409456601245f7095, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentState: 1
-  width: 7
-  height: 7
-  offSet: 10
-  tilePrefab: {fileID: 706447340356475146, guid: 850f5966c74a8884d9b1874a529cadf9,
-    type: 3}
-  icons:
-  - {fileID: 2389473885322137203, guid: cb2ab12bd34fb4741b8f0d00f4dfaa5f, type: 3}
-  - {fileID: 6561226974679382122, guid: 59e65a264fa7f504e9d5637595da0bba, type: 3}
-  - {fileID: 5302084291940435500, guid: 6bfc4c2a78647b645a3419caf17b4d5a, type: 3}
-  - {fileID: 7864009106849656906, guid: 1a6839eddb0695d459eb4c0f2c69399d, type: 3}
-  - {fileID: 3122547117873166298, guid: 7d753cf691b727a4bb1381bd50ce200d, type: 3}
-  - {fileID: 322554330160966176, guid: 6a41c36bf252c164aa22569066343476, type: 3}
-  basePieceValue: 20
---- !u!114 &6342661131858258723
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1627185387828939439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19aea2e64d72195419cfa00d451b6cbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxScore: 500
-  slider: {fileID: 0}
-  scoreText: {fileID: 0}
 --- !u!1 &2397510808106519627
 GameObject:
   m_ObjectHideFlags: 0
@@ -3177,7 +3103,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 413196626}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3636,7 +3562,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 413196626}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
