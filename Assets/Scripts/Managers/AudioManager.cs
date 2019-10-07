@@ -20,7 +20,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource MusicSource;
 
     public AudioClip MainMenuMusic;
-    public AudioClip TigerMusic;
+    public AudioClip Level1Music;
 
     private string SceneName = "";
 
@@ -99,7 +99,7 @@ public class AudioManager : MonoBehaviour
                 break;
 
             case "Tiger":
-                PlayMusic(TigerMusic);
+                PlayMusic(Level1Music);
                 break;
 
             default:

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
@@ -31,6 +32,8 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Showing Level Selection!");
         //UIManager.main.ShowScreen("Level Selection");
         // switch scene to level selection
+        UIManager.main.ShowScreen("Level1");
+        SceneManager.LoadScene("Level1_Scene");
     }
 
     public void ContinueGame()
@@ -47,6 +50,12 @@ public class MainMenu : MonoBehaviour
     {
         UIManager.main.Quit();
     }
+
+    #endregion
+
+    #region Private Methods
+
+    //IEnumerator DelayUI
 
     #endregion
 }

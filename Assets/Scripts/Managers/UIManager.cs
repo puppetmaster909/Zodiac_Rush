@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -27,6 +28,8 @@ public class UIManager : MonoBehaviour
     public AudioClip Confirm;
     public bool IsPaused = false;
     public int CurrentScreen;
+    public int PauseScreen = 0;
+    public int PrePauseScreen;
     public string PreviousScreenName = "Main";
 
     #endregion
@@ -49,7 +52,15 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-
+        int i = 0;
+        foreach (Screen s in Screens)
+        {
+            if (s.name.Equals("Pause"))
+            {
+                PauseScreen = i;
+            }
+            i++;
+        }
     }
 
     void Update()
@@ -64,6 +75,7 @@ public class UIManager : MonoBehaviour
     // Displays the screen with the given name
     public void ShowScreen(string name)
     {
+        AudioManager.main.FxSource.Play();
         PreviousScreenName = Screens[CurrentScreen].name;
         for (int i = 0; i < Screens.Count; i++)
         {
@@ -101,6 +113,12 @@ public class UIManager : MonoBehaviour
         Debug.Log("Game Paused");
         Time.timeScale = 0;
         IsPaused = true;
+
+        // Hide Board gameObject
+        GameObject board = gameObject.transform.Find("Level1").Find("Board").gameObject;
+        board.SetActive(false);
+
+        Screens[PauseScreen].screen.SetActive(true);
         AudioManager.main.MusicSource.Pause();
     }
 
@@ -110,7 +128,12 @@ public class UIManager : MonoBehaviour
         Debug.Log("Game UnPaused");
         Time.timeScale = 1;
         IsPaused = false;
-        Screens[CurrentScreen].screen.SetActive(false);
+
+        // Show Board gameObject
+        GameObject board = gameObject.transform.Find("Level1").Find("Board").gameObject;
+        board.SetActive(true);
+
+        Screens[PauseScreen].screen.SetActive(false);
         AudioManager.main.MusicSource.UnPause();
     }
 
@@ -118,6 +141,12 @@ public class UIManager : MonoBehaviour
     public void ContinueGame()
     {
         Debug.Log("Continuing Game");
+    }
+
+    // Restarts the current level
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     #endregion

@@ -51,6 +51,7 @@ public class SliderChange : MonoBehaviour
             if (currentScore >= maxScore)
             {
                 Debug.Log("Level Complete!");
+                UIManager.main.ShowScreen("Victory");
             }
         }
     }
