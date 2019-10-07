@@ -201,7 +201,7 @@ public class Board : MonoBehaviour
         {
             // Maria Edit Part 33: Scoring System 
             // Time Stamps: 15:39
-            streakValue ++;
+            streakValue++;
 
             yield return new WaitForSeconds(.5f);
             DestroyMatches();
@@ -213,6 +213,7 @@ public class Board : MonoBehaviour
         // Maria Edit Part 33: Scoring System 
         // Time Stamps: 15:33
         streakValue = 1;
+        
     }
 
     private void SwitchPieces(int column, int row, Vector2 direction)
