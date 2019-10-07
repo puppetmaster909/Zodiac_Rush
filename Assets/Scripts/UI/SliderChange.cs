@@ -23,6 +23,12 @@ public class SliderChange : MonoBehaviour
     {
         slider.value = CalculateSliderValue();
         scoreText.text = currentScore.ToString(); // 11:32
+
+        
+        if (Input.GetKeyDown(KeyCode.LeftControl) == true)
+        {
+            IncreaseScore(500);
+        }
     }
     #endregion
 
@@ -51,11 +57,12 @@ public class SliderChange : MonoBehaviour
             if (currentScore >= maxScore)
             {
                 Debug.Log("Level Complete!");
+                // Hide Board gameObject
+                GameObject board = UIManager.main.transform.Find("Level1").Find("Board").gameObject;
+                board.SetActive(false);
                 UIManager.main.ShowScreen("Victory");
             }
         }
     }
     #endregion
-
-
 }
