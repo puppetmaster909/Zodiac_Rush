@@ -19,9 +19,20 @@ public class Board : MonoBehaviour
     public GameObject[,] allIcons;
     private FindMatches findMatches;
 
+    // Maria Edit Part 33: Scoring System 
+    // Time Stamps: 13:22 and 14:10
+    public int basePieceValue = 20;
+    private int streakValue = 1;
+    private SliderChange sliderChange;
+
     // Start is called before the first frame update
     void Start()
     {
+        // Maria Edit Part 33: Scoring System 
+        // Time Stamps: 13:46
+        sliderChange = FindObjectOfType<SliderChange>();
+
+
         findMatches = FindObjectOfType<FindMatches>();
         allTiles = new Background_Tile[width, height];
         allIcons = new GameObject[width, height];
@@ -99,6 +110,10 @@ public class Board : MonoBehaviour
         {
             findMatches.CurrentMatches.Remove(allIcons[column, row]);
             Destroy(allIcons[column, row]);
+            // Maria Edit Part 33: Scoring System 
+            // Time Stamps: 16:24
+            sliderChange.IncreaseScore(basePieceValue * streakValue);
+
             allIcons[column, row] = null;
         }
     }
@@ -184,12 +199,20 @@ public class Board : MonoBehaviour
 
         while (MatchesOnBoard())
         {
+            // Maria Edit Part 33: Scoring System 
+            // Time Stamps: 15:39
+            streakValue ++;
+
             yield return new WaitForSeconds(.5f);
             DestroyMatches();
         }
         findMatches.CurrentMatches.Clear();
         yield return new WaitForSeconds(.5f);
         currentState = GameState.move;
+
+        // Maria Edit Part 33: Scoring System 
+        // Time Stamps: 15:33
+        streakValue = 1;
     }
 
     private void SwitchPieces(int column, int row, Vector2 direction)
