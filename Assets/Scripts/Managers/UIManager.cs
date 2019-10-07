@@ -75,6 +75,7 @@ public class UIManager : MonoBehaviour
     // Displays the screen with the given name
     public void ShowScreen(string name)
     {
+        AudioManager.main.FxSource.Play();
         PreviousScreenName = Screens[CurrentScreen].name;
         for (int i = 0; i < Screens.Count; i++)
         {
@@ -112,9 +113,13 @@ public class UIManager : MonoBehaviour
         Debug.Log("Game Paused");
         Time.timeScale = 0;
         IsPaused = true;
+
+        // Hide Board gameObject
+        GameObject board = gameObject.transform.Find("Level1").Find("Board").gameObject;
+        board.SetActive(false);
+
         Screens[PauseScreen].screen.SetActive(true);
-        //PrePauseScreen = CurrentScreen;
-        AudioManager.main.MusicSource.Pause(); 
+        AudioManager.main.MusicSource.Pause();
     }
 
     // UnPauses game from menu
@@ -123,6 +128,11 @@ public class UIManager : MonoBehaviour
         Debug.Log("Game UnPaused");
         Time.timeScale = 1;
         IsPaused = false;
+
+        // Show Board gameObject
+        GameObject board = gameObject.transform.Find("Level1").Find("Board").gameObject;
+        board.SetActive(true);
+
         Screens[PauseScreen].screen.SetActive(false);
         AudioManager.main.MusicSource.UnPause();
     }

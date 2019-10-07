@@ -66,6 +66,7 @@ public class Board : MonoBehaviour
                 icon.GetComponent<Icon>().column = i;
                 icon.transform.parent = this.transform;
                 icon.name = "( " + i + ", " + j + " )";
+                icon.GetComponent<SpriteRenderer>().sortingLayerName = "Icons";
                 allIcons[i, j] = icon;
             }
         }
@@ -169,6 +170,7 @@ public class Board : MonoBehaviour
                     allIcons[i, j] = piece;
                     piece.GetComponent<Icon>().row = j;
                     piece.GetComponent<Icon>().column = i;
+                    piece.GetComponent<SpriteRenderer>().sortingLayerName = "Icons";
                 }
             }
         }

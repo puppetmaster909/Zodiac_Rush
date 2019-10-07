@@ -5,6 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - Button
+  - HexagonIcon
+  - DiamondIcon
+  - StarIcon
+  - HeartIcon
+  - OrbIcon
+  - BurstIcon
+  - Board
   layers:
   - Default
   - TransparentFX
@@ -15,7 +22,7 @@ TagManager:
   - 
   - 
   - UIManager
-  - 
+  - test
   - 
   - 
   - 
@@ -41,4 +48,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Grid
+    uniqueID: 212531099
+    locked: 0
+  - name: Icons
+    uniqueID: 2302899661
     locked: 0
