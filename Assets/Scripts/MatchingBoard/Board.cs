@@ -57,7 +57,7 @@ public class Board : MonoBehaviour
                 {
                     iconToUse = Random.Range(0, icons.Length);
                     maxIterations++;
-                    Debug.Log(maxIterations);
+                    //Debug.Log(maxIterations);
                 }
                 maxIterations = 0;
 

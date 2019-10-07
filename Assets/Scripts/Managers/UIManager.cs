@@ -94,10 +94,11 @@ public class UIManager : MonoBehaviour
             Screens[CurrentScreen].screenAnimator.SetTrigger("Close");
             yield return new WaitForSeconds(1.0f);
         }
-
+        Debug.Log("Current Screen: " + CurrentScreen);
         Screens[CurrentScreen].screen.SetActive(false);
         Screens[index].screen.SetActive(true);
         CurrentScreen = index;
+        Debug.Log("New Current Screen: " + CurrentScreen);
     }
 
     // Quits application
@@ -147,6 +148,12 @@ public class UIManager : MonoBehaviour
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void MainMenu()
+    {
+        ShowScreen("Main");
+        SceneManager.LoadScene("Title_Scene");
     }
 
     #endregion

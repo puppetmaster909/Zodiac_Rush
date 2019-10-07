@@ -24,7 +24,7 @@ public class VictoryScreen : MonoBehaviour
 
     public void MainMenu()
     {
-        UIManager.main.ShowScreen("Main");
+        UIManager.main.MainMenu();
     }
 
     #endregion
