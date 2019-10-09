@@ -17,8 +17,18 @@ public class Icon : MonoBehaviour
     private Vector2 firstTouchPosition;
     private Vector2 finalTouchPosition;
     private Vector2 tempPosition;
+
+
     public float swipeAngle = 0;
     public float swipeResist = 1f;
+
+    // Maria Edit Part 20 6:10
+    #region Powerups
+    public bool isColorBomb;
+    public GameObject colorBomb;
+
+
+    #endregion
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +46,22 @@ public class Icon : MonoBehaviour
         //previousColumn = column;
        // previousRow = row;
     }
+
+    // Maria Edit Part 20 6:35 Testing
+    private void OnMouseOver()
+    {
+        if (Input.GetMouseButton(1))
+        {
+            isColorBomb = true;
+            GameObject color = Instantiate(colorBomb, transform.position, Quaternion.identity);
+            color.transform.parent = this.transform;
+        }
+    }
+
+
+
+
+
 
     // Update is called once per frame
     void Update()
@@ -89,6 +115,22 @@ public class Icon : MonoBehaviour
 
     public IEnumerator CheckMoveCo()
     {
+        // Maria Edit Part 20 7:37
+        if (isColorBomb)
+        {
+            // this piece is a color bomb, and the other piece is the color to destroy
+            findMatches.MatchPiecesOfColor(otherIcon.tag);
+            isMatched = true;
+        }
+
+        else if (otherIcon.GetComponent<Icon>().isColorBomb)
+        {
+            // the other piece is a color bomb, and this piece has the color to destroy
+            findMatches.MatchPiecesOfColor(this.gameObject.tag);
+            isMatched = true;
+        }
+
+
         yield return new WaitForSeconds(.5f);
 
         if(otherIcon != null)
