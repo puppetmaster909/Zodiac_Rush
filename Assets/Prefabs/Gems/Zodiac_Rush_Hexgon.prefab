@@ -111,7 +111,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   column: 0
   row: 0
+  previousColumn: 0
+  previousRow: 0
   targetX: 0
   targetY: 0
   isMatched: 0
   swipeAngle: 0
+  swipeResist: 1
+  isColorBomb: 0
+  colorBomb: {fileID: 5373981318531268120, guid: 9549c7c8d836ec5449f7d46d1bcf935f,
+    type: 3}

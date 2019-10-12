@@ -127,7 +127,7 @@ public class Icon : MonoBehaviour
         {
             // the other piece is a color bomb, and this piece has the color to destroy
             findMatches.MatchPiecesOfColor(this.gameObject.tag);
-            isMatched = true;
+            otherIcon.GetComponent<Icon>().isMatched = true;
         }
 
 
