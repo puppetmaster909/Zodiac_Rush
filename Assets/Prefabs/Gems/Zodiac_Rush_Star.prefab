@@ -121,3 +121,8 @@ MonoBehaviour:
   isColorBomb: 0
   colorBomb: {fileID: 5373981318531268120, guid: 9549c7c8d836ec5449f7d46d1bcf935f,
     type: 3}
+  isColumnBomb: 0
+  columnBomb: {fileID: 64795571908158720, guid: e713ffd63d8c43e4e93a78efa2f49a2c,
+    type: 3}
+  isRowBomb: 0
+  rowBomb: {fileID: 64795571908158720, guid: e713ffd63d8c43e4e93a78efa2f49a2c, type: 3}

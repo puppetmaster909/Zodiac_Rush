@@ -165,7 +165,7 @@ public class Board : MonoBehaviour
                 if (allIcons[i, j] == null)
                 {
                     Vector2 tempPosition = new Vector2(i, j + offSet);
-                    int iconToUse = Random.Range(0, icons.Length);
+                    int iconToUse = Random.Range(0, icons.Length); //was Random.Range(0, icons.Length);
                     GameObject piece = Instantiate(icons[iconToUse], tempPosition, Quaternion.identity);
                     allIcons[i, j] = piece;
                     piece.GetComponent<Icon>().row = j;

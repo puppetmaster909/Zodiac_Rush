@@ -27,12 +27,26 @@ public class Icon : MonoBehaviour
     public bool isColorBomb;
     public GameObject colorBomb;
 
+    // Maria Edit
+    //public bool isAreaBomb; 
+    //public GameObject areaBomb;
+
+    public bool isColumnBomb;
+    public GameObject columnBomb;
+
+    public bool isRowBomb;
+    public GameObject rowBomb;
 
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
+        //isAreaBomb = false;
+
+        isColumnBomb = false;
+        isRowBomb = false;
+
         //Use this for initialization
         board = FindObjectOfType<Board>();
         findMatches = FindObjectOfType<FindMatches>();
@@ -41,25 +55,40 @@ public class Icon : MonoBehaviour
        // targetY = (int)transform.position.y;
 
        // row = targetY;
-        //column = targetX;
+       //column = targetX;
 
         //previousColumn = column;
        // previousRow = row;
     }
 
-    // Maria Edit Part 20 6:35 Testing
+    // Maria Edit Part 20 6:35 TESTING ONLY for color, cross, and area
+    // Color Bomb is commented out for testing 
     private void OnMouseOver()
     {
         if (Input.GetMouseButton(1))
         {
-            isColorBomb = true;
-            GameObject color = Instantiate(colorBomb, transform.position, Quaternion.identity);
-            color.transform.parent = this.transform;
+            //isAreaBomb = true;
+            //GameObject area = Instantiate(areaBomb, transform.position, Quaternion.identity);
+            //area.transform.parent = this.transform;
+
+            //isColorBomb = true;
+            //GameObject color = Instantiate(colorBomb, transform.position, Quaternion.identity);
+            //color.transform.parent = this.transform;
+
+            
+            isRowBomb = true;
+            GameObject bomb = Instantiate(rowBomb, transform.position, Quaternion.identity);
+            bomb.transform.parent = this.transform;
+
+            
+             
+            isColumnBomb = true;
+            GameObject cBomb = Instantiate(columnBomb, transform.position, Quaternion.identity);
+            cBomb.transform.parent = this.transform;
+
+            
         }
     }
-
-
-
 
 
 
@@ -115,6 +144,7 @@ public class Icon : MonoBehaviour
 
     public IEnumerator CheckMoveCo()
     {
+
         // Maria Edit Part 20 7:37
         if (isColorBomb)
         {
@@ -129,7 +159,6 @@ public class Icon : MonoBehaviour
             findMatches.MatchPiecesOfColor(this.gameObject.tag);
             otherIcon.GetComponent<Icon>().isMatched = true;
         }
-
 
         yield return new WaitForSeconds(.5f);
 
@@ -151,7 +180,7 @@ public class Icon : MonoBehaviour
             }
             otherIcon = null;
         }
-        
+
     }
     private void OnMouseDown()
     {

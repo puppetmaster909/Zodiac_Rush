@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using System.Linq; // Maria Edit
+
 public class FindMatches : MonoBehaviour
 {
     private Board board;
@@ -35,11 +37,39 @@ public class FindMatches : MonoBehaviour
                         GameObject leftIcon = board.allIcons[i - 1, j];
                         GameObject rightIcon = board.allIcons[i + 1, j];
 
-                        if (leftIcon != null && rightIcon != null)
-                        {
+
                             if (leftIcon.tag == currentIcon.tag && rightIcon.tag == currentIcon.tag)
                             {
-                                if (!CurrentMatches.Contains(leftIcon))
+                                
+                                // Maria Edit
+                                if(currentIcon.GetComponent<Icon>().isRowBomb
+                                || leftIcon.GetComponent<Icon>().isRowBomb
+                                || rightIcon.GetComponent<Icon>().isRowBomb)
+                                {
+
+                                CurrentMatches.Union(GetRowPieces(j));       
+                                
+                                }
+
+                            if (currentIcon.GetComponent<Icon>().isColumnBomb)
+                            {
+                                CurrentMatches.Union(GetColumnPieces(i));
+                            }
+
+                            if (leftIcon.GetComponent<Icon>().isColumnBomb)
+                            {
+                                CurrentMatches.Union(GetColumnPieces(i - 1));
+                            }
+
+                            if (rightIcon.GetComponent<Icon>().isColumnBomb)
+                            {
+                                CurrentMatches.Union(GetColumnPieces(i + 1));
+                            }
+
+
+                            // Maria Edit
+
+                            if (!CurrentMatches.Contains(leftIcon))
                                 {
                                     CurrentMatches.Add(leftIcon);
                                 }
@@ -62,6 +92,36 @@ public class FindMatches : MonoBehaviour
                     {
                         GameObject upIcon = board.allIcons[i, j + 1];
                         GameObject downIcon = board.allIcons[i, j - 1];
+
+                    // Maria Edit 
+                    if (upIcon != null && downIcon != null)
+                    {
+
+                        if (currentIcon.GetComponent<Icon>().isColumnBomb
+                                || upIcon.GetComponent<Icon>().isColumnBomb
+                                || downIcon.GetComponent<Icon>().isColumnBomb)
+                        {
+
+                            CurrentMatches.Union(GetColumnPieces(i));
+
+                        }
+
+                        if (currentIcon.GetComponent<Icon>().isRowBomb)
+                        {
+                            CurrentMatches.Union(GetRowPieces(j));
+                        }
+
+                        if (upIcon.GetComponent<Icon>().isRowBomb)
+                        {
+                            CurrentMatches.Union(GetRowPieces(j + 1));
+                        }
+
+                        if (downIcon.GetComponent<Icon>().isRowBomb)
+                        {
+                            CurrentMatches.Union(GetRowPieces(j - 1));
+                        }
+
+                        // Edit
 
                         if (upIcon != null && downIcon != null)
                         {
@@ -86,6 +146,7 @@ public class FindMatches : MonoBehaviour
                             }
                         }
                     }
+
                 }
             }
         }
@@ -111,5 +172,40 @@ public class FindMatches : MonoBehaviour
             }
         }
     }
+
+    List<GameObject> GetColumnPieces(int column)
+    {
+        List<GameObject> icons = new List<GameObject>();
+
+        for (int i = 0; i < board.height; i++)
+        {
+            if (board.allIcons[column, i] != null)
+            {
+                icons.Add(board.allIcons[column, i]);
+                board.allIcons[column, i].GetComponent<Icon>().isMatched = true;
+            }
+        }
+
+
+        return icons;
+    }
+
+    List<GameObject> GetRowPieces(int row)
+    {
+        List<GameObject> icons = new List<GameObject>();
+
+        for (int i = 0; i < board.height; i++)
+        {
+            if (board.allIcons[i, row] != null)
+            {
+                icons.Add(board.allIcons[i, row]);
+                board.allIcons[i, row].GetComponent<Icon>().isMatched = true;
+            }
+        }
+
+
+        return icons;
+    }
+
 
 }
