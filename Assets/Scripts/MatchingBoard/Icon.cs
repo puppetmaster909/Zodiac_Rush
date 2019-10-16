@@ -107,7 +107,7 @@ public class Icon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //FindMatches(); // for testing binch 
+        FindMatches(); // for testing binch 
         //FindDiagonalMatches(); // for testing binch 
 
         if (isMatched)
