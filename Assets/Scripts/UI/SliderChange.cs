@@ -24,7 +24,7 @@ public class SliderChange : MonoBehaviour
         slider.value = CalculateSliderValue();
         scoreText.text = currentScore.ToString(); // 11:32
 
-        
+
         if (Input.GetKeyDown(KeyCode.LeftControl) == true)
         {
             IncreaseScore(500);
@@ -54,7 +54,7 @@ public class SliderChange : MonoBehaviour
                 Debug.Log(currentScore);
             }
 
-            /* Maria Edit
+
             if (currentScore >= maxScore)
             {
                 Debug.Log("Level Complete!");
@@ -63,7 +63,7 @@ public class SliderChange : MonoBehaviour
                 board.SetActive(false);
                 UIManager.main.ShowScreen("Victory");
             }
-            */
+            
         }
     }
     #endregion
