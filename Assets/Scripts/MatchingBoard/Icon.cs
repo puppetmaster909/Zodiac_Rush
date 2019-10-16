@@ -27,9 +27,16 @@ public class Icon : MonoBehaviour
     public bool isColorBomb;
     public GameObject colorBomb;
 
-    // Maria Edit
-    //public bool isAreaBomb; 
-    //public GameObject areaBomb;
+    // Maria Edit 
+    //TESTING FOR UPPER FOR NOW
+    public bool isAreaBomb; 
+    public GameObject areaBomb;
+
+
+
+
+
+    //TESTING
 
     public bool isColumnBomb;
     public GameObject columnBomb;
@@ -37,12 +44,13 @@ public class Icon : MonoBehaviour
     public bool isRowBomb;
     public GameObject rowBomb;
 
+
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
-        //isAreaBomb = false;
+        isAreaBomb = false;
 
         isColumnBomb = false;
         isRowBomb = false;
@@ -62,30 +70,34 @@ public class Icon : MonoBehaviour
     }
 
     // Maria Edit Part 20 6:35 TESTING ONLY for color, cross, and area
-    // Color Bomb is commented out for testing 
     private void OnMouseOver()
     {
         if (Input.GetMouseButton(1))
         {
-            //isAreaBomb = true;
-            //GameObject area = Instantiate(areaBomb, transform.position, Quaternion.identity);
-            //area.transform.parent = this.transform;
+            if (board.currentState == GameState.move)
+            {
+                isAreaBomb = true;
+                GameObject area = Instantiate(areaBomb, transform.position, Quaternion.identity);
+                area.transform.parent = this.transform;
 
-            //isColorBomb = true;
-            //GameObject color = Instantiate(colorBomb, transform.position, Quaternion.identity);
-            //color.transform.parent = this.transform;
 
-            
-            isRowBomb = true;
-            GameObject bomb = Instantiate(rowBomb, transform.position, Quaternion.identity);
-            bomb.transform.parent = this.transform;
+                // UNCOMMENT THIS TO SEE THE COLOR BOMB FUNCTIONALITY
+  
+                //isColorBomb = true;
+                //GameObject color = Instantiate(colorBomb, transform.position, Quaternion.identity);
+                //color.transform.parent = this.transform;
 
-            
-             
-            isColumnBomb = true;
-            GameObject cBomb = Instantiate(columnBomb, transform.position, Quaternion.identity);
-            cBomb.transform.parent = this.transform;
+                // UNCOMMENT THIS TO SEE THE ROW BOMB FUNCTIONALITY 
+                // You can use Row Bomb and Column Bomb at the same time 
 
+                //isRowBomb = true;
+                //GameObject bomb = Instantiate(rowBomb, transform.position, Quaternion.identity);
+                //bomb.transform.parent = this.transform;
+
+                //isColumnBomb = true;
+                //GameObject cBomb = Instantiate(columnBomb, transform.position, Quaternion.identity);
+                //cBomb.transform.parent = this.transform;
+            }
             
         }
     }
@@ -95,9 +107,10 @@ public class Icon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //FindMatches();
+        //FindMatches(); // for testing binch 
+        //FindDiagonalMatches(); // for testing binch 
 
-        if(isMatched)
+        if (isMatched)
         {
             SpriteRenderer mySprite = GetComponent<SpriteRenderer>();
             mySprite.color = new Color(0f, 0f, 0f, .2f);
@@ -144,7 +157,7 @@ public class Icon : MonoBehaviour
 
     public IEnumerator CheckMoveCo()
     {
-
+        
         // Maria Edit Part 20 7:37
         if (isColorBomb)
         {
@@ -159,6 +172,19 @@ public class Icon : MonoBehaviour
             findMatches.MatchPiecesOfColor(this.gameObject.tag);
             otherIcon.GetComponent<Icon>().isMatched = true;
         }
+        
+
+        // Maria Edit
+
+        /*
+        //DOESNT WORK
+        if (isAreaBomb)
+        {
+            findMatches.AreaBomb();
+            isMatched = true;
+        }
+
+        */
 
         yield return new WaitForSeconds(.5f);
 
@@ -254,9 +280,10 @@ public class Icon : MonoBehaviour
         StartCoroutine(CheckMoveCo());
     }
 
+    
     void FindMatches()
     {
-        //Find Horizontal Matches
+        // Find Horizontal Matches
         if(column > 0 && column < board.width - 1)
         {
             GameObject leftIcon1 = board.allIcons[column - 1, row];
@@ -270,8 +297,31 @@ public class Icon : MonoBehaviour
                     isMatched = true;
                 }
             }
+
+            
+            // this is a change too
+            if(row < board.height - 1 && isAreaBomb == true) // isAreaBomb change
+            {
+                GameObject upperLeft = board.allIcons[column - 1, row + 1]; //something wrong
+                GameObject upperRight = board.allIcons[column + 1, row + 1]; //something wrong??
+
+                if (upperLeft != null && upperRight != null)
+                {
+                    //if (upperLeft.tag == this.gameObject.tag && upperRight.tag == this.gameObject.tag)
+                    //{
+                        upperLeft.GetComponent<Icon>().isMatched = true;
+                        upperRight.GetComponent<Icon>().isMatched = true;
+                        leftIcon1.GetComponent<Icon>().isMatched = true;
+                        rightIcon1.GetComponent<Icon>().isMatched = true;
+                    isMatched = true;
+                    //}
+                }
+            }
+            //change end
+            
         }
 
+        // Find Vertical Matches
         if (row > 0 && row < board.height - 1)
         {
             GameObject upIcon1 = board.allIcons[column, row + 1];
@@ -285,6 +335,76 @@ public class Icon : MonoBehaviour
                     isMatched = true;
                 }
             }
+
+            // change here
+            if (row > 0 && row < board.height - 1 && column < board.width - 1 && column > 0 && isAreaBomb == true)
+            {
+                GameObject lowerLeft = board.allIcons[column - 1, row - 1]; //something wrong
+                GameObject lowerRight = board.allIcons[column + 1, row - 1]; //something wrong
+
+                //if (lowerLeft.tag == this.gameObject.tag && lowerRight.tag == this.gameObject.tag)
+                //{
+                    lowerLeft.GetComponent<Icon>().isMatched = true;
+                    lowerRight.GetComponent<Icon>().isMatched = true;
+                    upIcon1.GetComponent<Icon>().isMatched = true;
+                    downIcon1.GetComponent<Icon>().isMatched = true;
+                    isMatched = true;
+                //}
+            }
+
+            //change here
         }
+
+
     }
+    
+
+    
+    
+    
 }
+
+/*
+ * 
+ * 
+    // Maria Edit
+    // Find Diagonal Matches
+
+    void FindDiagonalMatches()
+    {
+        
+        if (column > 0 && column < board.width - 1 && row < board.height - 1) // may have to change this 
+        {
+            GameObject upperLeft = board.allIcons[column - 1, row + 1]; //something wrong
+            GameObject upperRight = board.allIcons[column + 1, row + 1]; //something wrong??
+
+            if (upperLeft != null && upperRight != null)
+            {
+                if (upperLeft.tag == this.gameObject.tag && upperRight.tag == this.gameObject.tag)
+                {
+                    upperLeft.GetComponent<Icon>().isMatched = true;
+                    upperRight.GetComponent<Icon>().isMatched = true;
+                    isMatched = true;
+                }
+            }
+
+        }
+        
+        
+        if (row > 0 && row < board.height - 1 && column < board.width - 1 & column > 0) // may have to change this
+        {
+            GameObject lowerLeft = board.allIcons[column - 1, row - 1]; //something wrong
+            GameObject lowerRight = board.allIcons[column + 1, row - 1]; //something wrong
+
+            if (lowerLeft.tag == this.gameObject.tag && lowerRight.tag == this.gameObject.tag)
+            {
+                lowerLeft.GetComponent<Icon>().isMatched = true;
+                lowerRight.GetComponent<Icon>().isMatched = true;
+                isMatched = true;
+            }
+
+        }
+
+        
+    }
+ */

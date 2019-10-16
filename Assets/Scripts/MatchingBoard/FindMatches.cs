@@ -37,8 +37,9 @@ public class FindMatches : MonoBehaviour
                         GameObject leftIcon = board.allIcons[i - 1, j];
                         GameObject rightIcon = board.allIcons[i + 1, j];
 
+                        // Maria Edit
 
-                            if (leftIcon.tag == currentIcon.tag && rightIcon.tag == currentIcon.tag)
+                        if (leftIcon.tag == currentIcon.tag && rightIcon.tag == currentIcon.tag)
                             {
                                 
                                 // Maria Edit
@@ -67,7 +68,13 @@ public class FindMatches : MonoBehaviour
                             }
 
 
+
+                            // Upper Area Bomb
+                            
+
                             // Maria Edit
+
+
 
                             if (!CurrentMatches.Contains(leftIcon))
                                 {
@@ -152,6 +159,59 @@ public class FindMatches : MonoBehaviour
         }
     }
 
+    
+
+    public void AreaBomb()
+    {
+        for (int i = 0; i < board.width; i++)
+        {
+            for(int j = 0; j < board.height; j++)
+            {
+
+                if(board.allIcons[i, j] != null)
+                {
+                    if (i > 0 && i < board.width - 1 && j < board.height - 1) // may have to change this 
+                    {
+                        GameObject upperLeft = board.allIcons[i - 1, j + 1]; //something wrong
+                        GameObject upperRight = board.allIcons[i + 1, j + 1]; //something wrong??
+
+                        if (upperLeft != null && upperRight != null)
+                        {
+                            if (upperLeft.tag == this.gameObject.tag && upperRight.tag == this.gameObject.tag)
+                            {
+                                upperLeft.GetComponent<Icon>().isMatched = true;
+                                upperRight.GetComponent<Icon>().isMatched = true;
+                                board.allIcons[i, j].GetComponent<Icon>().isMatched = true;
+                            }
+                        }
+
+                    }
+
+
+                    if (j > 0 && j < board.height - 1 && i < board.width - 1 & i > 0) // may have to change this
+                    {
+                        GameObject lowerLeft = board.allIcons[i - 1, j - 1]; //something wrong
+                        GameObject lowerRight = board.allIcons[i + 1, j - 1]; //something wrong
+
+                        if (lowerLeft.tag == this.gameObject.tag && lowerRight.tag == this.gameObject.tag)
+                        {
+                            lowerLeft.GetComponent<Icon>().isMatched = true;
+                            lowerRight.GetComponent<Icon>().isMatched = true;
+                            board.allIcons[i, j].GetComponent<Icon>().isMatched = true;
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+    
+
     //Maria Edit Part 20 3:00
     public void MatchPiecesOfColor(string color)
     {
@@ -209,3 +269,7 @@ public class FindMatches : MonoBehaviour
 
 
 }
+
+
+
+

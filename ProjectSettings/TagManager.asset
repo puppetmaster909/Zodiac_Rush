@@ -12,6 +12,9 @@ TagManager:
   - OrbIcon
   - BurstIcon
   - Board
+  - 3x3AreaBomb
+  - CRBomb
+  - RainbowBomb
   layers:
   - Default
   - TransparentFX
