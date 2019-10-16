@@ -54,7 +54,7 @@ public class SliderChange : MonoBehaviour
                 Debug.Log(currentScore);
             }
 
-            /*
+            
             if (currentScore >= maxScore)
             {
                 Debug.Log("Level Complete!");
@@ -63,7 +63,7 @@ public class SliderChange : MonoBehaviour
                 board.SetActive(false);
                 UIManager.main.ShowScreen("Victory");
             }
-            */
+            
         }
     }
     #endregion
