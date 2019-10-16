@@ -131,6 +131,7 @@ public class Board : MonoBehaviour
                 }
             }
         }
+
         StartCoroutine(DecreateRowCo());
     }
 

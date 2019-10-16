@@ -107,7 +107,7 @@ public class Icon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        FindMatches(); // for testing binch 
+        //FindMatches(); // for testing binch 
         //FindDiagonalMatches(); // for testing binch 
 
         if (isMatched)
@@ -172,7 +172,18 @@ public class Icon : MonoBehaviour
             findMatches.MatchPiecesOfColor(this.gameObject.tag);
             otherIcon.GetComponent<Icon>().isMatched = true;
         }
-        
+
+        if (isAreaBomb)
+        {
+            FindMatches();
+            isMatched = true;
+        }
+
+        else if (otherIcon.GetComponent<Icon>().isAreaBomb)
+        {
+            FindMatches();
+            otherIcon.GetComponent<Icon>().isMatched = true;
+        }
 
         // Maria Edit
 
