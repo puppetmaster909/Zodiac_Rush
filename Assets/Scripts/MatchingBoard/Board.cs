@@ -128,11 +128,15 @@ public class Board : MonoBehaviour
                 if (allIcons[i, j] != null)
                 {
                     DestroyMatchesAt(i, j);
+
                 }
             }
         }
-
-        StartCoroutine(DecreateRowCo());
+        findMatches.CurrentMatches.Clear();
+        if (sliderChange.getScore() <= sliderChange.maxScore)
+        {
+            StartCoroutine(DecreateRowCo());
+        }
     }
 
     private IEnumerator DecreateRowCo()
@@ -154,27 +158,31 @@ public class Board : MonoBehaviour
             nullCount = 0;
         }
         yield return new WaitForSeconds(.4f);
-        StartCoroutine(FillBoardCo());
+        if (sliderChange.getScore() <= sliderChange.maxScore)
+        {
+            StartCoroutine(FillBoardCo());
+        }
     }
 
     private void RefillBoard()
     {
-        for (int i = 0; i < width; i++)
-        {
-            for(int j = 0; j < height; j++)
+          for (int i = 0; i < width; i++)
             {
-                if (allIcons[i, j] == null)
+                for (int j = 0; j < height; j++)
                 {
-                    Vector2 tempPosition = new Vector2(i, j + offSet);
-                    int iconToUse = Random.Range(0, icons.Length); //was Random.Range(0, icons.Length);
-                    GameObject piece = Instantiate(icons[iconToUse], tempPosition, Quaternion.identity);
-                    allIcons[i, j] = piece;
-                    piece.GetComponent<Icon>().row = j;
-                    piece.GetComponent<Icon>().column = i;
-                    piece.GetComponent<SpriteRenderer>().sortingLayerName = "Icons";
+                    if (allIcons[i, j] == null)
+                    {
+                        Vector2 tempPosition = new Vector2(i, j + offSet);
+                        int iconToUse = Random.Range(0, icons.Length); //was Random.Range(0, icons.Length);
+                        GameObject piece = Instantiate(icons[iconToUse], tempPosition, Quaternion.identity);
+                        allIcons[i, j] = piece;
+                        piece.GetComponent<Icon>().row = j;
+                        piece.GetComponent<Icon>().column = i;
+                        piece.GetComponent<SpriteRenderer>().sortingLayerName = "Icons";
+                    }
                 }
             }
-        }
+        
     }
 
     private bool MatchesOnBoard()
