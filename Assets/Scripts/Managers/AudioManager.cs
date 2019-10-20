@@ -56,7 +56,8 @@ public class AudioManager : MonoBehaviour
     public void PlaySingle(AudioClip clip)
     {
         FxSource.clip = clip;
-        FxSource.PlayOneShot(clip);
+        FxSource.PlayOneShot(clip, 0.2f);
+        
     }
 
     // Plays music consistently
@@ -84,7 +85,7 @@ public class AudioManager : MonoBehaviour
     {
         switch (scene.name)
         {
-            case "MainMenu":
+            case "MainMenu_Scene":
                  PlayMusic(MainMenuMusic);
                 break;
 

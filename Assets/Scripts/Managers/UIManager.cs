@@ -28,9 +28,10 @@ public class UIManager : MonoBehaviour
     public AudioClip Confirm;
     public bool IsPaused = false;
     public int CurrentScreen;
-    public int PauseScreen = 0;
+    private int PauseScreen = 0;
     public int PrePauseScreen;
-    public string PreviousScreenName = "Main";
+    public string PreviousScreenName = "Level";
+    public GameObject currentLevel;
 
     #endregion
 
@@ -47,11 +48,12 @@ public class UIManager : MonoBehaviour
         {
             GameObject.Destroy(gameObject);
         }
-        DontDestroyOnLoad(this.gameObject);
+        
     }
 
     void Start()
     {
+        
         int i = 0;
         foreach (Screen s in Screens)
         {
@@ -63,11 +65,6 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-
-    }
-
     #endregion
 
     #region Public Methods
@@ -75,7 +72,8 @@ public class UIManager : MonoBehaviour
     // Displays the screen with the given name
     public void ShowScreen(string name)
     {
-        AudioManager.main.FxSource.Play();
+        AudioManager.main.PlaySingle(Confirm);
+
         PreviousScreenName = Screens[CurrentScreen].name;
         for (int i = 0; i < Screens.Count; i++)
         {
@@ -95,17 +93,27 @@ public class UIManager : MonoBehaviour
             yield return new WaitForSeconds(1.0f);
         }
         Debug.Log("Current Screen: " + CurrentScreen);
-        Screens[CurrentScreen].screen.SetActive(false);
+        if (Screens[CurrentScreen].name != currentLevel.name)
+        {
+            Screens[CurrentScreen].screen.SetActive(false);
+        }
         Screens[index].screen.SetActive(true);
         CurrentScreen = index;
         Debug.Log("New Current Screen: " + CurrentScreen);
     }
 
     // Quits application
+    public void LeaveLevel()
+    {
+        Debug.Log("Returning to Main Menu");   
+        SceneManager.LoadScene("MainMenu_Scene");
+        
+    }
+
     public void Quit()
     {
+        Debug.Log("Quiting Game");
         Application.Quit();
-        Debug.Log("Quitting Game");
     }
 
     // Pauses game for menu that requires it
@@ -116,7 +124,7 @@ public class UIManager : MonoBehaviour
         IsPaused = true;
 
         // Hide Board gameObject
-        GameObject board = gameObject.transform.Find("Level1").Find("Board").gameObject;
+        GameObject board = gameObject.transform.Find("Board").gameObject;
         board.SetActive(false);
 
         Screens[PauseScreen].screen.SetActive(true);
@@ -131,7 +139,7 @@ public class UIManager : MonoBehaviour
         IsPaused = false;
 
         // Show Board gameObject
-        GameObject board = gameObject.transform.Find("Level1").Find("Board").gameObject;
+        GameObject board = gameObject.transform.Find("Board").gameObject;
         board.SetActive(true);
 
         Screens[PauseScreen].screen.SetActive(false);
@@ -152,7 +160,6 @@ public class UIManager : MonoBehaviour
 
     public void MainMenu()
     {
-        ShowScreen("Main");
         SceneManager.LoadScene("Title_Scene");
     }
 
