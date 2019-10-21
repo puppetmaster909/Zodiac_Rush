@@ -39,7 +39,7 @@ public class AudioManager : MonoBehaviour
         {
             GameObject.Destroy(gameObject);
         }
-        DontDestroyOnLoad(this.gameObject);
+       
     }
 
     // Start is called before the first frame update

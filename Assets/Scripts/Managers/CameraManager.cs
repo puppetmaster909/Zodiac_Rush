@@ -17,7 +17,7 @@ public class CameraManager : MonoBehaviour
         {
             GameObject.Destroy(gameObject);
         }
-        DontDestroyOnLoad(this.gameObject);
+        
     }
 
     // Start is called before the first frame update
