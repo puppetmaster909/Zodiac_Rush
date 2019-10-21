@@ -12,6 +12,8 @@ public class SliderChange : MonoBehaviour
     public float maxScore;
     public Slider slider;
 
+    private Board theBoard;
+
     // Maria Edit Part 33 - Scoring System
     public Text scoreText; // 10:11
 
@@ -46,6 +48,15 @@ public class SliderChange : MonoBehaviour
     // Maria Edit
     public void IncreaseScore( int amountToIncrease) // 10:30
     {
+        int width = 0, height = 0;
+        theBoard = FindObjectOfType<Board>();
+
+        if (theBoard != null)
+        {
+            width = theBoard.width;
+            height = theBoard.height;
+        }
+        
         if (currentScore >= 0)
         {
             if (currentScore <= maxScore)
@@ -60,11 +71,25 @@ public class SliderChange : MonoBehaviour
                 Debug.Log("Level Complete!");
                 // Hide Board gameObject
                 GameObject board = UIManager.main.transform.Find("Level1").Find("Board").gameObject;
-                board.SetActive(false);
+
+                for (int i = 0; i < width; i++)
+                {
+                    for(int j = 0; j < height; j++)
+                    {
+                        Destroy(theBoard.allIcons[j,i]);
+                    }
+                }
+
+                //board.SetActive(false);
+
                 UIManager.main.ShowScreen("Victory");
             }
             
         }
+    }
+    public float getScore()
+    {
+        return currentScore;
     }
     #endregion
 }
