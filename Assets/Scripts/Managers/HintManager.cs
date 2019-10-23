@@ -25,6 +25,8 @@ public class HintManager : MonoBehaviour
         if (hintDelaySeconds <= 0 && currentHint == null)
         {
             MarkHint();
+
+            //reset Delay
             hintDelaySeconds = hintDelay;
         }
 
