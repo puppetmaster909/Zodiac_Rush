@@ -179,6 +179,7 @@ public class Board : MonoBehaviour
                         piece.GetComponent<Icon>().row = j;
                         piece.GetComponent<Icon>().column = i;
                         piece.GetComponent<SpriteRenderer>().sortingLayerName = "Icons";
+                    piece.GetComponent<Icon>().transform.parent = GameObject.Find("Board").transform;
                     }
                 }
             }
@@ -257,7 +258,7 @@ public class Board : MonoBehaviour
                             }
                         }
                     }
-                    if (j < height)
+                    if (j < height - 1)
                     {
                         //Check if the pieces above exist
                         if (allIcons[i, j + 1] != null && allIcons[i, j + 2] != null)
@@ -274,7 +275,7 @@ public class Board : MonoBehaviour
         return false;
     }
 
-    private bool SwitchAndCheck(int column, int row, Vector2 direction)
+    public bool SwitchAndCheck(int column, int row, Vector2 direction)
     {
         SwitchPieces(column, row, direction);
         if(CheckForMatches())

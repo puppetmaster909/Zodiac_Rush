@@ -128,7 +128,7 @@ public class UIManager : MonoBehaviour
         board.SetActive(false);
 
         Screens[PauseScreen].screen.SetActive(true);
-        AudioManager.main.MusicSource.Pause();
+        //AudioManager.main.MusicSource.Pause();
     }
 
     // UnPauses game from menu
