@@ -605,6 +605,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: LeaveLevel
       objectReference: {fileID: 0}
+    - target: {fileID: 6542260349793864500, guid: 33f4fb93396a25d4faac7b46ad536c0d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6058270218919769407, guid: 33f4fb93396a25d4faac7b46ad536c0d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 33f4fb93396a25d4faac7b46ad536c0d, type: 3}

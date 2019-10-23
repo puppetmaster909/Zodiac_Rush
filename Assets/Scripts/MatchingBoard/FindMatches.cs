@@ -30,6 +30,7 @@ public class FindMatches : MonoBehaviour
             for (int j = 0; j < board.height; j++)
             {
                 GameObject currentIcon = board.allIcons[i, j];
+
                 if (currentIcon != null)
                 {
                     if (i > 0 && i < board.width - 1)
@@ -38,45 +39,46 @@ public class FindMatches : MonoBehaviour
                         GameObject rightIcon = board.allIcons[i + 1, j];
 
                         // Maria Edit
-
-                        if (leftIcon.tag == currentIcon.tag && rightIcon.tag == currentIcon.tag)
+                        if (leftIcon != null && rightIcon)
+                        {
+                            if (leftIcon.tag == currentIcon.tag && rightIcon.tag == currentIcon.tag)
                             {
-                                
+
                                 // Maria Edit
-                                if(currentIcon.GetComponent<Icon>().isRowBomb
+                                if (currentIcon.GetComponent<Icon>().isRowBomb
                                 || leftIcon.GetComponent<Icon>().isRowBomb
                                 || rightIcon.GetComponent<Icon>().isRowBomb)
                                 {
 
-                                CurrentMatches.Union(GetRowPieces(j));       
-                                
+                                    CurrentMatches.Union(GetRowPieces(j));
+
                                 }
 
-                            if (currentIcon.GetComponent<Icon>().isColumnBomb)
-                            {
-                                CurrentMatches.Union(GetColumnPieces(i));
-                            }
+                                if (currentIcon.GetComponent<Icon>().isColumnBomb)
+                                {
+                                    CurrentMatches.Union(GetColumnPieces(i));
+                                }
 
-                            if (leftIcon.GetComponent<Icon>().isColumnBomb)
-                            {
-                                CurrentMatches.Union(GetColumnPieces(i - 1));
-                            }
+                                if (leftIcon.GetComponent<Icon>().isColumnBomb)
+                                {
+                                    CurrentMatches.Union(GetColumnPieces(i - 1));
+                                }
 
-                            if (rightIcon.GetComponent<Icon>().isColumnBomb)
-                            {
-                                CurrentMatches.Union(GetColumnPieces(i + 1));
-                            }
-
-
-
-                            // Upper Area Bomb
-                            
-
-                            // Maria Edit
+                                if (rightIcon.GetComponent<Icon>().isColumnBomb)
+                                {
+                                    CurrentMatches.Union(GetColumnPieces(i + 1));
+                                }
 
 
 
-                            if (!CurrentMatches.Contains(leftIcon))
+                                // Upper Area Bomb
+
+
+                                // Maria Edit
+
+
+
+                                if (!CurrentMatches.Contains(leftIcon))
                                 {
                                     CurrentMatches.Add(leftIcon);
                                 }
@@ -95,6 +97,7 @@ public class FindMatches : MonoBehaviour
                             }
                         }
                     }
+                }
                     if (j > 0 && j < board.height - 1)
                     {
                         GameObject upIcon = board.allIcons[i, j + 1];
