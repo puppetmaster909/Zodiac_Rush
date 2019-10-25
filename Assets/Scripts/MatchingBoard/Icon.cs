@@ -265,7 +265,10 @@ public class Icon : MonoBehaviour
             row += (int)direction.y;
             StartCoroutine(CheckMoveCo());
         }
+        else
+        {
             board.currentState = GameState.move;
+        }
         
     }
 

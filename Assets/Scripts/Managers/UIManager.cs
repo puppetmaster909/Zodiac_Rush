@@ -33,6 +33,8 @@ public class UIManager : MonoBehaviour
     public string PreviousScreenName = "Level";
     public GameObject currentLevel;
 
+    private Board board;
+
     #endregion
 
     #region MonoBehavior
@@ -53,7 +55,7 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        
+        board = FindObjectOfType<Board>();
         int i = 0;
         foreach (Screen s in Screens)
         {
@@ -124,9 +126,12 @@ public class UIManager : MonoBehaviour
         IsPaused = true;
 
         // Hide Board gameObject
-        GameObject board = gameObject.transform.Find("Board").gameObject;
-        board.SetActive(false);
+        GameObject boardFound = gameObject.transform.Find("Board").gameObject;
 
+        boardFound.SetActive(false);
+
+        board.currentState = GameState.wait;
+        
         Screens[PauseScreen].screen.SetActive(true);
         //AudioManager.main.MusicSource.Pause();
     }
@@ -139,11 +144,14 @@ public class UIManager : MonoBehaviour
         IsPaused = false;
 
         // Show Board gameObject
-        GameObject board = gameObject.transform.Find("Board").gameObject;
-        board.SetActive(true);
+        GameObject boardFound = gameObject.transform.Find("Board").gameObject;
+
+        boardFound.SetActive(true);
+
+        board.currentState = GameState.move;
 
         Screens[PauseScreen].screen.SetActive(false);
-        AudioManager.main.MusicSource.UnPause();
+        //AudioManager.main.MusicSource.UnPause();
     }
 
     // Continues game from last saved Level
