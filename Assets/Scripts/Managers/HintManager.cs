@@ -33,7 +33,7 @@ public class HintManager : MonoBehaviour
     }
 
     //find all possible matches on the board
-    List<GameObject> FindAllMatches()
+    List<GameObject> FindMatches()
     {
         List<GameObject> possibleMoves = new List<GameObject>();
         for (int i = 0; i < board.width; i++)
@@ -47,6 +47,7 @@ public class HintManager : MonoBehaviour
                         if (board.SwitchAndCheck(i, j, Vector2.right))
                         {
                             possibleMoves.Add(board.allIcons[i, j]);
+                            Debug.Log("Add Possible Move to Array");
                         }
                     }
                     if (j < board.height - 1)
@@ -54,6 +55,7 @@ public class HintManager : MonoBehaviour
                         if (board.SwitchAndCheck(i, j, Vector2.up))
                         {
                             possibleMoves.Add(board.allIcons[i, j]);
+                            Debug.Log("Add Possible Move to Array");
 
                         }
                     }
@@ -66,7 +68,7 @@ public class HintManager : MonoBehaviour
     GameObject PickOneRandomly()
     {
         List<GameObject> possibleMoves = new List<GameObject>();
-        possibleMoves = FindAllMatches();
+        possibleMoves = FindMatches();
         if (possibleMoves.Count > 0)
         {
             int pieceToUse = Random.Range(0, possibleMoves.Count);

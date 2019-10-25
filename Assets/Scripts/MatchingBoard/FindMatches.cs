@@ -39,7 +39,7 @@ public class FindMatches : MonoBehaviour
                         GameObject rightIcon = board.allIcons[i + 1, j];
 
                         // Maria Edit
-                        if (leftIcon != null && rightIcon)
+                        if (leftIcon != null && rightIcon != null)
                         {
                             if (leftIcon.tag == currentIcon.tag && rightIcon.tag == currentIcon.tag)
                             {

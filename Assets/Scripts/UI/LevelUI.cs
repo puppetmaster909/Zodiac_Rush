@@ -32,6 +32,8 @@ public class LevelUI : MonoBehaviour
 
     public void Pause()
     {
+        board = FindObjectOfType<Board>();
+
         if (board.currentState != GameState.wait)
         {
             UIManager.main.PauseGame();
