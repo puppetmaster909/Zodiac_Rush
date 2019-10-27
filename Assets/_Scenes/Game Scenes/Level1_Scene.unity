@@ -276,12 +276,12 @@ PrefabInstance:
     - target: {fileID: 5197105081193609675, guid: 3eac7b2c3582fa940969b1e6b8cbd7c3,
         type: 3}
       propertyPath: yOffset
-      value: 0.5
+      value: 4.1
       objectReference: {fileID: 0}
     - target: {fileID: 5197105081193609675, guid: 3eac7b2c3582fa940969b1e6b8cbd7c3,
         type: 3}
       propertyPath: cameraOffset
-      value: -10
+      value: -6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3eac7b2c3582fa940969b1e6b8cbd7c3, type: 3}
@@ -623,7 +623,7 @@ PrefabInstance:
     - target: {fileID: 472513307709024216, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
       propertyPath: offSet
-      value: 10
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 2242333319256305931, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
