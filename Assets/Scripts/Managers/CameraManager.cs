@@ -28,7 +28,7 @@ public class CameraManager : MonoBehaviour
         transform.position = tempPosition;
         if (board.width >= board.height)
         {
-            Camera.main.orthographicSize = (board.width / 2 + padding) / aspectRatio;
+            Camera.main.orthographicSize = (board.width / 2 + padding) / aspectRatio * 10;
         }
         else
         {
