@@ -15,6 +15,7 @@ TagManager:
   - 3x3AreaBomb
   - CRBomb
   - RainbowBomb
+  - PauseMenu
   layers:
   - Default
   - TransparentFX

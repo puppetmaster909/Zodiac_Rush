@@ -33,11 +33,6 @@ public class PauseMenu : MonoBehaviour
         UIManager.main.ShowScreen("Settings");
     }
 
-    public void MainMenu()
-    {
-        UIManager.main.ShowScreen("Main");
-    }
-
     public void Quit()
     {
         UIManager.main.Quit();

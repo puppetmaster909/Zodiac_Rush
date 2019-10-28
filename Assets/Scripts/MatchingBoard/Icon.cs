@@ -199,7 +199,7 @@ public class Icon : MonoBehaviour
 
         yield return new WaitForSeconds(.5f);
 
-        if(otherIcon != null)
+        if(otherIcon != null )
         {
             if(!isMatched && !otherIcon.GetComponent<Icon>().isMatched)
             {
@@ -241,54 +241,83 @@ public class Icon : MonoBehaviour
     {
         if (Mathf.Abs(finalTouchPosition.y - firstTouchPosition.y) > swipeResist || Mathf.Abs(finalTouchPosition.x - firstTouchPosition.x) > swipeResist)
         {
+            board.currentState = GameState.wait;
             swipeAngle = Mathf.Atan2(finalTouchPosition.y - firstTouchPosition.y, finalTouchPosition.x - firstTouchPosition.x) * 180 / Mathf.PI;
             movePieces();
-            board.currentState = GameState.wait;
+            
         }
         else
         {
             board.currentState = GameState.move;
         }
     }
+
+    void MovePiecesActual(Vector2 direction)
+    {
+        otherIcon = board.allIcons[column + (int)direction.x, row + (int)direction.y];
+        previousRow = row;
+        previousColumn = column;
+        if (otherIcon != null)
+        {
+            otherIcon.GetComponent<Icon>().column += -1 * (int)direction.x;
+            otherIcon.GetComponent<Icon>().row += -1 * (int)direction.y;
+            column += (int)direction.x;
+            row += (int)direction.y;
+            StartCoroutine(CheckMoveCo());
+        }
+        else
+        {
+            board.currentState = GameState.move;
+        }
+        
+    }
+
     void movePieces()
     {
         if (swipeAngle > -45 && swipeAngle <= 45 && column < board.width - 1)
         {
             //Right Swipe
-            otherIcon = board.allIcons[column + 1, row];
-            previousColumn = column;
-            previousRow = row;
-            otherIcon.GetComponent<Icon>().column -= 1;
-            column += 1;
+            //otherIcon = board.allIcons[column + 1, row];
+            //previousColumn = column;
+            //previousRow = row;
+            //otherIcon.GetComponent<Icon>().column -= 1;
+            //column += 1;
+            MovePiecesActual(Vector2.right);
         }
         else if (swipeAngle > 45 && swipeAngle <= 135 && row < board.height - 1)
         {
             //Up Swipe
-            otherIcon = board.allIcons[column, row + 1];
-            previousColumn = column;
-            previousRow = row;
-            otherIcon.GetComponent<Icon>().row -= 1;
-            row += 1;
+            //otherIcon = board.allIcons[column, row + 1];
+            //previousColumn = column;
+            //previousRow = row;
+            //otherIcon.GetComponent<Icon>().row -= 1;
+            //row += 1;
+            MovePiecesActual(Vector2.up);
         }
         else if ((swipeAngle > 135 || swipeAngle <= -135) && column > 0)
         {
             //Left Swipe
-            otherIcon = board.allIcons[column - 1, row];
-            previousColumn = column;
-            previousRow = row;
-            otherIcon.GetComponent<Icon>().column += 1;
-            column -= 1;
+            //otherIcon = board.allIcons[column - 1, row];
+            //previousColumn = column;
+            //previousRow = row;
+            //otherIcon.GetComponent<Icon>().column += 1;
+            //column -= 1;
+            MovePiecesActual(Vector2.left);
         }
         else if (swipeAngle < -45 && swipeAngle >= -135 && row > 0)
         {
             //Down Swipe
-            otherIcon = board.allIcons[column, row - 1];
-            previousColumn = column;
-            previousRow = row;
-            otherIcon.GetComponent<Icon>().row += 1;
-            row -= 1;
+            //otherIcon = board.allIcons[column, row - 1];
+            //previousColumn = column;
+            //previousRow = row;
+            //otherIcon.GetComponent<Icon>().row += 1;
+            //row -= 1;
+            MovePiecesActual(Vector2.down);
         }
-        StartCoroutine(CheckMoveCo());
+        else
+        {
+            board.currentState = GameState.move;
+        }
     }
 
     

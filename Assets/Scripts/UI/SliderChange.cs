@@ -70,7 +70,7 @@ public class SliderChange : MonoBehaviour
             {
                 Debug.Log("Level Complete!");
                 // Hide Board gameObject
-                GameObject board = UIManager.main.transform.Find("Level1").Find("Board").gameObject;
+                GameObject board = UIManager.main.transform.Find("Board").gameObject;
 
                 for (int i = 0; i < width; i++)
                 {
