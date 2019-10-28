@@ -16,6 +16,7 @@ TagManager:
   - CRBomb
   - RainbowBomb
   - PauseMenu
+  - TBomb
   layers:
   - Default
   - TransparentFX
