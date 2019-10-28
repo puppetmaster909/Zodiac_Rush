@@ -109,7 +109,7 @@ public class UIManager : MonoBehaviour
     {
         Debug.Log("Returning to Main Menu");   
         SceneManager.LoadScene("MainMenu_Scene");
-        
+        AudioManager.main.PlaySingle(Confirm);
     }
 
     public void Quit()
@@ -121,6 +121,7 @@ public class UIManager : MonoBehaviour
     // Pauses game for menu that requires it
     public void PauseGame()
     {
+        AudioManager.main.PlaySingle(Confirm);
         Debug.Log("Game Paused");
         Time.timeScale = 0;
         IsPaused = true;
@@ -139,6 +140,7 @@ public class UIManager : MonoBehaviour
     // UnPauses game from menu
     public void UnPauseGame()
     {
+        AudioManager.main.PlaySingle(Confirm);
         Debug.Log("Game UnPaused");
         Time.timeScale = 1;
         IsPaused = false;
@@ -157,17 +159,20 @@ public class UIManager : MonoBehaviour
     // Continues game from last saved Level
     public void ContinueGame()
     {
+        AudioManager.main.PlaySingle(Confirm);
         Debug.Log("Continuing Game");
     }
 
     // Restarts the current level
     public void RestartLevel()
     {
+        AudioManager.main.PlaySingle(Confirm);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void LoadLevel(string level)
     {
+        AudioManager.main.PlaySingle(Confirm);
         SceneManager.LoadScene(level);
     }
 

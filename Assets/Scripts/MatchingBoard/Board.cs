@@ -25,6 +25,8 @@ public class Board : MonoBehaviour
     private int streakValue = 1;
     private SliderChange sliderChange;
 
+    public AudioClip GemSFX;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -124,6 +126,7 @@ public class Board : MonoBehaviour
         {
             findMatches.CurrentMatches.Remove(allIcons[column, row]);
             Destroy(allIcons[column, row]);
+            AudioManager.main.PlaySingle(GemSFX);
             // Maria Edit Part 33: Scoring System 
             // Time Stamps: 16:24
             sliderChange.IncreaseScore(basePieceValue * streakValue);
