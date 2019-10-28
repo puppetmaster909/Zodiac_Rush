@@ -105,7 +105,7 @@ public class UIManager : MonoBehaviour
     }
 
     // Quits application
-    public void LeaveLevel()
+    public void ReturnToMainMenu()
     {
         Debug.Log("Returning to Main Menu");   
         SceneManager.LoadScene("MainMenu_Scene");
@@ -166,9 +166,9 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void MainMenu()
+    public void LoadLevel(string level)
     {
-        SceneManager.LoadScene("Title_Scene");
+        SceneManager.LoadScene(level);
     }
 
     #endregion

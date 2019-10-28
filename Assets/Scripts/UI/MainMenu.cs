@@ -31,7 +31,7 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Showing Level Selection!");
         //UIManager.main.ShowScreen("Level Selection");
         // switch scene to level selection
-        SceneManager.LoadScene("Level1_Scene");
+        SceneManager.LoadScene("LevelSelection_Scene");
     }
 
     public void ContinueGame()
