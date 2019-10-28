@@ -13,12 +13,6 @@ public class SettingsMenu : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     #endregion
 
     #region Runtime Members

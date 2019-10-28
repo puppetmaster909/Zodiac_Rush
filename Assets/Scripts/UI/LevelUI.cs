@@ -24,6 +24,7 @@ public class LevelUI : MonoBehaviour
     #region Runtime Members
 
     public Button PauseButton;
+    private Board board;
 
     #endregion
 
@@ -31,7 +32,12 @@ public class LevelUI : MonoBehaviour
 
     public void Pause()
     {
-        UIManager.main.PauseGame();
+        board = FindObjectOfType<Board>();
+
+        if (board.currentState != GameState.wait)
+        {
+            UIManager.main.PauseGame();
+        }
     }
 
     #endregion

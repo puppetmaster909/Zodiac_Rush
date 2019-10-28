@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
-        
+       
     }
 
     void Update()
@@ -18,7 +18,6 @@ public class MainMenu : MonoBehaviour
     }
 
     #endregion
-
     #region Public Methods
 
     public void Settings()
@@ -32,8 +31,7 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Showing Level Selection!");
         //UIManager.main.ShowScreen("Level Selection");
         // switch scene to level selection
-        UIManager.main.ShowScreen("Level1");
-        SceneManager.LoadScene("Level1_Scene");
+        SceneManager.LoadScene("LevelSelection_Scene");
     }
 
     public void ContinueGame()

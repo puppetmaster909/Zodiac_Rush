@@ -25,6 +25,8 @@ public class Board : MonoBehaviour
     private int streakValue = 1;
     private SliderChange sliderChange;
 
+    public AudioClip GemSFX;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,7 +49,8 @@ public class Board : MonoBehaviour
             for (int j = 0; j < height; j++)
             {
                 Vector2 tempPosition = new Vector2(i, j + offSet);
-                GameObject backgroundTile = Instantiate(tilePrefab, tempPosition, Quaternion.identity) as GameObject;
+                Vector2 titlePosition = new Vector2(i, j);
+                GameObject backgroundTile = Instantiate(tilePrefab, titlePosition, Quaternion.identity) as GameObject;
                 backgroundTile.transform.parent = this.transform;
                 backgroundTile.name = "( " + i + ", " + j + " )";
 
@@ -76,29 +79,41 @@ public class Board : MonoBehaviour
     {
         if (column > 1 && row > 1)
         {
-            if (allIcons[column - 1, row].tag == piece.tag && allIcons[column - 2, row].tag == piece.tag)
+            if (allIcons[column - 1, row] != null && allIcons[column - 2, row] != null)
             {
-                return true;
+                if (allIcons[column - 1, row].tag == piece.tag && allIcons[column - 2, row].tag == piece.tag)
+                {
+                    return true;
+                }
             }
-            if (allIcons[column, row - 1].tag == piece.tag && allIcons[column, row - 2].tag == piece.tag)
-            {
-                return true;
-            }
-        }
-        else if(column <= 1 || row <= 1)
-        {
-            if (row > 1)
+            if (allIcons[column, row - 1] != null && allIcons[column, row - 2] != null)
             {
                 if (allIcons[column, row - 1].tag == piece.tag && allIcons[column, row - 2].tag == piece.tag)
                 {
                     return true;
                 }
             }
-            if(column > 1)
-            { 
-                if (allIcons[column - 1, row].tag == piece.tag && allIcons[column - 2, row].tag == piece.tag)
+        }
+        else if(column <= 1 || row <= 1)
+        {
+            if (row > 1)
+            {
+                if (allIcons[column, row - 1] != null && allIcons[column, row - 2] != null)
                 {
-                    return true;
+                    if (allIcons[column, row - 1].tag == piece.tag && allIcons[column, row - 2].tag == piece.tag)
+                    {
+                        return true;
+                    }
+                }
+            }
+            if(column > 1)
+            {
+                if (allIcons[column - 1, row] != null && allIcons[column - 2, row] != null)
+                {
+                    if (allIcons[column - 1, row].tag == piece.tag && allIcons[column - 2, row].tag == piece.tag)
+                    {
+                        return true;
+                    }
                 }
             }
         }
@@ -111,6 +126,7 @@ public class Board : MonoBehaviour
         {
             findMatches.CurrentMatches.Remove(allIcons[column, row]);
             Destroy(allIcons[column, row]);
+            AudioManager.main.PlaySingle(GemSFX);
             // Maria Edit Part 33: Scoring System 
             // Time Stamps: 16:24
             sliderChange.IncreaseScore(basePieceValue * streakValue);
@@ -135,34 +151,60 @@ public class Board : MonoBehaviour
         findMatches.CurrentMatches.Clear();
         if (sliderChange.getScore() <= sliderChange.maxScore)
         {
-            StartCoroutine(DecreateRowCo());
+            StartCoroutine(DecreaseRowCo2());
         }
     }
-
-    private IEnumerator DecreateRowCo()
+    private IEnumerator DecreaseRowCo2()
     {
-        int nullCount = 0;
-        for (int i = 0; i < width; i++)
+        for (int i = 0; i < width; i ++)
         {
-            for (int j = 0; j < height; j++)
+            for (int j = 0; j < height; j ++)
             {
-                if (allIcons[i, j] == null)
+                if(allIcons[i,j] == null)
                 {
-                    nullCount++;
-                }
-                else if (nullCount > 0) {
-                    allIcons[i, j].GetComponent<Icon>().row -= nullCount;
-                    allIcons[i, j] = null;
+                    for (int k = j + 1; k < height; k ++)
+                    {
+                        if(allIcons[i, k] != null)
+                        {
+                            //move dot to empty space
+                            allIcons[i, k].GetComponent<Icon>().row = j;
+                            //set that spot to be null
+                            allIcons[i, k] = null;
+                            //break the lob
+                            break;
+                        }
+                    }
                 }
             }
-            nullCount = 0;
         }
-        yield return new WaitForSeconds(.4f);
-        if (sliderChange.getScore() <= sliderChange.maxScore)
-        {
-            StartCoroutine(FillBoardCo());
-        }
+        yield return new WaitForSeconds(0.5f);
+        Debug.Log("Refilling Board");
+        StartCoroutine(FillBoardCo());
     }
+    //private IEnumerator DecreaseRowCo()
+    //{
+    //    int nullCount = 0;
+    //    for (int i = 0; i < width; i++)
+    //    {
+    //        for (int j = 0; j < height; j++)
+    //        {
+    //            if (allIcons[i, j] == null)
+    //            {
+    //                nullCount++;
+    //            }
+    //            else if (nullCount > 0) {
+    //                allIcons[i, j].GetComponent<Icon>().row -= nullCount;
+    //                allIcons[i, j] = null;
+    //            }
+    //        }
+    //        nullCount = 0;
+    //    }
+    //    yield return new WaitForSeconds(.4f);
+    //    if (sliderChange.getScore() <= sliderChange.maxScore)
+    //    {
+    //        StartCoroutine(FillBoardCo());
+    //    }
+    //}
 
     private void RefillBoard()
     {
@@ -179,6 +221,7 @@ public class Board : MonoBehaviour
                         piece.GetComponent<Icon>().row = j;
                         piece.GetComponent<Icon>().column = i;
                         piece.GetComponent<SpriteRenderer>().sortingLayerName = "Icons";
+                    piece.GetComponent<Icon>().transform.parent = GameObject.Find("Board").transform;
                     }
                 }
             }
@@ -257,7 +300,7 @@ public class Board : MonoBehaviour
                             }
                         }
                     }
-                    if (j < height)
+                    if (j < height - 1)
                     {
                         //Check if the pieces above exist
                         if (allIcons[i, j + 1] != null && allIcons[i, j + 2] != null)
@@ -274,7 +317,7 @@ public class Board : MonoBehaviour
         return false;
     }
 
-    private bool SwitchAndCheck(int column, int row, Vector2 direction)
+    public bool SwitchAndCheck(int column, int row, Vector2 direction)
     {
         SwitchPieces(column, row, direction);
         if(CheckForMatches())
