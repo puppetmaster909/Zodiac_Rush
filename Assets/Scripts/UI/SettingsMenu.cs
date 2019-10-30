@@ -29,6 +29,7 @@ public class SettingsMenu : MonoBehaviour
         UIManager.main.ShowScreen(UIManager.main.PreviousScreenName);
     }
 
+    
     public void SetBGMVolume()
     {
         AudioManager.main.Mixer.SetFloat("BGMVol", BGM.value);

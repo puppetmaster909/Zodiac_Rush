@@ -171,10 +171,12 @@ public class UIManager : MonoBehaviour
     // Restarts the current level
     public void RestartLevel()
     {
+        
         if (Time.timeScale != 1)
         {
             Time.timeScale = 1;
         }
+        
         AudioManager.main.PlaySingle(Confirm);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
