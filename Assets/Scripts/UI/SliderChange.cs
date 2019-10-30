@@ -86,29 +86,23 @@ public class SliderChange : MonoBehaviour
                 
 
                 Debug.Log(currentScore);
-            }
+            
 
             
-            if (currentScore >= maxScore && moveCounter > 0)
-            {
-                Debug.Log("Level Complete!");
-                // Hide Board gameObject
-                GameObject board = UIManager.main.transform.Find("Board").gameObject;
-
-                for (int i = 0; i < width; i++)
+                if (currentScore >= maxScore && moveCounter > 0)
                 {
-                    for(int j = 0; j < height; j++)
+                    for (int i = 0; i < width; i++)
                     {
-                        Destroy(theBoard.allIcons[j,i]);
+                        for(int j = 0; j < height; j++)
+                        {
+                            Destroy(theBoard.allIcons[j,i]);
+                        }
                     }
+                    Debug.Log("Level Complete!");
+
+                    UIManager.main.ShowScreen("Victory");
                 }
-
-                
-                //board.SetActive(false);
-
-                UIManager.main.ShowScreen("Victory");
             }
-            
         }
 
     }

@@ -642,16 +642,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 472513307709024216, guid: 33f4fb93396a25d4faac7b46ad536c0d,
-        type: 3}
-      propertyPath: offSet
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 472513307709024216, guid: 33f4fb93396a25d4faac7b46ad536c0d,
-        type: 3}
-      propertyPath: GemSFX
-      value: 
-      objectReference: {fileID: 8300000, guid: c47aa58f65e9c394ba6b17ad2bd650bb, type: 3}
     - target: {fileID: 2242333319256305931, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
       propertyPath: m_Layer
@@ -696,6 +686,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404307899467686413, guid: 33f4fb93396a25d4faac7b46ad536c0d,
+        type: 3}
+      propertyPath: m_Name
+      value: Grid(OLD)
       objectReference: {fileID: 0}
     - target: {fileID: 5565251509218985329, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
@@ -748,11 +743,41 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 259
       objectReference: {fileID: 0}
+    - target: {fileID: 2855405164163892705, guid: 33f4fb93396a25d4faac7b46ad536c0d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2151170010325373212, guid: 33f4fb93396a25d4faac7b46ad536c0d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 472513307709024216, guid: 33f4fb93396a25d4faac7b46ad536c0d,
+        type: 3}
+      propertyPath: icons.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 472513307709024216, guid: 33f4fb93396a25d4faac7b46ad536c0d,
+        type: 3}
+      propertyPath: offSet
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 472513307709024216, guid: 33f4fb93396a25d4faac7b46ad536c0d,
+        type: 3}
+      propertyPath: GemSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: c47aa58f65e9c394ba6b17ad2bd650bb, type: 3}
     - target: {fileID: 3093250325910065587, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
       propertyPath: moveCounterText
       value: 
       objectReference: {fileID: 62467572}
+    - target: {fileID: 3093250325910065587, guid: 33f4fb93396a25d4faac7b46ad536c0d,
+        type: 3}
+      propertyPath: maxScore
+      value: 1500
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6058270218919769407, guid: 33f4fb93396a25d4faac7b46ad536c0d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 33f4fb93396a25d4faac7b46ad536c0d, type: 3}
