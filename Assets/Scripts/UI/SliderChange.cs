@@ -17,14 +17,27 @@ public class SliderChange : MonoBehaviour
     // Maria Edit Part 33 - Scoring System
     public Text scoreText; // 10:11
 
+    public int moveCounter;
+    public Text moveCounterText;
+
     #endregion
 
     #region MonoBehaviour
+
+    private void Start()
+    {
+
+        moveCounter = 20;
+        moveCounterText.text = moveCounter.ToString();
+    }
+
     // Update is called once per frame
     void Update()
     {
         slider.value = CalculateSliderValue();
+
         scoreText.text = currentScore.ToString(); // 11:32
+
 
 
         if (Input.GetKeyDown(KeyCode.LeftControl) == true)
@@ -51,6 +64,7 @@ public class SliderChange : MonoBehaviour
         int width = 0, height = 0;
         theBoard = FindObjectOfType<Board>();
 
+
         if (theBoard != null)
         {
             width = theBoard.width;
@@ -62,31 +76,37 @@ public class SliderChange : MonoBehaviour
             if (currentScore <= maxScore)
             {
                 currentScore += amountToIncrease;
+
+                //if(moveCounter >= 0)
+                //{
+                    moveCounter--;
+                    moveCounterText.text = moveCounter.ToString();
+                    Debug.Log("Move Counter is" + moveCounter);
+                //}
+                
+
                 Debug.Log(currentScore);
-            }
+            
 
             
-            if (currentScore >= maxScore)
-            {
-                Debug.Log("Level Complete!");
-                // Hide Board gameObject
-                GameObject board = UIManager.main.transform.Find("Board").gameObject;
-
-                for (int i = 0; i < width; i++)
+                if (currentScore >= maxScore && moveCounter > 0)
                 {
-                    for(int j = 0; j < height; j++)
+                    for (int i = 0; i < width; i++)
                     {
-                        Destroy(theBoard.allIcons[j,i]);
+                        for(int j = 0; j < height; j++)
+                        {
+                            Destroy(theBoard.allIcons[j,i]);
+                        }
                     }
+                    Debug.Log("Level Complete!");
+
+                    UIManager.main.ShowScreen("Victory");
                 }
-
-                //board.SetActive(false);
-
-                UIManager.main.ShowScreen("Victory");
             }
-            
         }
+
     }
+
     public float getScore()
     {
         return currentScore;

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI; // Maria Edit
 
 public enum GameState
 {
@@ -25,6 +26,11 @@ public class Board : MonoBehaviour
     private int streakValue = 1;
     private SliderChange sliderChange;
 
+    // Maria Edit
+    //public int moveCounter;
+    //public Text moveCounterText;
+
+
     public AudioClip GemSFX;
 
     // Start is called before the first frame update
@@ -34,6 +40,8 @@ public class Board : MonoBehaviour
         // Time Stamps: 13:46
         sliderChange = FindObjectOfType<SliderChange>();
 
+        //moveCounter = 20;
+        //moveCounterText.text = moveCounter.ToString();
 
         findMatches = FindObjectOfType<FindMatches>();
         allTiles = new Background_Tile[width, height];
@@ -131,8 +139,18 @@ public class Board : MonoBehaviour
             // Time Stamps: 16:24
             sliderChange.IncreaseScore(basePieceValue * streakValue);
 
+           
+            // Maria Edit
+            //if(moveCounter >= 0)
+            //{
+                //moveCounter--;
+                //moveCounterText.text = moveCounter.ToString();
+            //}
+           
             allIcons[column, row] = null;
         }
+
+        
     }
 
     public void DestroyMatches()

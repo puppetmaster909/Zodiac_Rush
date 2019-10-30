@@ -344,8 +344,9 @@ public class Icon : MonoBehaviour
             {
                 GameObject upperLeft = board.allIcons[column - 1, row + 1]; //something wrong
                 GameObject upperRight = board.allIcons[column + 1, row + 1]; //something wrong??
+                GameObject current = board.allIcons[column, row];
 
-                if (upperLeft != null && upperRight != null)
+                if (upperLeft != null && upperRight != null && current != null)
                 {
                     //if (upperLeft.tag == this.gameObject.tag && upperRight.tag == this.gameObject.tag)
                     //{
@@ -353,6 +354,7 @@ public class Icon : MonoBehaviour
                         upperRight.GetComponent<Icon>().isMatched = true;
                         leftIcon1.GetComponent<Icon>().isMatched = true;
                         rightIcon1.GetComponent<Icon>().isMatched = true;
+                        current.GetComponent<Icon>().isMatched = true;
                     isMatched = true;
                     //}
                 }
@@ -381,14 +383,16 @@ public class Icon : MonoBehaviour
             {
                 GameObject lowerLeft = board.allIcons[column - 1, row - 1]; //something wrong
                 GameObject lowerRight = board.allIcons[column + 1, row - 1]; //something wrong
+                GameObject current = board.allIcons[column, row];
 
                 //if (lowerLeft.tag == this.gameObject.tag && lowerRight.tag == this.gameObject.tag)
                 //{
-                    lowerLeft.GetComponent<Icon>().isMatched = true;
+                lowerLeft.GetComponent<Icon>().isMatched = true;
                     lowerRight.GetComponent<Icon>().isMatched = true;
                     upIcon1.GetComponent<Icon>().isMatched = true;
                     downIcon1.GetComponent<Icon>().isMatched = true;
-                    isMatched = true;
+                    current.GetComponent<Icon>().isMatched = true;
+                isMatched = true;
                 //}
             }
 
