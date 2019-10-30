@@ -107,9 +107,14 @@ public class UIManager : MonoBehaviour
     // Quits application
     public void ReturnToMainMenu()
     {
+        if (Time.timeScale != 1)
+        {
+            Time.timeScale = 1;
+        }
         Debug.Log("Returning to Main Menu");   
         SceneManager.LoadScene("MainMenu_Scene");
         AudioManager.main.PlaySingle(Confirm);
+       
     }
 
     public void Quit()
@@ -166,12 +171,20 @@ public class UIManager : MonoBehaviour
     // Restarts the current level
     public void RestartLevel()
     {
+        if (Time.timeScale != 1)
+        {
+            Time.timeScale = 1;
+        }
         AudioManager.main.PlaySingle(Confirm);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void LoadLevel(string level)
     {
+        if (Time.timeScale != 1)
+        {
+            Time.timeScale = 1;
+        }
         AudioManager.main.PlaySingle(Confirm);
         SceneManager.LoadScene(level);
     }
