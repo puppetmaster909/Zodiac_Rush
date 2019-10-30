@@ -27,23 +27,25 @@ public class Board : MonoBehaviour
     private SliderChange sliderChange;
 
     // Maria Edit
-    //public int moveCounter;
-    //public Text moveCounterText;
+    public int moveCounter;
+    public bool playerMatch;
+    public Text moveCounterText;
 
 
     public AudioClip GemSFX;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         // Maria Edit Part 33: Scoring System 
         // Time Stamps: 13:46
         sliderChange = FindObjectOfType<SliderChange>();
 
-        //moveCounter = 20;
-        //moveCounterText.text = moveCounter.ToString();
+        moveCounter = 20;
+        moveCounterText.text = moveCounter.ToString();
+        playerMatch = false;
 
-        findMatches = FindObjectOfType<FindMatches>();
+    findMatches = FindObjectOfType<FindMatches>();
         allTiles = new Background_Tile[width, height];
         allIcons = new GameObject[width, height];
         //Setup the board
@@ -138,14 +140,6 @@ public class Board : MonoBehaviour
             // Maria Edit Part 33: Scoring System 
             // Time Stamps: 16:24
             sliderChange.IncreaseScore(basePieceValue * streakValue);
-
-           
-            // Maria Edit
-            //if(moveCounter >= 0)
-            //{
-                //moveCounter--;
-                //moveCounterText.text = moveCounter.ToString();
-            //}
            
             allIcons[column, row] = null;
         }
@@ -155,13 +149,15 @@ public class Board : MonoBehaviour
 
     public void DestroyMatches()
     {
+        
         for(int i = 0; i < width; i++)
         {
             for(int j = 0; j < height; j++)
             {
                 if (allIcons[i, j] != null)
                 {
-                    DestroyMatchesAt(i, j);
+                    DestroyMatchesAt(i, j); 
+                    
 
                 }
             }
@@ -169,7 +165,16 @@ public class Board : MonoBehaviour
         findMatches.CurrentMatches.Clear();
         if (sliderChange.getScore() <= sliderChange.maxScore)
         {
+            //Maria Edit
+            if (moveCounter >= 0 && playerMatch)
+            { 
+                    moveCounter--;
+                    moveCounterText.text = moveCounter.ToString();
+                    playerMatch = false;
+            }
             StartCoroutine(DecreaseRowCo2());
+            
+            
         }
     }
     private IEnumerator DecreaseRowCo2()

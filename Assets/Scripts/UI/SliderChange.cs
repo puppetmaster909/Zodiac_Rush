@@ -17,9 +17,6 @@ public class SliderChange : MonoBehaviour
     // Maria Edit Part 33 - Scoring System
     public Text scoreText; // 10:11
 
-    public int moveCounter;
-    public Text moveCounterText;
-
     #endregion
 
     #region MonoBehaviour
@@ -27,8 +24,6 @@ public class SliderChange : MonoBehaviour
     private void Start()
     {
 
-        moveCounter = 20;
-        moveCounterText.text = moveCounter.ToString();
     }
 
     // Update is called once per frame
@@ -77,19 +72,11 @@ public class SliderChange : MonoBehaviour
             {
                 currentScore += amountToIncrease;
 
-                //if(moveCounter >= 0)
-                //{
-                    moveCounter--;
-                    moveCounterText.text = moveCounter.ToString();
-                    Debug.Log("Move Counter is" + moveCounter);
-                //}
-                
-
                 Debug.Log(currentScore);
             
 
             
-                if (currentScore >= maxScore && moveCounter > 0)
+                if (currentScore >= maxScore)
                 {
                     for (int i = 0; i < width; i++)
                     {

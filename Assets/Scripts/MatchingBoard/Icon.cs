@@ -54,7 +54,7 @@ public class Icon : MonoBehaviour
 
         isColumnBomb = false;
         isRowBomb = false;
-
+        
         //Use this for initialization
         board = FindObjectOfType<Board>();
         findMatches = FindObjectOfType<FindMatches>();
@@ -223,6 +223,7 @@ public class Icon : MonoBehaviour
     {
         if (board.currentState == GameState.move)
         {
+
             firstTouchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
         //Debug.Log(firstTouchPosition);
@@ -234,6 +235,7 @@ public class Icon : MonoBehaviour
         {
             finalTouchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             CalculateAngle();
+            board.playerMatch = true;
         }
     }
 
@@ -245,9 +247,11 @@ public class Icon : MonoBehaviour
             swipeAngle = Mathf.Atan2(finalTouchPosition.y - firstTouchPosition.y, finalTouchPosition.x - firstTouchPosition.x) * 180 / Mathf.PI;
             movePieces();
             
+            
         }
         else
         {
+            
             board.currentState = GameState.move;
         }
     }
