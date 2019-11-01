@@ -13,6 +13,7 @@ public class SliderChange : MonoBehaviour
     public Slider slider;
 
     private Board theBoard;
+    private ScoreManager theScore;
 
     // Maria Edit Part 33 - Scoring System
     public Text scoreText; // 10:11
@@ -23,7 +24,7 @@ public class SliderChange : MonoBehaviour
 
     private void Start()
     {
-
+        theScore = FindObjectOfType<ScoreManager>();
     }
 
     // Update is called once per frame
@@ -86,7 +87,7 @@ public class SliderChange : MonoBehaviour
                         }
                     }
                     Debug.Log("Level Complete!");
-
+                    theScore.playerWin = true;
                     UIManager.main.ShowScreen("Victory");
                 }
             }
