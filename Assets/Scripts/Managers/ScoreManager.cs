@@ -15,7 +15,7 @@ public class ScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       theScore = FindObjectOfType<SliderChange>();
+       
         
     }
 
@@ -27,6 +27,7 @@ public class ScoreManager : MonoBehaviour
 
     private int setCurrentScore()
     {
+        theScore = FindObjectOfType<SliderChange>();
         return theScore.currentScore;
     }
 
@@ -35,7 +36,7 @@ public class ScoreManager : MonoBehaviour
         newScore = setCurrentScore();
         if (playerWin && newScore > highScore)
         {
-            highScore += getCurrentScore();
+            highScore += setCurrentScore();
             highScoreText[0].text = highScore.ToString();
             playerWin = false;
         }

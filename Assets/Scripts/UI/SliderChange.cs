@@ -7,7 +7,7 @@ public class SliderChange : MonoBehaviour
 {
     #region Variables
 
-    private float currentScore;
+    public int currentScore;
 
     public float maxScore;
     public Slider slider;
@@ -87,7 +87,7 @@ public class SliderChange : MonoBehaviour
                         }
                     }
                     Debug.Log("Level Complete!");
-                    theScore.playerWin = true;
+                    //theScore.playerWin = true;
                     UIManager.main.ShowScreen("Victory");
                 }
             }
