@@ -16,9 +16,20 @@ public class ScoreManager : MonoBehaviour
     public int numOfLevels;
     public bool[] LevelPassed;
 
-    public int Level1_Star1 = 600, Level1_Star2 = 1000, Level1_Star3 = 1500;
-    public int Level2_Star1 = 800, Level2_Star2 = 1200, Level2_Star3 = 2000;
-    public int Level3_Star1 = 1200, Level3_Star2 = 2000, Level3_Star3 = 3000;
+    [Header("Level 1 Star Requirements")]
+    public int Level1_Star1 = 600;
+    public int Level1_Star2 = 1000;
+    public int Level1_Star3 = 1500;
+
+    [Header("Level 2 Star Requirements")]
+    public int Level2_Star1 = 800;
+    public int Level2_Star2 = 1200;
+    public int Level2_Star3 = 2000;
+
+    [Header("Level 3 Star Requirements")]
+    public int Level3_Star1 = 1200;
+    public int Level3_Star2 = 2000;
+    public int Level3_Star3 = 3000;
 
     private SliderChange theScore;
     private Board board;
@@ -36,7 +47,7 @@ public class ScoreManager : MonoBehaviour
                 GameObject LevelAccess = GameObject.FindGameObjectWithTag("Level2Block");
                 LevelAccess.SetActive(false);
             }
-            else if (IntToBool(PlayerPrefs.GetInt("Level3Complete")))
+            if (IntToBool(PlayerPrefs.GetInt("Level3Complete")))
             {
                 Debug.Log("Level 3 Unlocked");
                 GameObject LevelAccess = GameObject.FindGameObjectWithTag("Level3Block");
@@ -55,7 +66,6 @@ public class ScoreManager : MonoBehaviour
         {
             SetNewHighScore(GetCurrentScore());
             CheckLevelComplete();
-            
         }
     }
 
@@ -64,8 +74,9 @@ public class ScoreManager : MonoBehaviour
         if (GetCurrentScore() > PlayerPrefs.GetInt("HighScore:" + thisLevel.ToString()))
         {
             PlayerPrefs.SetInt("HighScore:" + thisLevel.ToString(), Score);
-
+            
             Debug.Log("New HighScore:" + (PlayerPrefs.GetInt("HighScore:" + thisLevel.ToString(), 0)));
+            
         }
         
     }
@@ -93,18 +104,20 @@ public class ScoreManager : MonoBehaviour
     }
     private int GetHighScore()
     {
-
-         return PlayerPrefs.GetInt("HighScore:" + thisLevel.ToString(), 0);
-
+        return PlayerPrefs.GetInt("HighScore:" + thisLevel.ToString(), 0);
     }
 
 
     public void CheckLevelComplete()
     {
-        if (GetHighScore() > Level1_Star3 && thisLevel == 1)
+        if (PlayerPrefs.GetInt("HighScore:" + thisLevel.ToString()) >= Level1_Star3 && thisLevel == 1)
+        {
             PlayerPrefs.SetInt("Level2Complete", BoolToInt(true));
-        else if (GetHighScore() > Level2_Star3 && thisLevel == 2)
+        }
+        if (PlayerPrefs.GetInt("HighScore:" + thisLevel.ToString()) >= Level2_Star3 && thisLevel == 2)
+        {
             PlayerPrefs.SetInt("Level3Complete", BoolToInt(true));
+        }
     }
     #endregion
     
