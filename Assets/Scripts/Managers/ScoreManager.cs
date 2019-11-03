@@ -32,37 +32,41 @@ public class ScoreManager : MonoBehaviour
     public int Level3_Star3 = 3000;
 
     private SliderChange theScore;
-    private Board board;
-
+    Board board;
     private void Start()
     {
-        
-        
+
+        board = FindObjectOfType<Board>();
 
         if (SceneManager.GetActiveScene().name == "LevelSelection_Scene")
         {
-            if(IntToBool(PlayerPrefs.GetInt("Level2Complete")))
+            CheckStars();
+
+            if(IntToBool(PlayerPrefs.GetInt("Level1Complete")))
             {
                 Debug.Log("Level 2 Unlocked");
                 GameObject LevelAccess = GameObject.FindGameObjectWithTag("Level2Block");
                 LevelAccess.SetActive(false);
             }
-            if (IntToBool(PlayerPrefs.GetInt("Level3Complete")))
+
+            if (IntToBool(PlayerPrefs.GetInt("Level2Complete")))
             {
                 Debug.Log("Level 3 Unlocked");
                 GameObject LevelAccess = GameObject.FindGameObjectWithTag("Level3Block");
                 LevelAccess.SetActive(false);
             }
+            
             for (int i = 1; i <= numOfLevels; i++)
             {
                 PrintHighScore();
+                
             }
         }
 
     }
     void Update()
     {
-        if (SceneManager.GetActiveScene().name != "LevelSelection_Scene")
+        if (SceneManager.GetActiveScene().name != "LevelSelection_Scene" && board.currentState != GameState.wait) 
         {
             SetNewHighScore(GetCurrentScore());
             CheckLevelComplete();
@@ -95,6 +99,7 @@ public class ScoreManager : MonoBehaviour
 
     private int GetCurrentScore()
     {
+        
         theScore = FindObjectOfType<SliderChange>();
         int Score;
 
@@ -112,11 +117,176 @@ public class ScoreManager : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("HighScore:" + thisLevel.ToString()) >= Level1_Star3 && thisLevel == 1)
         {
-            PlayerPrefs.SetInt("Level2Complete", BoolToInt(true));
+            PlayerPrefs.SetInt("Level1Complete", BoolToInt(true));
         }
         if (PlayerPrefs.GetInt("HighScore:" + thisLevel.ToString()) >= Level2_Star3 && thisLevel == 2)
         {
-            PlayerPrefs.SetInt("Level3Complete", BoolToInt(true));
+            PlayerPrefs.SetInt("Level2Complete", BoolToInt(true));
+        }
+    }
+
+    private void CheckStars()
+    {
+        Image image;
+
+        //Level 3 Progression
+        if (PlayerPrefs.GetInt("HighScore:3") >= Level3_Star3 && IntToBool(PlayerPrefs.GetInt("Level2Complete")) == true)
+        {
+            //3 Stars
+            GameObject ZeroStars = GameObject.FindGameObjectWithTag("Level3_0Star");
+            GameObject OneStar = GameObject.FindGameObjectWithTag("Level3_1Star");
+            GameObject TwoStars = GameObject.FindGameObjectWithTag("Level3_2Star");
+            TwoStars.SetActive(false);
+            OneStar.SetActive(false);
+            ZeroStars.SetActive(false);
+
+
+            GameObject ThreeStars = GameObject.FindGameObjectWithTag("Level3_3Star");
+            image = ThreeStars.GetComponent<Image>();
+            Color c = image.color;
+            c.a = 1;
+            image.color = c;
+        }
+        else if(PlayerPrefs.GetInt("HighScore:3") >= Level3_Star2 && PlayerPrefs.GetInt("HighScore:3") < Level3_Star3 && IntToBool(PlayerPrefs.GetInt("Level2Complete")) == true)
+        {
+            //2 Stars
+            GameObject ZeroStars = GameObject.FindGameObjectWithTag("Level3_0Star");
+            GameObject OneStar = GameObject.FindGameObjectWithTag("Level3_1Star");
+            GameObject ThreeStars = GameObject.FindGameObjectWithTag("Level3_3Star");
+            ThreeStars.SetActive(false);
+            OneStar.SetActive(false);
+            ZeroStars.SetActive(false);
+
+
+            GameObject TwoStars = GameObject.FindGameObjectWithTag("Level3_2Star");
+            image = TwoStars.GetComponent<Image>();
+            Color c = image.color;
+            c.a = 1;
+            image.color = c;
+        }
+        else if(PlayerPrefs.GetInt("HighScore:3") < Level3_Star2 && PlayerPrefs.GetInt("HighScore:3") > 0 && IntToBool(PlayerPrefs.GetInt("Level2Complete")) == true)
+        {
+            //1 Star
+            GameObject ZeroStars = GameObject.FindGameObjectWithTag("Level3_0Star");
+            GameObject TwoStars = GameObject.FindGameObjectWithTag("Level3_2Star");
+            GameObject ThreeStars = GameObject.FindGameObjectWithTag("Level3_3Star");
+            ThreeStars.SetActive(false);
+            TwoStars.SetActive(false);
+            ZeroStars.SetActive(false);
+
+
+            GameObject OneStar = GameObject.FindGameObjectWithTag("Level3_1Star");
+            image = OneStar.GetComponent<Image>();
+            Color c = image.color;
+            c.a = 1;
+            image.color = c;
+        }
+
+
+        //Level 2 Progression
+        if (PlayerPrefs.GetInt("HighScore:2") >= Level2_Star3 && IntToBool(PlayerPrefs.GetInt("Level1Complete")) == true)
+        {
+            //3 Star
+            GameObject ZeroStars = GameObject.FindGameObjectWithTag("Level2_0Star");
+            GameObject OneStar = GameObject.FindGameObjectWithTag("Level2_1Star");
+            GameObject TwoStars = GameObject.FindGameObjectWithTag("Level2_2Star");
+            TwoStars.SetActive(false);
+            OneStar.SetActive(false);
+            ZeroStars.SetActive(false);
+
+
+            GameObject ThreeStars = GameObject.FindGameObjectWithTag("Level2_3Star");
+            image = ThreeStars.GetComponent<Image>();
+            Color c = image.color;
+            c.a = 1;
+            image.color = c;
+        }
+        else if (PlayerPrefs.GetInt("HighScore:2") >= Level2_Star2 && PlayerPrefs.GetInt("HighScore:2") < Level2_Star3 && IntToBool(PlayerPrefs.GetInt("Level1Complete")) == true)
+        {
+            //2 Stars
+            GameObject ZeroStars = GameObject.FindGameObjectWithTag("Level2_0Star");
+            GameObject OneStar = GameObject.FindGameObjectWithTag("Level2_1Star");
+            GameObject ThreeStars = GameObject.FindGameObjectWithTag("Level2_3Star");
+            ThreeStars.SetActive(false);
+            OneStar.SetActive(false);
+            ZeroStars.SetActive(false);
+
+
+            GameObject TwoStars = GameObject.FindGameObjectWithTag("Level2_2Star");
+            image = TwoStars.GetComponent<Image>();
+            Color c = image.color;
+            c.a = 255;
+            image.color = c;
+        }
+        else if (PlayerPrefs.GetInt("HighScore:2") < Level2_Star2 && PlayerPrefs.GetInt("HighScore:2") > 0 && IntToBool(PlayerPrefs.GetInt("Level1Complete")) == true)
+        {
+            //1 Star
+            GameObject ZeroStars = GameObject.FindGameObjectWithTag("Level2_0Star");
+            GameObject TwoStars = GameObject.FindGameObjectWithTag("Level2_2Star");
+            GameObject ThreeStars = GameObject.FindGameObjectWithTag("Level2_3Star");
+            ThreeStars.SetActive(false);
+            TwoStars.SetActive(false);
+            ZeroStars.SetActive(false);
+
+
+            GameObject OneStar = GameObject.FindGameObjectWithTag("Level2_1Star");
+            image = OneStar.GetComponent<Image>();
+            Color c = image.color;
+            c.a = 1;
+            image.color = c;
+        }
+
+        //Level 1 Progression
+        if (PlayerPrefs.GetInt("HighScore:1") >= Level1_Star3)
+        {
+            //3 Stars
+            GameObject ZeroStars = GameObject.FindGameObjectWithTag("Level1_0Star");
+            GameObject OneStar = GameObject.FindGameObjectWithTag("Level1_1Star");
+            GameObject TwoStars = GameObject.FindGameObjectWithTag("Level1_2Star");
+            TwoStars.SetActive(false);
+            OneStar.SetActive(false);
+            ZeroStars.SetActive(false);
+
+
+            GameObject ThreeStars = GameObject.FindGameObjectWithTag("Level1_3Star");
+            image = ThreeStars.GetComponent<Image>();
+            Color c = image.color;
+            c.a = 1;
+            image.color = c;
+        }
+        else if (PlayerPrefs.GetInt("HighScore:1") >= Level1_Star2 && PlayerPrefs.GetInt("HighScore:1") < Level1_Star3)
+        {
+            //2 Stars
+            GameObject ZeroStars = GameObject.FindGameObjectWithTag("Level1_0Star");
+            GameObject OneStar = GameObject.FindGameObjectWithTag("Level1_1Star");
+            GameObject ThreeStars = GameObject.FindGameObjectWithTag("Level1_3Star");
+            ThreeStars.SetActive(false);
+            OneStar.SetActive(false);
+            ZeroStars.SetActive(false);
+
+
+            GameObject TwoStars = GameObject.FindGameObjectWithTag("Level1_2Star");
+            image = TwoStars.GetComponent<Image>();
+            Color c = image.color;
+            c.a = 1;
+            image.color = c;
+        }
+        else if (PlayerPrefs.GetInt("HighScore:1") < Level1_Star2 && PlayerPrefs.GetInt("HighScore:1") > 0)
+        {
+            //1 Star
+            GameObject ZeroStars = GameObject.FindGameObjectWithTag("Level1_0Star");
+            GameObject TwoStars = GameObject.FindGameObjectWithTag("Level1_2Star");
+            GameObject ThreeStars = GameObject.FindGameObjectWithTag("Level1_3Star");
+            ThreeStars.SetActive(false);
+            TwoStars.SetActive(false);
+            ZeroStars.SetActive(false);
+
+
+            GameObject OneStar = GameObject.FindGameObjectWithTag("Level1_1Star");
+            image = OneStar.GetComponent<Image>();
+            Color c = image.color;
+            c.a = 1;
+            image.color = c;
         }
     }
     #endregion
