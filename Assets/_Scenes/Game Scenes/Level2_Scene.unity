@@ -221,7 +221,16 @@ MonoBehaviour:
   highScoreText:
   - {fileID: 1267687456}
   numOfLevels: 3
-  LevelsPlayer: 
+  LevelPassed: 
+  Level1_Star1: 600
+  Level1_Star2: 1000
+  Level1_Star3: 1500
+  Level2_Star1: 800
+  Level2_Star2: 1200
+  Level2_Star3: 2000
+  Level3_Star1: 1200
+  Level3_Star2: 2000
+  Level3_Star3: 3000
 --- !u!1001 &1240331354
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -830,6 +839,11 @@ PrefabInstance:
       propertyPath: moveCounterText
       value: 
       objectReference: {fileID: 5922027048774550278}
+    - target: {fileID: 472513307709024216, guid: 33f4fb93396a25d4faac7b46ad536c0d,
+        type: 3}
+      propertyPath: moveCounter
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 1754830652233445318, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
       propertyPath: m_Sprite

@@ -17,6 +17,8 @@ TagManager:
   - RainbowBomb
   - PauseMenu
   - TBomb
+  - Level2Block
+  - Level3Block
   layers:
   - Default
   - TransparentFX
