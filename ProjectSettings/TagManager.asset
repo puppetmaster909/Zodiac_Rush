@@ -19,6 +19,18 @@ TagManager:
   - TBomb
   - Level2Block
   - Level3Block
+  - Level1_0Star
+  - Level1_1Star
+  - Level1_2Star
+  - Level1_3Star
+  - Level2_0Star
+  - Level2_1Star
+  - Level2_2Star
+  - Level2_3Star
+  - Level3_0Star
+  - Level3_1Star
+  - Level3_2Star
+  - Level3_3Star
   layers:
   - Default
   - TransparentFX
