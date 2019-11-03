@@ -576,14 +576,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 293577616}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c5dd1a0fdf24b749b10a123f0449e37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerWin: 0
+  thisLevel: 0
   highScoreText:
-  - {fileID: 0}
+  - {fileID: 1765763135}
+  - {fileID: 244594283}
+  - {fileID: 237248627}
+  playerScore: 1000
+  numOfLevels: 3
 --- !u!1 &302896086
 GameObject:
   m_ObjectHideFlags: 0
