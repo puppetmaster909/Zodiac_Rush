@@ -388,6 +388,11 @@ PrefabInstance:
       propertyPath: eventSystem
       value: 
       objectReference: {fileID: 624734436}
+    - target: {fileID: 6359351379085396989, guid: 33f4fb93396a25d4faac7b46ad536c0d,
+        type: 3}
+      propertyPath: m_Name
+      value: TrappedRat
+      objectReference: {fileID: 0}
     - target: {fileID: 4500862986484059378, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
       propertyPath: PauseScreen
@@ -814,33 +819,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0.5703125
       objectReference: {fileID: 0}
-    - target: {fileID: 4544048119380848776, guid: 33f4fb93396a25d4faac7b46ad536c0d,
-        type: 3}
-      propertyPath: m_Name
-      value: NoButton
-      objectReference: {fileID: 0}
-    - target: {fileID: 7600720591633296768, guid: 33f4fb93396a25d4faac7b46ad536c0d,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: eea532c59f6f5384ab57def10c864dfd,
-        type: 3}
     - target: {fileID: 1754830652233445318, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 3e3b410be506c054c821e0f4193d8dfe,
         type: 3}
-    - target: {fileID: 6359351379085396989, guid: 33f4fb93396a25d4faac7b46ad536c0d,
-        type: 3}
-      propertyPath: m_Name
-      value: TrappedRat
-      objectReference: {fileID: 0}
-    - target: {fileID: 1348893398440793179, guid: 33f4fb93396a25d4faac7b46ad536c0d,
-        type: 3}
-      propertyPath: m_Name
-      value: YesButton
-      objectReference: {fileID: 0}
     - target: {fileID: 8664805384392478775, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
       propertyPath: m_Sprite
@@ -857,6 +841,12 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7600720591633296768, guid: 33f4fb93396a25d4faac7b46ad536c0d,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: eea532c59f6f5384ab57def10c864dfd,
+        type: 3}
     - target: {fileID: 3400242993874167171, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
       propertyPath: m_IsActive
@@ -868,10 +858,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 475a259b0178f1d4e86c84af54065bcb,
         type: 3}
-    - target: {fileID: 7236021294970476522, guid: 33f4fb93396a25d4faac7b46ad536c0d,
+    - target: {fileID: 1348893398440793179, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
+      propertyPath: m_Name
+      value: YesButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544048119380848776, guid: 33f4fb93396a25d4faac7b46ad536c0d,
+        type: 3}
+      propertyPath: m_Name
+      value: NoButton
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6058270218919769407, guid: 33f4fb93396a25d4faac7b46ad536c0d, type: 3}

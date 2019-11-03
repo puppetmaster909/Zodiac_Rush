@@ -1923,6 +1923,7 @@ MonoBehaviour:
   currentScore: 0
   maxScore: 500
   slider: {fileID: 2723614531699699449}
+  TrappedZodiac: {fileID: 0}
   scoreText: {fileID: 850964434415744853}
 --- !u!114 &6542260349793864500
 MonoBehaviour:
@@ -2243,7 +2244,7 @@ PrefabInstance:
     - target: {fileID: 5854440177105842974, guid: 90258945e67fb4442bacff5447ea18fa,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -40
       objectReference: {fileID: 0}
     - target: {fileID: 5854440177105842974, guid: 90258945e67fb4442bacff5447ea18fa,
         type: 3}
@@ -2400,7 +2401,7 @@ PrefabInstance:
     - target: {fileID: 2127309722691767462, guid: 61f3dbdc802bfe24aa9817d1a4295968,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 2127309722691767462, guid: 61f3dbdc802bfe24aa9817d1a4295968,
         type: 3}
@@ -2416,11 +2417,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 207
-      objectReference: {fileID: 0}
-    - target: {fileID: 2738872206319705576, guid: 61f3dbdc802bfe24aa9817d1a4295968,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2738872206319705576, guid: 61f3dbdc802bfe24aa9817d1a4295968,
         type: 3}
