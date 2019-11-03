@@ -7,18 +7,16 @@ public class SliderChange : MonoBehaviour
 {
     #region Variables
 
-    private float currentScore;
+    public int currentScore;
 
     public float maxScore;
     public Slider slider;
 
     private Board theBoard;
+    private ScoreManager theScore;
 
     // Maria Edit Part 33 - Scoring System
     public Text scoreText; // 10:11
-
-    public int moveCounter;
-    public Text moveCounterText;
 
     #endregion
 
@@ -26,9 +24,7 @@ public class SliderChange : MonoBehaviour
 
     private void Start()
     {
-
-        moveCounter = 20;
-        moveCounterText.text = moveCounter.ToString();
+        theScore = FindObjectOfType<ScoreManager>();
     }
 
     // Update is called once per frame
@@ -77,19 +73,11 @@ public class SliderChange : MonoBehaviour
             {
                 currentScore += amountToIncrease;
 
-                //if(moveCounter >= 0)
-                //{
-                    moveCounter--;
-                    moveCounterText.text = moveCounter.ToString();
-                    Debug.Log("Move Counter is" + moveCounter);
-                //}
-                
-
                 Debug.Log(currentScore);
             
 
             
-                if (currentScore >= maxScore && moveCounter > 0)
+                if (currentScore >= maxScore)
                 {
                     for (int i = 0; i < width; i++)
                     {
@@ -99,7 +87,7 @@ public class SliderChange : MonoBehaviour
                         }
                     }
                     Debug.Log("Level Complete!");
-
+                    //theScore.playerWin = true;
                     UIManager.main.ShowScreen("Victory");
                 }
             }

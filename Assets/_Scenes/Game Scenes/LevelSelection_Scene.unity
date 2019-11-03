@@ -440,6 +440,7 @@ GameObject:
   - component: {fileID: 293577618}
   - component: {fileID: 293577617}
   - component: {fileID: 293577622}
+  - component: {fileID: 293577623}
   m_Layer: 5
   m_Name: Level Selection
   m_TagString: Untagged
@@ -568,6 +569,21 @@ MonoBehaviour:
   MusicSource: {fileID: 1771288054}
   MainMenuMusic: {fileID: 8300000, guid: 1d998e51414139743ba783bff5729f70, type: 3}
   Level1Music: {fileID: 8300000, guid: 1d998e51414139743ba783bff5729f70, type: 3}
+--- !u!114 &293577623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293577616}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c5dd1a0fdf24b749b10a123f0449e37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerWin: 0
+  highScoreText:
+  - {fileID: 0}
 --- !u!1 &302896086
 GameObject:
   m_ObjectHideFlags: 0

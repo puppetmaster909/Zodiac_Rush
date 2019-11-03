@@ -19,8 +19,13 @@ public class PauseMenu : MonoBehaviour
 
     public void Back()
     {
-        UIManager.main.IsPaused = false;
-        UIManager.main.UnPauseGame();
+
+        
+            UIManager.main.UnPauseGame();
+            UIManager.main.IsPaused = false;
+        
+            GameObject noButton = gameObject.transform.Find("ConfirmBackground").gameObject;
+            noButton.SetActive(false);
     }
     private void RestartLevel()
     {
@@ -44,7 +49,8 @@ public class PauseMenu : MonoBehaviour
         }
         else if(eventSystem.currentSelectedGameObject.name == "Leave")
         {
-            yesButton.onClick.AddListener(delegate { UIManager.main.LoadLevel("LevelSelection_Scene"); });
+            yesButton.onClick.AddListener(delegate { UIManager.main.LoadLevel("LevelSelection_Scene");});
+            
         } 
     }
 
