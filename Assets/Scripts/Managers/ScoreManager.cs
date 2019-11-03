@@ -1,46 +1,83 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
     #region MonoBehavior
-    private SliderChange theScore;
-    private int highScore, newScore;
+    private int newScore;
     public bool playerWin;
 
-    public Text[] highScoreText;
+    public int thisLevel = 0;
 
-    // Start is called before the first frame update
-    void Start()
+    public Text[] highScoreText;
+    public int numOfLevels;
+    public bool[] LevelsPlayer;
+
+    SliderChange theScore;
+    private void Start()
     {
-       
+        //Change highscores on LevelSelection_scene
+        if (SceneManager.GetActiveScene().name == "LevelSelection_Scene")
+        {
+            for (int i = 1; i <= numOfLevels; i++)
+            {
+                PrintHighScore();
+            }
+        }
+
+    }
+    void Update()
+    {
+        if (SceneManager.GetActiveScene().name != "LevelSelection_Scene")
+        {
+            SetNewHighScore(GetCurrentScore());
+        }
+    }
+
+    private void SetNewHighScore(int Score)
+    {
+        if (GetCurrentScore() > PlayerPrefs.GetInt("HighScore:" + thisLevel.ToString()))
+        {
+            PlayerPrefs.SetInt("HighScore:" + thisLevel.ToString(), Score);
+
+            Debug.Log("New HighScore:" + (PlayerPrefs.GetInt("HighScore:" + thisLevel.ToString(), 0)));
+        }
+        else
+            Debug.Log("Not Getting in " + GetHighScore());
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PrintHighScore()
     {
-        setNewHighScore();
+        
+            int j = 1;
+            for (int i = 0; i < numOfLevels; i++)
+            {
+                highScoreText[i].text = PlayerPrefs.GetInt("HighScore:" + j.ToString(), 0).ToString();
+                j++;
+            }
+        
     }
 
-    private int setCurrentScore()
+    private int GetCurrentScore()
     {
         theScore = FindObjectOfType<SliderChange>();
-        return theScore.currentScore;
+        int Score;
+
+        Score = (int)theScore.currentScore;
+        return Score;
+        
+    }
+    private int GetHighScore()
+    {
+
+         return PlayerPrefs.GetInt("HighScore:" + thisLevel.ToString(), 0);
+
     }
 
-    private void setNewHighScore()
-    {
-        newScore = setCurrentScore();
-        if (playerWin && newScore > highScore)
-        {
-            highScore += setCurrentScore();
-            highScoreText[0].text = highScore.ToString();
-            playerWin = false;
-        }
-    }
     #endregion
     
 
