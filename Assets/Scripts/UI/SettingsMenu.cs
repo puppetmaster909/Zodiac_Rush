@@ -10,7 +10,8 @@ public class SettingsMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        AudioManager.main.Mixer.SetFloat("BGMVol", PlayerPrefs.GetFloat("BGMVol"));
+        AudioManager.main.Mixer.SetFloat("SFXVol", PlayerPrefs.GetFloat("SFXVol"));
     }
 
     #endregion
@@ -33,11 +34,13 @@ public class SettingsMenu : MonoBehaviour
     public void SetBGMVolume()
     {
         AudioManager.main.Mixer.SetFloat("BGMVol", BGM.value);
+        PlayerPrefs.SetFloat("BGMVol", BGM.value);
     }
 
     public void SetSFXVolume()
     {
         AudioManager.main.Mixer.SetFloat("SFXVol", SFX.value);
+        PlayerPrefs.SetFloat("SFXVol", SFX.value);
     }
 
     #endregion

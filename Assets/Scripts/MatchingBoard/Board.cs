@@ -41,7 +41,7 @@ public class Board : MonoBehaviour
         // Time Stamps: 13:46
         sliderChange = FindObjectOfType<SliderChange>();
 
-        moveCounter = 20;
+        //moveCounter = 20;
         moveCounterText.text = moveCounter.ToString();
         playerMatch = false;
 
