@@ -146,6 +146,8 @@ public class SliderChange : MonoBehaviour
                     StartCoroutine(ShowVictoryScreen(VictoryDelay));
                     
                 }
+                
+                
             }
         }
 
