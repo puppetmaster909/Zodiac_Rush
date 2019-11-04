@@ -42,10 +42,10 @@ public class PauseMenu : MonoBehaviour
     public void confirmScreen()
     {
         UIManager.main.ShowScreen("ConfirmScreen");
-
         if(eventSystem.currentSelectedGameObject.name == "Restart")
         {
             yesButton.onClick.AddListener(delegate { RestartLevel(); });
+            
         }
         else if(eventSystem.currentSelectedGameObject.name == "Leave")
         {
