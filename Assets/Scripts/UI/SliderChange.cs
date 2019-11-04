@@ -55,6 +55,7 @@ public class SliderChange : MonoBehaviour
     {
         StartCoroutine(MoveTrappedZodiac());
         yield return new WaitForSeconds(time);
+        theBoard.currentState = GameState.move;
         UIManager.main.ShowScreen("Victory");
         Debug.Log("Waiting: " + time + "seconds");
     }
@@ -141,6 +142,7 @@ public class SliderChange : MonoBehaviour
                         }
                     }
                     Debug.Log("Level Complete!");
+                    theBoard.currentState = GameState.wait;
                     StartCoroutine(ShowVictoryScreen(VictoryDelay));
                     
                 }

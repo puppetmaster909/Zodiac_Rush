@@ -621,6 +621,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3156453153342054719, guid: 33f4fb93396a25d4faac7b46ad536c0d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.5703125
+      objectReference: {fileID: 0}
+    - target: {fileID: 8564228021148908248, guid: 33f4fb93396a25d4faac7b46ad536c0d,
+        type: 3}
+      propertyPath: eventSystem
+      value: 
+      objectReference: {fileID: 624734436}
     - target: {fileID: 4500862986484059378, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
       propertyPath: PauseScreen
@@ -755,11 +765,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RenderMode
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3156453153342054719, guid: 33f4fb93396a25d4faac7b46ad536c0d,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.5703125
       objectReference: {fileID: 0}
     - target: {fileID: 3225740807162564678, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
@@ -1102,11 +1107,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 272
       objectReference: {fileID: 0}
-    - target: {fileID: 8564228021148908248, guid: 33f4fb93396a25d4faac7b46ad536c0d,
-        type: 3}
-      propertyPath: eventSystem
-      value: 
-      objectReference: {fileID: 624734436}
     - target: {fileID: 4965699226418719435, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -1116,41 +1116,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_CullTransparentMesh
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7236021294970476522, guid: 33f4fb93396a25d4faac7b46ad536c0d,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7236021294970476522, guid: 33f4fb93396a25d4faac7b46ad536c0d,
-        type: 3}
-      propertyPath: m_SpriteSortPoint
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7236021294970476522, guid: 33f4fb93396a25d4faac7b46ad536c0d,
-        type: 3}
-      propertyPath: m_MaskInteraction
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7236021294970476522, guid: 33f4fb93396a25d4faac7b46ad536c0d,
-        type: 3}
-      propertyPath: m_SortingLayerID
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7236021294970476522, guid: 33f4fb93396a25d4faac7b46ad536c0d,
-        type: 3}
-      propertyPath: m_SortingLayer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7236021294970476522, guid: 33f4fb93396a25d4faac7b46ad536c0d,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7236021294970476522, guid: 33f4fb93396a25d4faac7b46ad536c0d,
-        type: 3}
-      propertyPath: m_FlipX
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8564228021854296504, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}

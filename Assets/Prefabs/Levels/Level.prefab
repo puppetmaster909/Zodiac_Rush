@@ -2366,6 +2366,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: FreeZodiac
       objectReference: {fileID: 0}
+    - target: {fileID: 5353884543896816975, guid: 5222f3ea5a2027741a43ce84053ab1c3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 18896305766830898, guid: 5222f3ea5a2027741a43ce84053ab1c3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2420,11 +2425,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5353884543896816975, guid: 5222f3ea5a2027741a43ce84053ab1c3,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5222f3ea5a2027741a43ce84053ab1c3, type: 3}
@@ -2767,16 +2767,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 207
-      objectReference: {fileID: 0}
-    - target: {fileID: 2738872206319705576, guid: 61f3dbdc802bfe24aa9817d1a4295968,
-        type: 3}
-      propertyPath: m_FlipX
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2738872206319705576, guid: 61f3dbdc802bfe24aa9817d1a4295968,
-        type: 3}
-      propertyPath: m_SpriteSortPoint
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2738872206319705583, guid: 61f3dbdc802bfe24aa9817d1a4295968,
         type: 3}
