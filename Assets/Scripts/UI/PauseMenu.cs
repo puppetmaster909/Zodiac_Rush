@@ -24,7 +24,7 @@ public class PauseMenu : MonoBehaviour
             UIManager.main.UnPauseGame();
             UIManager.main.IsPaused = false;
         
-            GameObject noButton = gameObject.transform.Find("ConfirmBackground").gameObject;
+            GameObject noButton = gameObject.transform.Find("ConfirmScreen").gameObject;
             noButton.SetActive(false);
     }
     private void RestartLevel()
