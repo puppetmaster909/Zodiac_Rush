@@ -8,10 +8,11 @@ public class SliderChange : MonoBehaviour
     #region Variables
 
     public int currentScore;
-
+    public float VictoryDelay = 10f;
     public float maxScore;
     public Slider slider;
     public GameObject TrappedZodiac;
+    public GameObject FreedomParticle;
     private Board theBoard;
 
     // Maria Edit Part 33 - Scoring System
@@ -52,19 +53,44 @@ public class SliderChange : MonoBehaviour
     #endregion
     IEnumerator ShowVictoryScreen(float time)
     {
-        StartCoroutine(MoveOverSeconds(TrappedZodiac, new Vector3(2.9f, 3.1f, 40.0f), 2.5f));
+        StartCoroutine(MoveTrappedZodiac());
         yield return new WaitForSeconds(time);
         UIManager.main.ShowScreen("Victory");
         Debug.Log("Waiting: " + time + "seconds");
     }
-    public IEnumerator MoveOverSpeed(GameObject objectToMove, Vector3 end, float speed)
+    IEnumerator MoveTrappedZodiac()
     {
-        // speed should be 1 unit per second
-        while (objectToMove.transform.position != end)
+        //Move Zodiac Animal to Center of Board
+        StartCoroutine(MoveOverSeconds(TrappedZodiac, new Vector3(2.9f, 3.1f, 40.0f), 2.5f));
+        yield return new WaitForSeconds(5f);
+        StartCoroutine(ShowFreeZodiac());
+    }
+    IEnumerator ShowFreeZodiac()
+    {
+        SpriteRenderer sprite;
+        GameObject FreeZodiac = GameObject.FindGameObjectWithTag("FreeZodiac");
+
+        FreedomParticle = Instantiate(FreedomParticle, FreeZodiac.transform.position, Quaternion.identity);
+
+        yield return new WaitForSeconds(2f);
+        StartCoroutine(FadeOut());
+        sprite = FreeZodiac.GetComponent<SpriteRenderer>();
+        Color c = sprite.color;
+        c.a = 1;
+        sprite.color = c;
+        
+    }
+    private IEnumerator FadeOut()
+    {
+        Image image;
+
+        image = TrappedZodiac.GetComponent<Image>();
+        for (float f = 1f; f >= -0.05f; f -= 0.15f)
         {
-            objectToMove.transform.position = Vector3.MoveTowards(objectToMove.transform.position, end, speed * Time.deltaTime);
-            Debug.Log(objectToMove.transform.position);
-            yield return new WaitForEndOfFrame();
+            Color c = image.color;
+            c.a = f;
+            image.color = c;
+            yield return new WaitForSeconds(0.05f);
         }
     }
     public IEnumerator MoveOverSeconds(GameObject objectToMove, Vector3 end, float seconds)
@@ -115,7 +141,7 @@ public class SliderChange : MonoBehaviour
                         }
                     }
                     Debug.Log("Level Complete!");
-                    StartCoroutine(ShowVictoryScreen(10f));
+                    StartCoroutine(ShowVictoryScreen(VictoryDelay));
                     
                 }
             }

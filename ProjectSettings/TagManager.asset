@@ -31,6 +31,7 @@ TagManager:
   - Level3_1Star
   - Level3_2Star
   - Level3_3Star
+  - FreeZodiac
   layers:
   - Default
   - TransparentFX
@@ -42,7 +43,7 @@ TagManager:
   - 
   - UIManager
   - test
-  - 
+  - Particle
   - 
   - 
   - 
@@ -73,4 +74,7 @@ TagManager:
     locked: 0
   - name: Icons
     uniqueID: 2302899661
+    locked: 0
+  - name: Particle
+    uniqueID: 2462106303
     locked: 0

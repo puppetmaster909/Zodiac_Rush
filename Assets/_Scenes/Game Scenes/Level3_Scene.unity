@@ -120,6 +120,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &563735227 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6359351379085396989, guid: 33f4fb93396a25d4faac7b46ad536c0d,
+    type: 3}
+  m_PrefabInstance: {fileID: 5922027048774550277}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &624734434
 GameObject:
   m_ObjectHideFlags: 0
@@ -388,15 +394,45 @@ PrefabInstance:
       propertyPath: eventSystem
       value: 
       objectReference: {fileID: 624734436}
-    - target: {fileID: 6359351379085396989, guid: 33f4fb93396a25d4faac7b46ad536c0d,
+    - target: {fileID: 2007980267041046678, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
-      propertyPath: m_Name
-      value: TrappedRat
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007980267041046678, guid: 33f4fb93396a25d4faac7b46ad536c0d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007980267041046678, guid: 33f4fb93396a25d4faac7b46ad536c0d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007980267041046678, guid: 33f4fb93396a25d4faac7b46ad536c0d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 852428632}
+    - target: {fileID: 2007980267041046678, guid: 33f4fb93396a25d4faac7b46ad536c0d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: confirmScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007980267041046678, guid: 33f4fb93396a25d4faac7b46ad536c0d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4500862986484059378, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
       propertyPath: PauseScreen
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6359351379085396989, guid: 33f4fb93396a25d4faac7b46ad536c0d,
+        type: 3}
+      propertyPath: m_Name
+      value: TrappedRat
       objectReference: {fileID: 0}
     - target: {fileID: 8145102309994133745, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
@@ -744,6 +780,11 @@ PrefabInstance:
       propertyPath: maxScore
       value: 3000
       objectReference: {fileID: 0}
+    - target: {fileID: 3093250325910065587, guid: 33f4fb93396a25d4faac7b46ad536c0d,
+        type: 3}
+      propertyPath: TrappedZodiac
+      value: 
+      objectReference: {fileID: 563735227}
     - target: {fileID: 7897921356529116627, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
       propertyPath: m_Name
@@ -753,36 +794,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2007980267041046678, guid: 33f4fb93396a25d4faac7b46ad536c0d,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2007980267041046678, guid: 33f4fb93396a25d4faac7b46ad536c0d,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2007980267041046678, guid: 33f4fb93396a25d4faac7b46ad536c0d,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2007980267041046678, guid: 33f4fb93396a25d4faac7b46ad536c0d,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 852428632}
-    - target: {fileID: 2007980267041046678, guid: 33f4fb93396a25d4faac7b46ad536c0d,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: confirmScreen
-      objectReference: {fileID: 0}
-    - target: {fileID: 2007980267041046678, guid: 33f4fb93396a25d4faac7b46ad536c0d,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 880088161505571323, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
