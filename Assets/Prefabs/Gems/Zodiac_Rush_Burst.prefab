@@ -122,7 +122,7 @@ MonoBehaviour:
   colorBomb: {fileID: 5373981318531268120, guid: 9549c7c8d836ec5449f7d46d1bcf935f,
     type: 3}
   isAreaBomb: 0
-  areaBomb: {fileID: 4605273549969367417, guid: 897eb123a35d4bc4c8ab1ddac2ada466,
+  areaBomb: {fileID: 3559806935736876141, guid: 8e7817b8e0be2a54691a1b2cf1218050,
     type: 3}
   isColumnBomb: 0
   columnBomb: {fileID: 4605273549969367417, guid: 897eb123a35d4bc4c8ab1ddac2ada466,

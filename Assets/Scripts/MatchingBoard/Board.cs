@@ -81,6 +81,8 @@ public class Board : MonoBehaviour
                 icon.name = "( " + i + ", " + j + " )";
                 icon.GetComponent<SpriteRenderer>().sortingLayerName = "Icons";
                 allIcons[i, j] = icon;
+
+                
             }
         }
     }
@@ -378,4 +380,7 @@ public class Board : MonoBehaviour
         }
         return true;
     }
+
+
+
 }

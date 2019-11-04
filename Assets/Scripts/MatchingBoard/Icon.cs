@@ -13,6 +13,8 @@ public class Icon : MonoBehaviour
     private FindMatches findMatches;
     private Board board;
 
+    private ButtonManager buttonManager;
+
     private GameObject otherIcon;
     private Vector2 firstTouchPosition;
     private Vector2 finalTouchPosition;
@@ -58,27 +60,29 @@ public class Icon : MonoBehaviour
         //Use this for initialization
         board = FindObjectOfType<Board>();
         findMatches = FindObjectOfType<FindMatches>();
+        buttonManager = FindObjectOfType<ButtonManager>();
 
-       // targetX = (int)transform.position.x;
-       // targetY = (int)transform.position.y;
+        // targetX = (int)transform.position.x;
+        // targetY = (int)transform.position.y;
 
-       // row = targetY;
-       //column = targetX;
+        // row = targetY;
+        //column = targetX;
 
         //previousColumn = column;
-       // previousRow = row;
+        // previousRow = row;
     }
 
     // Maria Edit Part 20 6:35 TESTING ONLY for color, cross, and area
     private void OnMouseOver()
     {
+
         if (Input.GetMouseButton(1))
         {
             if (board.currentState == GameState.move)
             {
-                isAreaBomb = true;
-                GameObject area = Instantiate(areaBomb, transform.position, Quaternion.identity);
-                area.transform.parent = this.transform;
+                //isAreaBomb = true;
+                //GameObject area = Instantiate(areaBomb, transform.position, Quaternion.identity);
+                //area.transform.parent = this.transform;
 
 
                 // UNCOMMENT THIS TO SEE THE COLOR BOMB FUNCTIONALITY
@@ -225,6 +229,16 @@ public class Icon : MonoBehaviour
         {
 
             firstTouchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            if(buttonManager.clickedTiger == true)
+            {
+                isAreaBomb = true;
+                GameObject area = Instantiate(areaBomb, transform.position, Quaternion.identity);
+                area.transform.parent = this.transform;
+
+                buttonManager.clickedTiger = false;
+            }
+
         }
         //Debug.Log(firstTouchPosition);
     }
