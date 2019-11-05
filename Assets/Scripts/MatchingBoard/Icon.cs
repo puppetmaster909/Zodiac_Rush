@@ -61,6 +61,7 @@ public class Icon : MonoBehaviour
         board = FindObjectOfType<Board>();
         findMatches = FindObjectOfType<FindMatches>();
         buttonManager = FindObjectOfType<ButtonManager>();
+        Debug.Log(buttonManager);
 
         // targetX = (int)transform.position.x;
         // targetY = (int)transform.position.y;
