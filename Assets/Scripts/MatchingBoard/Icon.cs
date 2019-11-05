@@ -239,6 +239,7 @@ public class Icon : MonoBehaviour
                 buttonManager.clickedTiger = false;
             }
 
+
         }
         //Debug.Log(firstTouchPosition);
     }

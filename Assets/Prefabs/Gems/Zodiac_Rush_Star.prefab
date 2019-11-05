@@ -125,7 +125,7 @@ MonoBehaviour:
   areaBomb: {fileID: 3559806935736876141, guid: 8e7817b8e0be2a54691a1b2cf1218050,
     type: 3}
   isColumnBomb: 0
-  columnBomb: {fileID: 4605273549969367417, guid: 897eb123a35d4bc4c8ab1ddac2ada466,
+  columnBomb: {fileID: 5792449390593104437, guid: 534c55d91b34bc447bcc86dcc6b0c048,
     type: 3}
   isRowBomb: 0
-  rowBomb: {fileID: 4605273549969367417, guid: 897eb123a35d4bc4c8ab1ddac2ada466, type: 3}
+  rowBomb: {fileID: 5792449390593104437, guid: 534c55d91b34bc447bcc86dcc6b0c048, type: 3}
