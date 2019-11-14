@@ -14,6 +14,9 @@ public class Board : MonoBehaviour
     public GameState currentState = GameState.move;
     public int width, height;
     public int offSet;
+
+    public float Delay;
+
     public GameObject tilePrefab;
     public GameObject[] icons;
     private Background_Tile[,] allTiles;
@@ -202,7 +205,7 @@ public class Board : MonoBehaviour
                 }
             }
         }
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
         Debug.Log("Refilling Board");
         StartCoroutine(FillBoardCo());
     }
@@ -274,7 +277,7 @@ public class Board : MonoBehaviour
     private IEnumerator FillBoardCo()
     {
         RefillBoard();
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(.3f);
 
         while (MatchesOnBoard())
         {
@@ -282,11 +285,11 @@ public class Board : MonoBehaviour
             // Time Stamps: 15:39
             streakValue++;
 
-            yield return new WaitForSeconds(.5f);
+            yield return new WaitForSeconds(.1f);
             DestroyMatches();
         }
         findMatches.CurrentMatches.Clear();
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(.2f);
         currentState = GameState.move;
 
         // Maria Edit Part 33: Scoring System 

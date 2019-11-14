@@ -53,15 +53,18 @@ public class SliderChange : MonoBehaviour
     #endregion
     IEnumerator ShowVictoryScreen(float time)
     {
+        yield return new WaitForSeconds(1.2f);
         StartCoroutine(MoveTrappedZodiac());
         yield return new WaitForSeconds(time);
         theBoard.currentState = GameState.move;
         UIManager.main.ShowScreen("Victory");
         Debug.Log("Waiting: " + time + "seconds");
     }
+    
     IEnumerator MoveTrappedZodiac()
     {
         //Move Zodiac Animal to Center of Board
+        
         StartCoroutine(MoveOverSeconds(TrappedZodiac, new Vector3(2.9f, 3.1f, 40.0f), 2.5f));
         yield return new WaitForSeconds(5f);
         StartCoroutine(ShowFreeZodiac());
