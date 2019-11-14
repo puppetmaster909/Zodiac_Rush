@@ -8,6 +8,7 @@ using UnityEngine.Events;
 public class PauseMenu : MonoBehaviour
 {
     public EventSystem eventSystem;
+    public Text confirmMessage;
     #region MonoBehavior
 
     public Button yesButton;
@@ -24,7 +25,7 @@ public class PauseMenu : MonoBehaviour
             UIManager.main.UnPauseGame();
             UIManager.main.IsPaused = false;
         
-            GameObject noButton = gameObject.transform.Find("ConfirmScreen").gameObject;
+            GameObject noButton = gameObject.transform.Find("ConfirmBackground").gameObject;
             noButton.SetActive(false);
     }
     private void RestartLevel()
@@ -44,11 +45,14 @@ public class PauseMenu : MonoBehaviour
         UIManager.main.ShowScreen("ConfirmScreen");
         if(eventSystem.currentSelectedGameObject.name == "Restart")
         {
+            confirmMessage.text = "Are you sure you want to restart?";
+
             yesButton.onClick.AddListener(delegate { RestartLevel(); });
             
         }
         else if(eventSystem.currentSelectedGameObject.name == "Leave")
         {
+            confirmMessage.text = "Are you sure you want to exit?";
             yesButton.onClick.AddListener(delegate { UIManager.main.LoadLevel("LevelSelection_Scene");});
             
         } 
