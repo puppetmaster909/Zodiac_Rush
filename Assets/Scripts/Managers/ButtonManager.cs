@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class ButtonManager : MonoBehaviour
 {
-    /*
-     * 
+    
+     
     // SCRIPT NOT IN USE
 
+        /*
     public bool clickedTiger;
     public bool isTigerButton;
 
@@ -56,6 +57,6 @@ public class ButtonManager : MonoBehaviour
         }
        
     }
-
     */
+    
 }
