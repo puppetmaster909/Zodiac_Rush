@@ -801,7 +801,7 @@ PrefabInstance:
         type: 3}
       propertyPath: GemSFX
       value: 
-      objectReference: {fileID: 8300000, guid: c47aa58f65e9c394ba6b17ad2bd650bb, type: 3}
+      objectReference: {fileID: 8300000, guid: 7fc0d10fa2d72ef44847ec3991caf3eb, type: 3}
     - target: {fileID: 472513307709024216, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
       propertyPath: moveCounterText
