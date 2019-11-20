@@ -10,6 +10,7 @@ public class Icon : MonoBehaviour
     public int targetX, targetY;
     public bool isMatched = false;
 
+    private HintManager hintManager;
     private FindMatches findMatches;
     private Board board;
 
@@ -64,6 +65,7 @@ public class Icon : MonoBehaviour
         //Use this for initialization
         board = FindObjectOfType<Board>();
         findMatches = FindObjectOfType<FindMatches>();
+        hintManager = FindObjectOfType<HintManager>();
 
         tigerButton = FindObjectOfType<TigerButton>();
         dragonButton = FindObjectOfType<DragonButton>();
@@ -234,6 +236,10 @@ public class Icon : MonoBehaviour
     }
     private void OnMouseDown()
     {
+        //Destroy Hint Particle
+        if (hintManager != null)
+        { hintManager.DestroyHint(); }
+
         if (board.currentState == GameState.move)
         {
 

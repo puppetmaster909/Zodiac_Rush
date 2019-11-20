@@ -261,6 +261,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2690403670433371435, guid: b2a711843ffc9d24fb3ac5f74973596f,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2a711843ffc9d24fb3ac5f74973596f, type: 3}
 --- !u!1 &624734434
@@ -648,6 +653,11 @@ PrefabInstance:
       propertyPath: confirmMessage
       value: 
       objectReference: {fileID: 2123494531}
+    - target: {fileID: 5565251509218985329, guid: 33f4fb93396a25d4faac7b46ad536c0d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4500862986484059378, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
       propertyPath: PauseScreen
@@ -1021,7 +1031,7 @@ PrefabInstance:
     - target: {fileID: 6542260349793864500, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6542260349793864500, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
@@ -1042,11 +1052,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Grid(OLD)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5565251509218985329, guid: 33f4fb93396a25d4faac7b46ad536c0d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8272762909219083940, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
@@ -1093,11 +1098,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -61
-      objectReference: {fileID: 0}
-    - target: {fileID: 7897921356529116627, guid: 33f4fb93396a25d4faac7b46ad536c0d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 880088161505571323, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
@@ -1154,6 +1154,31 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: RestartLevel
       objectReference: {fileID: 0}
+    - target: {fileID: 8534423823177158107, guid: 33f4fb93396a25d4faac7b46ad536c0d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4500862986484059378}
+    - target: {fileID: 8534423823177158107, guid: 33f4fb93396a25d4faac7b46ad536c0d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 8534423823177158107, guid: 33f4fb93396a25d4faac7b46ad536c0d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8534423823177158107, guid: 33f4fb93396a25d4faac7b46ad536c0d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Level2_Scene
+      objectReference: {fileID: 0}
+    - target: {fileID: 7897921356529116627, guid: 33f4fb93396a25d4faac7b46ad536c0d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7366944710849034807, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -1203,26 +1228,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_UseSpriteMesh
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8534423823177158107, guid: 33f4fb93396a25d4faac7b46ad536c0d,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 4500862986484059378}
-    - target: {fileID: 8534423823177158107, guid: 33f4fb93396a25d4faac7b46ad536c0d,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadLevel
-      objectReference: {fileID: 0}
-    - target: {fileID: 8534423823177158107, guid: 33f4fb93396a25d4faac7b46ad536c0d,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8534423823177158107, guid: 33f4fb93396a25d4faac7b46ad536c0d,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Level2_Scene
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6058270218919769407, guid: 33f4fb93396a25d4faac7b46ad536c0d, type: 3}
