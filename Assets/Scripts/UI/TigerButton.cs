@@ -9,12 +9,14 @@ public class TigerButton : MonoBehaviour
     public bool clickedTiger;
     public bool isTigerBomb;
 
-    private Button dB;
-   
+    //private DragonButton dragonButton;
+
+    
+
     // Start is called before the first frame update
     void Start()
     {
-        dB = FindObjectOfType<Button>();
+        //dragonButton = FindObjectOfType<DragonButton>();
 
         clickedTiger = false;
     }
@@ -27,9 +29,8 @@ public class TigerButton : MonoBehaviour
         {
             clickedTiger = true;
             Debug.Log("Tiger Button Clicked Binch!");
-
-            dB.interactable = false;
         }
+
 
     }
 
