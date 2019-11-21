@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Icon : MonoBehaviour
 {
@@ -17,8 +18,12 @@ public class Icon : MonoBehaviour
 
     //commenting out for testing
     private TigerButton tigerButton;
+
     private DragonButton dragonButton;
+
     private RatButton ratButton;
+
+    public Button tButton;
 
     private GameObject otherIcon;
     private Vector2 firstTouchPosition;
@@ -58,7 +63,6 @@ public class Icon : MonoBehaviour
     void Start()
     {
         isAreaBomb = false;
-
         isColumnBomb = false;
         isRowBomb = false;
         
@@ -245,37 +249,38 @@ public class Icon : MonoBehaviour
 
             firstTouchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            //if(tigerButton.clickedTiger == true)
-            //{
-            //    isAreaBomb = true;
-            //    GameObject area = Instantiate(areaBomb, transform.position, Quaternion.identity);
-            //    area.transform.parent = this.transform;
+            if(tigerButton.clickedTiger == true)
+            {
+                isAreaBomb = true;
+                GameObject area = Instantiate(areaBomb, transform.position, Quaternion.identity);
+                area.transform.parent = this.transform;
+                tigerButton.clickedTiger = false;
 
-            //    tigerButton.clickedTiger = false;
-            //}
+                
+            }
 
             
-            //if(dragonButton.clickedDragon == true)
-            //{
-            //    isRowBomb = true;
-            //    GameObject bomb = Instantiate(rowBomb, transform.position, Quaternion.identity);
-            //    bomb.transform.parent = this.transform;
+            if(dragonButton.clickedDragon == true)
+            {
+                isRowBomb = true;
+                GameObject bomb = Instantiate(rowBomb, transform.position, Quaternion.identity);
+                bomb.transform.parent = this.transform;
 
-            //    isColumnBomb = true;
-            //    GameObject cBomb = Instantiate(columnBomb, transform.position, Quaternion.identity);
-            //    cBomb.transform.parent = this.transform;
+                isColumnBomb = true;
+                GameObject cBomb = Instantiate(columnBomb, transform.position, Quaternion.identity);
+                cBomb.transform.parent = this.transform;
 
-            //    dragonButton.clickedDragon = false;
-            //}
+                dragonButton.clickedDragon = false;
+            }
 
-            //if(ratButton.clickedRat == true)
-            //{
-            //    isColorBomb = true;
-            //    GameObject color = Instantiate(colorBomb, transform.position, Quaternion.identity);
-            //    color.transform.parent = this.transform;
+            if(ratButton.clickedRat == true)
+            {
+                isColorBomb = true;
+                GameObject color = Instantiate(colorBomb, transform.position, Quaternion.identity);
+                color.transform.parent = this.transform;
 
-            //    ratButton.clickedRat = false;
-            //}
+                ratButton.clickedRat = false;
+            }
 
         }
         //Debug.Log(firstTouchPosition);
