@@ -13,7 +13,7 @@ public class ButtonManager : MonoBehaviour
     
 
     public bool clickedTiger;
-    //public bool isTigerButton;
+    public bool isTigerButton;
 
     public bool clickedDragon;
     public bool isDragonButton;
@@ -22,23 +22,28 @@ public class ButtonManager : MonoBehaviour
     public bool isRatButton;
 
 
+
     private void Start()
     {
-        //clickedTiger = false;
+        clickedTiger = false;
         clickedDragon = false;
         clickedRat = false;
+
+        //myButtons[0].interactable = false;
+        //myButtons[1].interactable = false;
+        myButtons[2].interactable = false;
     }
 
     public void TigerButton()
     {
-        
+        if (isTigerButton == true) 
+        {
             clickedTiger = true;
-            Debug.Log("Tiger Button Clicked Binch!");
             myButtons[1].interactable = false;
-            myButtons[2].interactable = false;
-        
+            //myButtons[2].interactable = false;
+            Debug.Log("Tiger Button Clicked Binch!");
+        }
 
-      
     }
 
     public void DragonButton()

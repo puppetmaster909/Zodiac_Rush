@@ -37,11 +37,9 @@ public class Icon : MonoBehaviour
     public GameObject colorBomb;
 
     // Maria Edit 
-    //TESTING FOR UPPER FOR NOW
+    
     public bool isAreaBomb; 
     public GameObject areaBomb;
-
-    //TESTING
 
     public bool isColumnBomb;
     public GameObject columnBomb;
@@ -64,10 +62,6 @@ public class Icon : MonoBehaviour
         board = FindObjectOfType<Board>();
         findMatches = FindObjectOfType<FindMatches>();
         hintManager = FindObjectOfType<HintManager>();
-
-        //tigerButton = FindObjectOfType<TigerButton>();
-        //dragonButton = FindObjectOfType<DragonButton>();
-        //ratButton = FindObjectOfType<RatButton>();
 
         buttonManager = FindObjectOfType<ButtonManager>();
 
@@ -251,6 +245,7 @@ public class Icon : MonoBehaviour
                 GameObject area = Instantiate(areaBomb, transform.position, Quaternion.identity);
                 area.transform.parent = this.transform;
 
+                //buttonManager.myButtons[1].interactable = true;
                 buttonManager.clickedTiger = false;
             }
 
@@ -464,47 +459,4 @@ public class Icon : MonoBehaviour
     
 }
 
-/*
- * 
- * 
-    // Maria Edit
-    // Find Diagonal Matches
 
-    void FindDiagonalMatches()
-    {
-        
-        if (column > 0 && column < board.width - 1 && row < board.height - 1) // may have to change this 
-        {
-            GameObject upperLeft = board.allIcons[column - 1, row + 1]; //something wrong
-            GameObject upperRight = board.allIcons[column + 1, row + 1]; //something wrong??
-
-            if (upperLeft != null && upperRight != null)
-            {
-                if (upperLeft.tag == this.gameObject.tag && upperRight.tag == this.gameObject.tag)
-                {
-                    upperLeft.GetComponent<Icon>().isMatched = true;
-                    upperRight.GetComponent<Icon>().isMatched = true;
-                    isMatched = true;
-                }
-            }
-
-        }
-        
-        
-        if (row > 0 && row < board.height - 1 && column < board.width - 1 & column > 0) // may have to change this
-        {
-            GameObject lowerLeft = board.allIcons[column - 1, row - 1]; //something wrong
-            GameObject lowerRight = board.allIcons[column + 1, row - 1]; //something wrong
-
-            if (lowerLeft.tag == this.gameObject.tag && lowerRight.tag == this.gameObject.tag)
-            {
-                lowerLeft.GetComponent<Icon>().isMatched = true;
-                lowerRight.GetComponent<Icon>().isMatched = true;
-                isMatched = true;
-            }
-
-        }
-
-        
-    }
- */

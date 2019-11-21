@@ -10,7 +10,7 @@ public class TigerButton : MonoBehaviour
     public bool isTigerBomb;
 
     //private DragonButton dragonButton;
-
+    public Button tB;
     
 
     // Start is called before the first frame update
@@ -19,6 +19,8 @@ public class TigerButton : MonoBehaviour
         //dragonButton = FindObjectOfType<DragonButton>();
 
         clickedTiger = false;
+        tB.interactable = false;
+
     }
 
     public void TigerBomb()
