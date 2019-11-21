@@ -16,9 +16,11 @@ public class Icon : MonoBehaviour
 
 
     //commenting out for testing
-    private TigerButton tigerButton;
-    private DragonButton dragonButton;
-    private RatButton ratButton;
+    //private TigerButton tigerButton;
+    //private DragonButton dragonButton;
+    //private RatButton ratButton;
+
+    private ButtonManager buttonManager;
 
     private GameObject otherIcon;
     private Vector2 firstTouchPosition;
@@ -38,10 +40,6 @@ public class Icon : MonoBehaviour
     //TESTING FOR UPPER FOR NOW
     public bool isAreaBomb; 
     public GameObject areaBomb;
-
-
-
-
 
     //TESTING
 
@@ -67,11 +65,13 @@ public class Icon : MonoBehaviour
         findMatches = FindObjectOfType<FindMatches>();
         hintManager = FindObjectOfType<HintManager>();
 
-        tigerButton = FindObjectOfType<TigerButton>();
-        dragonButton = FindObjectOfType<DragonButton>();
-        ratButton = FindObjectOfType<RatButton>();
+        //tigerButton = FindObjectOfType<TigerButton>();
+        //dragonButton = FindObjectOfType<DragonButton>();
+        //ratButton = FindObjectOfType<RatButton>();
 
-        Debug.Log(tigerButton);
+        buttonManager = FindObjectOfType<ButtonManager>();
+
+        //Debug.Log(tigerButton);
 
         // targetX = (int)transform.position.x;
         // targetY = (int)transform.position.y;
@@ -245,37 +245,37 @@ public class Icon : MonoBehaviour
 
             firstTouchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            //if(tigerButton.clickedTiger == true)
-            //{
-            //    isAreaBomb = true;
-            //    GameObject area = Instantiate(areaBomb, transform.position, Quaternion.identity);
-            //    area.transform.parent = this.transform;
+            if(buttonManager.clickedTiger == true)
+            {
+                isAreaBomb = true;
+                GameObject area = Instantiate(areaBomb, transform.position, Quaternion.identity);
+                area.transform.parent = this.transform;
 
-            //    tigerButton.clickedTiger = false;
-            //}
+                buttonManager.clickedTiger = false;
+            }
 
             
-            //if(dragonButton.clickedDragon == true)
-            //{
-            //    isRowBomb = true;
-            //    GameObject bomb = Instantiate(rowBomb, transform.position, Quaternion.identity);
-            //    bomb.transform.parent = this.transform;
+            if(buttonManager.clickedDragon == true)
+            {
+                isRowBomb = true;
+                GameObject bomb = Instantiate(rowBomb, transform.position, Quaternion.identity);
+                bomb.transform.parent = this.transform;
 
-            //    isColumnBomb = true;
-            //    GameObject cBomb = Instantiate(columnBomb, transform.position, Quaternion.identity);
-            //    cBomb.transform.parent = this.transform;
+                isColumnBomb = true;
+                GameObject cBomb = Instantiate(columnBomb, transform.position, Quaternion.identity);
+                cBomb.transform.parent = this.transform;
 
-            //    dragonButton.clickedDragon = false;
-            //}
+                buttonManager.clickedDragon = false;
+            }
 
-            //if(ratButton.clickedRat == true)
-            //{
-            //    isColorBomb = true;
-            //    GameObject color = Instantiate(colorBomb, transform.position, Quaternion.identity);
-            //    color.transform.parent = this.transform;
+            if(buttonManager.clickedRat == true)
+            {
+                isColorBomb = true;
+                GameObject color = Instantiate(colorBomb, transform.position, Quaternion.identity);
+                color.transform.parent = this.transform;
 
-            //    ratButton.clickedRat = false;
-            //}
+                buttonManager.clickedRat = false;
+            }
 
         }
         //Debug.Log(firstTouchPosition);

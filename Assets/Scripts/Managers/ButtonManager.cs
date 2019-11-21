@@ -1,15 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ButtonManager : MonoBehaviour
 {
-    /*
-     * 
+
     // SCRIPT NOT IN USE
+    //public Button [] buttons;
+    public GameObject[] buttons;
+    public Button[] myButtons;
+    
 
     public bool clickedTiger;
-    public bool isTigerButton;
+    //public bool isTigerButton;
 
     public bool clickedDragon;
     public bool isDragonButton;
@@ -20,19 +24,19 @@ public class ButtonManager : MonoBehaviour
 
     private void Start()
     {
-        clickedTiger = false;
+        //clickedTiger = false;
         clickedDragon = false;
         clickedRat = false;
     }
 
     public void TigerButton()
     {
-
-        if(isTigerButton == true)
-        {
+        
             clickedTiger = true;
             Debug.Log("Tiger Button Clicked Binch!");
-        }
+            myButtons[1].interactable = false;
+            myButtons[2].interactable = false;
+        
 
       
     }
@@ -57,5 +61,5 @@ public class ButtonManager : MonoBehaviour
        
     }
 
-    */
+    
 }

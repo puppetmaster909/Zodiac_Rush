@@ -119,7 +119,7 @@ MonoBehaviour:
   swipeAngle: 0
   swipeResist: 1
   isColorBomb: 0
-  colorBomb: {fileID: 5373981318531268120, guid: 9549c7c8d836ec5449f7d46d1bcf935f,
+  colorBomb: {fileID: 8068534772606634548, guid: e8e094adf40daa14b91eba8edd7522e9,
     type: 3}
   isAreaBomb: 0
   areaBomb: {fileID: 3559806935736876141, guid: 8e7817b8e0be2a54691a1b2cf1218050,
