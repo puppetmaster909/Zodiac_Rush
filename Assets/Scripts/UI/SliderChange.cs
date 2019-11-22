@@ -136,13 +136,27 @@ public class SliderChange : MonoBehaviour
                 Debug.Log(currentScore);
             
 
-            
-                if (currentScore >= maxScore)
+                if (currentScore < maxScore  &&  theBoard.moveCounter <= 0 )
+                {
+                    for (int i = 0; i < width; i++)
+                    {
+                        for (int j = 0; j < height; j++)
+                        {
+                            //Destory the board and current Hint Particle
+                            Destroy(theBoard.allIcons[j, i]);
+                            Hint.DestroyHint();
+                        }
+                    }
+                    //Show Progress Screen
+                }
+
+                if (currentScore >= maxScore && theBoard.moveCounter >= 0)
                 {
                     for (int i = 0; i < width; i++)
                     {
                         for(int j = 0; j < height; j++)
                         {
+                            //Destory the board and current Hint Particle
                             Destroy(theBoard.allIcons[j,i]);
                             Hint.DestroyHint();
                         }
@@ -152,6 +166,7 @@ public class SliderChange : MonoBehaviour
                     StartCoroutine(ShowVictoryScreen(VictoryDelay));
                     
                 }
+                
                 
                 
             }
