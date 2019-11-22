@@ -11,6 +11,8 @@ public class HintManager : MonoBehaviour
     public GameObject hintParticle;
     public GameObject currentHint;
 
+    List<GameObject> possibleMoves = new List<GameObject>();
+
     // Use this for initialization
     void Start()
     {
@@ -67,7 +69,7 @@ public class HintManager : MonoBehaviour
     //Pick one of those matches randomly
     GameObject PickOneRandomly()
     {
-        List<GameObject> possibleMoves = new List<GameObject>();
+        
         possibleMoves = FindMatches();
         if (possibleMoves.Count > 0)
         {
@@ -92,6 +94,7 @@ public class HintManager : MonoBehaviour
         {
             Destroy(currentHint);
             currentHint = null;
+            possibleMoves.Clear();
             hintDelaySeconds = hintDelay;
         }
     }

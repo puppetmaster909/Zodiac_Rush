@@ -13,7 +13,9 @@ public class SliderChange : MonoBehaviour
     public Slider slider;
     public GameObject TrappedZodiac;
     public GameObject FreedomParticle;
+    
     private Board theBoard;
+    private HintManager Hint;
 
     // Maria Edit Part 33 - Scoring System
     public Text scoreText; // 10:11
@@ -24,7 +26,7 @@ public class SliderChange : MonoBehaviour
 
     private void Start()
     {
-        
+        Hint = FindObjectOfType<HintManager>();
     }
 
     // Update is called once per frame
@@ -134,14 +136,29 @@ public class SliderChange : MonoBehaviour
                 Debug.Log(currentScore);
             
 
-            
-                if (currentScore >= maxScore)
+                if (currentScore < maxScore  &&  theBoard.moveCounter <= 0 )
+                {
+                    for (int i = 0; i < width; i++)
+                    {
+                        for (int j = 0; j < height; j++)
+                        {
+                            //Destory the board and current Hint Particle
+                            Destroy(theBoard.allIcons[j, i]);
+                            Hint.DestroyHint();
+                        }
+                    }
+                    //Show Progress Screen
+                }
+
+                if (currentScore >= maxScore && theBoard.moveCounter >= 0)
                 {
                     for (int i = 0; i < width; i++)
                     {
                         for(int j = 0; j < height; j++)
                         {
+                            //Destory the board and current Hint Particle
                             Destroy(theBoard.allIcons[j,i]);
+                            Hint.DestroyHint();
                         }
                     }
                     Debug.Log("Level Complete!");
@@ -149,6 +166,7 @@ public class SliderChange : MonoBehaviour
                     StartCoroutine(ShowVictoryScreen(VictoryDelay));
                     
                 }
+                
                 
                 
             }
