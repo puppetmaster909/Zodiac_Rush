@@ -169,18 +169,18 @@ public class Icon : MonoBehaviour
     public IEnumerator CheckMoveCo()
     {
         
-        // Maria Edit Part 20 7:37
+         //Maria Edit Part 20 7:37
         if (isColorBomb)
         {
             // this piece is a color bomb, and the other piece is the color to destroy
-            findMatches.MatchPiecesOfColor(otherIcon.tag);
+            MatchPiecesOfColor(otherIcon.tag);
             isMatched = true;
         }
 
         else if (otherIcon.GetComponent<Icon>().isColorBomb)
         {
             // the other piece is a color bomb, and this piece has the color to destroy
-            findMatches.MatchPiecesOfColor(this.gameObject.tag);
+            MatchPiecesOfColor(this.gameObject.tag);
             otherIcon.GetComponent<Icon>().isMatched = true;
         }
 
@@ -256,6 +256,9 @@ public class Icon : MonoBehaviour
                 powerUpPoints.points -= powerUpPoints.tigerReached;
 
                 buttonManager.clickedTiger = false;
+
+                //works for this one because FindMatches is in this script
+                StartCoroutine(WaitandDestroy()); 
             }
 
             
@@ -275,6 +278,8 @@ public class Icon : MonoBehaviour
                 powerUpPoints.points -= powerUpPoints.dragonReached;
 
                 buttonManager.clickedDragon = false;
+
+                StartCoroutine(WaitandDestroy());
             }
 
             if(buttonManager.clickedRat == true)
@@ -289,6 +294,9 @@ public class Icon : MonoBehaviour
                 powerUpPoints.points -= powerUpPoints.ratMaxReached;
 
                 buttonManager.clickedRat = false;
+
+                StartCoroutine(WaitandDestroy());
+
             }
 
         }
@@ -470,6 +478,57 @@ public class Icon : MonoBehaviour
         }
 
 
+    }
+
+    //Maria Edit Part 20 3:00
+    public void MatchPiecesOfColor(string color)
+    {
+        for (int i = 0; i < board.width; i++)
+        {
+            for (int j = 0; j < board.height; j++)
+            {
+                // check if that piece exists
+                if (board.allIcons[i, j] != null)
+                {
+                    // check the tag on that icon
+                    if (board.allIcons[i, j].tag == color)
+                    {
+                        // set that icon to be matched
+                        board.allIcons[i, j].GetComponent<Icon>().isMatched = true;
+                    }
+                }
+            }
+        }
+    }
+
+
+    IEnumerator WaitandDestroy()
+    {
+
+        if(isAreaBomb)
+        {
+            yield return new WaitForSeconds(.05f);
+            FindMatches();
+            yield return new WaitForSeconds(.05f);
+            board.DestroyMatches();
+        }
+
+        if(isRowBomb && isColumnBomb)
+        {
+            yield return new WaitForSeconds(.04f);
+            findMatches.FindAllMatches();
+            yield return new WaitForSeconds(.04f);
+            board.DestroyMatches();
+        }
+
+        if (isColorBomb)
+        {
+            yield return new WaitForSeconds(.1f);
+            MatchPiecesOfColor(this.gameObject.tag);
+            yield return new WaitForSeconds(.1f);
+            board.DestroyMatches();
+        }
+        
     }
     
 

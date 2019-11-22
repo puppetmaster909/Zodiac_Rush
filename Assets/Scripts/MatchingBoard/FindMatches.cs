@@ -23,6 +23,8 @@ public class FindMatches : MonoBehaviour
 
     private IEnumerator FindAllMatchesCo()
     {
+
+        // I changed the WaitForSeconds here Original: .2f
         yield return new WaitForSeconds(.2f);
 
         for (int i = 0; i < board.width; i++)
@@ -215,27 +217,7 @@ public class FindMatches : MonoBehaviour
 
     
 
-    //Maria Edit Part 20 3:00
-    public void MatchPiecesOfColor(string color)
-    {
-        for(int i = 0; i<board.width; i++)
-        {
-            for(int j = 0; j < board.height; j++)
-            {
-                // check if that piece exists
-                if (board.allIcons[i,j] != null)
-                {
-                    // check the tag on that icon
-                    if(board.allIcons[i,j].tag == color)
-                    {
-                        // set that icon to be matched
-                        board.allIcons[i, j].GetComponent<Icon>().isMatched = true;
-                    }
-                }
-            }
-        }
-    }
-
+    
     List<GameObject> GetColumnPieces(int column)
     {
         List<GameObject> icons = new List<GameObject>();
