@@ -164,8 +164,6 @@ public class Icon : MonoBehaviour
             tempPosition = new Vector2(transform.position.x, targetY);
             transform.position = tempPosition;
         }
-
-       
     }
 
     public IEnumerator CheckMoveCo()
@@ -228,8 +226,6 @@ public class Icon : MonoBehaviour
                 board.DestroyMatches();
                 
             }
-
-            
             otherIcon = null;
         }
 
@@ -260,8 +256,6 @@ public class Icon : MonoBehaviour
                 powerUpPoints.points -= powerUpPoints.tigerReached;
 
                 buttonManager.clickedTiger = false;
-
-                board.DestroyMatches();
             }
 
             
@@ -426,16 +420,12 @@ public class Icon : MonoBehaviour
                 {
                     //if (upperLeft.tag == this.gameObject.tag && upperRight.tag == this.gameObject.tag)
                     //{
-                    
                         upperLeft.GetComponent<Icon>().isMatched = true;
                         upperRight.GetComponent<Icon>().isMatched = true;
                         leftIcon1.GetComponent<Icon>().isMatched = true;
                         rightIcon1.GetComponent<Icon>().isMatched = true;
                         current.GetComponent<Icon>().isMatched = true;
                     isMatched = true;
-
-                    
-
                     //}
                 }
             }
