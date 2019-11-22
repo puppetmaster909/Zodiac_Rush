@@ -243,6 +243,9 @@ public class Icon : MonoBehaviour
 
             if(buttonManager.clickedTiger == true)
             {
+                //Destroy(this.gameObject);
+                //Destroy(board.allIcons[column, row]);
+
                 isAreaBomb = true;
                 GameObject area = Instantiate(areaBomb, transform.position, Quaternion.identity);
                 area.transform.parent = this.transform;

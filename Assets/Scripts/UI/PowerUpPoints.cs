@@ -31,4 +31,9 @@ public class PowerUpPoints : MonoBehaviour
         }
         
     }
+
+    public int GetPoints()
+    {
+        return points;
+    }
 }

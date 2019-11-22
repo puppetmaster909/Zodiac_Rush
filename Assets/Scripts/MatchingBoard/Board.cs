@@ -31,6 +31,7 @@ public class Board : MonoBehaviour
 
     public int pointsValue = 1;
     private PowerUpPoints powerUpPoints;
+    public Text pointsValueText;
 
     // Maria Edit
     public int moveCounter;
@@ -186,6 +187,19 @@ public class Board : MonoBehaviour
             StartCoroutine(DecreaseRowCo2());
 
 
+        }
+
+        if (powerUpPoints.GetPoints() <= powerUpPoints.ratMaxReached 
+            ||powerUpPoints.GetPoints() <= powerUpPoints.dragonReached
+            ||powerUpPoints.GetPoints() <= powerUpPoints.tigerReached)
+        {
+            if(pointsValue >= 0 && playerMatch)
+            {
+                powerUpPoints.IncreasePoints(pointsValue);
+                pointsValueText.text = pointsValue.ToString();
+                playerMatch = false;
+
+            }
         }
     }
     private IEnumerator DecreaseRowCo2()
