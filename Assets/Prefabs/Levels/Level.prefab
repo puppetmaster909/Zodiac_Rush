@@ -2061,6 +2061,7 @@ MonoBehaviour:
   - {fileID: 322554330160966176, guid: 6a41c36bf252c164aa22569066343476, type: 3}
   basePieceValue: 20
   pointsValue: 1
+  pointsValueText: {fileID: 0}
   moveCounter: 0
   playerMatch: 0
   moveCounterText: {fileID: 0}
@@ -3180,7 +3181,7 @@ PrefabInstance:
     - target: {fileID: 9111965057585823938, guid: f867577aa9bb39441b9f2e65ac8ae250,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5308821764426646314, guid: f867577aa9bb39441b9f2e65ac8ae250,
         type: 3}
