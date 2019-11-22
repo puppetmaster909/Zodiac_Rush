@@ -29,6 +29,9 @@ public class Board : MonoBehaviour
     private int streakValue = 1;
     private SliderChange sliderChange;
 
+    public int pointsValue = 1;
+    private PowerUpPoints powerUpPoints;
+
     // Maria Edit
     public int moveCounter;
     public bool playerMatch;
@@ -43,6 +46,7 @@ public class Board : MonoBehaviour
         // Maria Edit Part 33: Scoring System 
         // Time Stamps: 13:46
         sliderChange = FindObjectOfType<SliderChange>();
+        powerUpPoints = FindObjectOfType<PowerUpPoints>();
 
         //moveCounter = 20;
         moveCounterText.text = moveCounter.ToString();
@@ -145,6 +149,8 @@ public class Board : MonoBehaviour
             // Maria Edit Part 33: Scoring System 
             // Time Stamps: 16:24
             sliderChange.IncreaseScore(basePieceValue * streakValue);
+
+            powerUpPoints.IncreasePoints(pointsValue);
 
             allIcons[column, row] = null;
         }
