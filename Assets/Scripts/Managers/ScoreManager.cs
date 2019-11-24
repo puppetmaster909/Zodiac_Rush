@@ -107,7 +107,7 @@ public class ScoreManager : MonoBehaviour
         return Score;
         
     }
-    private int GetHighScore()
+    public int GetHighScore()
     {
         return PlayerPrefs.GetInt("HighScore:" + thisLevel.ToString(), 0);
     }

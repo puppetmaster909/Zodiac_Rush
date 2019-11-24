@@ -10,16 +10,20 @@ public class SliderChange : MonoBehaviour
     public int currentScore;
     public float VictoryDelay = 10f;
     public float maxScore;
+    public bool gameOver;
     public Slider slider;
     public GameObject TrappedZodiac;
     public GameObject FreedomParticle;
+    public GameObject TryAgainScreen;
     
     private Board theBoard;
     private HintManager Hint;
+    private ScoreManager theScore;
 
     // Maria Edit Part 33 - Scoring System
     public Text scoreText; // 10:11
-
+    public Text earnedScore;
+    public Text previousHighScore;
     #endregion
 
     #region MonoBehaviour
@@ -27,6 +31,10 @@ public class SliderChange : MonoBehaviour
     private void Start()
     {
         Hint = FindObjectOfType<HintManager>();
+        theBoard = FindObjectOfType<Board>();
+        theScore = FindObjectOfType<ScoreManager>();
+
+        gameOver = false;
     }
 
     // Update is called once per frame
@@ -42,6 +50,8 @@ public class SliderChange : MonoBehaviour
         {
             IncreaseScore(500);
         }
+
+        StartCoroutine(CheckGameWin());
     }
     #endregion
 
@@ -53,6 +63,55 @@ public class SliderChange : MonoBehaviour
     }
 
     #endregion
+    IEnumerator CheckGameWin() 
+    {
+    int width = theBoard.width;
+    int height = theBoard.height;
+
+        if (currentScore<maxScore && theBoard.moveCounter <= 0)
+        {
+            yield return new WaitForSeconds(0.1f);
+            theBoard.currentState = GameState.wait;
+            Time.timeScale = 0;
+            for (int i = 0; i<width; i++)
+            {
+                for (int j = 0; j<height; j++)
+                {
+                    //Destory the board and current Hint Particle
+                    Destroy(theBoard.allIcons[j, i]);
+                    Hint.DestroyHint();
+                }
+            }
+            //Change Values on TryAgain Screen
+            earnedScore.text = getScore().ToString();
+            previousHighScore.text = theScore.GetHighScore().ToString();
+            //Show Progress Screen
+            theBoard.currentState = GameState.move;
+            gameOver = true;
+            UIManager.main.ShowScreen("TryAgain");
+        }
+
+        if (currentScore >= maxScore && theBoard.moveCounter >= 0)
+        {
+            theBoard.currentState = GameState.wait;
+            for (int i = 0; i<width; i++)
+            {
+                for (int j = 0; j<height; j++)
+                {
+                    //Destory the board and current Hint Particle
+                    Destroy(theBoard.allIcons[j, i]);
+                    Hint.DestroyHint();
+                }
+            }
+            Debug.Log("Level Complete!");
+
+            gameOver = true;
+            //Play Victory Animation then Show Win Screen
+            StartCoroutine(ShowVictoryScreen(VictoryDelay));
+
+        }
+}
+
     IEnumerator ShowVictoryScreen(float time)
     {
         yield return new WaitForSeconds(1.2f);
@@ -118,14 +177,10 @@ public class SliderChange : MonoBehaviour
     public void IncreaseScore( int amountToIncrease) // 10:30
     {
         int width = 0, height = 0;
-        theBoard = FindObjectOfType<Board>();
+        
 
-
-        if (theBoard != null)
-        {
             width = theBoard.width;
             height = theBoard.height;
-        }
         
         if (currentScore >= 0)
         {
@@ -133,41 +188,8 @@ public class SliderChange : MonoBehaviour
             {
                 currentScore += amountToIncrease;
 
-                Debug.Log(currentScore);
-            
+                Debug.Log(currentScore + "/" + maxScore + " " + theBoard.moveCounter);
 
-                if (currentScore < maxScore  &&  theBoard.moveCounter <= 0 )
-                {
-                    for (int i = 0; i < width; i++)
-                    {
-                        for (int j = 0; j < height; j++)
-                        {
-                            //Destory the board and current Hint Particle
-                            Destroy(theBoard.allIcons[j, i]);
-                            Hint.DestroyHint();
-                        }
-                    }
-                    //Show Progress Screen
-                }
-
-                if (currentScore >= maxScore && theBoard.moveCounter >= 0)
-                {
-                    for (int i = 0; i < width; i++)
-                    {
-                        for(int j = 0; j < height; j++)
-                        {
-                            //Destory the board and current Hint Particle
-                            Destroy(theBoard.allIcons[j,i]);
-                            Hint.DestroyHint();
-                        }
-                    }
-                    Debug.Log("Level Complete!");
-                    theBoard.currentState = GameState.wait;
-                    StartCoroutine(ShowVictoryScreen(VictoryDelay));
-                    
-                }
-                
-                
                 
             }
         }

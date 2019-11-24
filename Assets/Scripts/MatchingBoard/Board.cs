@@ -22,6 +22,7 @@ public class Board : MonoBehaviour
     private Background_Tile[,] allTiles;
     public GameObject[,] allIcons;
     private FindMatches findMatches;
+    private ScoreManager theScore;
 
     // Maria Edit Part 33: Scoring System 
     // Time Stamps: 13:22 and 14:10
@@ -38,12 +39,13 @@ public class Board : MonoBehaviour
     public bool playerMatch;
     public Text moveCounterText;
 
+    public int currentHighScore;
 
     public AudioClip GemSFX;
 
     // Start is called before the first frame update
     void Awake()
-    {
+    {   
         // Maria Edit Part 33: Scoring System 
         // Time Stamps: 13:46
         sliderChange = FindObjectOfType<SliderChange>();
@@ -54,10 +56,13 @@ public class Board : MonoBehaviour
         playerMatch = false;
 
         findMatches = FindObjectOfType<FindMatches>();
+        theScore = FindObjectOfType<ScoreManager>();
         allTiles = new Background_Tile[width, height];
         allIcons = new GameObject[width, height];
         //Setup the board
         SetUp();
+        Debug.Log(theScore.thisLevel);
+        currentHighScore = theScore.GetHighScore();
     }
 
     private void SetUp()
@@ -146,7 +151,10 @@ public class Board : MonoBehaviour
         {
             findMatches.CurrentMatches.Remove(allIcons[column, row]);
             Destroy(allIcons[column, row]);
-            AudioManager.main.PlaySingle(GemSFX);
+            if (!sliderChange.gameOver)
+            {
+                AudioManager.main.PlaySingle(GemSFX); 
+            }
             // Maria Edit Part 33: Scoring System 
             // Time Stamps: 16:24
             sliderChange.IncreaseScore(basePieceValue * streakValue);
@@ -227,7 +235,10 @@ public class Board : MonoBehaviour
         }
         yield return new WaitForSeconds(0.1f);
         Debug.Log("Refilling Board");
-        StartCoroutine(FillBoardCo());
+        if (!sliderChange.gameOver)
+        { 
+            StartCoroutine(FillBoardCo()); 
+        }
     }
     //private IEnumerator DecreaseRowCo()
     //{
@@ -256,24 +267,26 @@ public class Board : MonoBehaviour
 
     private void RefillBoard()
     {
-        for (int i = 0; i < width; i++)
+        if (!sliderChange.gameOver)
         {
-            for (int j = 0; j < height; j++)
+            for (int i = 0; i < width; i++)
             {
-                if (allIcons[i, j] == null)
+                for (int j = 0; j < height; j++)
                 {
-                    Vector2 tempPosition = new Vector2(i, j + offSet);
-                    int iconToUse = Random.Range(0, icons.Length); //was Random.Range(0, icons.Length);
-                    GameObject piece = Instantiate(icons[iconToUse], tempPosition, Quaternion.identity);
-                    allIcons[i, j] = piece;
-                    piece.GetComponent<Icon>().row = j;
-                    piece.GetComponent<Icon>().column = i;
-                    piece.GetComponent<SpriteRenderer>().sortingLayerName = "Icons";
-                    piece.GetComponent<Icon>().transform.parent = GameObject.Find("Board").transform;
+                    if (allIcons[i, j] == null)
+                    {
+                        Vector2 tempPosition = new Vector2(i, j + offSet);
+                        int iconToUse = Random.Range(0, icons.Length); //was Random.Range(0, icons.Length);
+                        GameObject piece = Instantiate(icons[iconToUse], tempPosition, Quaternion.identity);
+                        allIcons[i, j] = piece;
+                        piece.GetComponent<Icon>().row = j;
+                        piece.GetComponent<Icon>().column = i;
+                        piece.GetComponent<SpriteRenderer>().sortingLayerName = "Icons";
+                        piece.GetComponent<Icon>().transform.parent = GameObject.Find("Board").transform;
+                    }
                 }
             }
         }
-
     }
 
     private bool MatchesOnBoard()
@@ -310,7 +323,7 @@ public class Board : MonoBehaviour
         }
         findMatches.CurrentMatches.Clear();
 
-        if (IsDeadlocked())
+        if (IsDeadlocked() && !sliderChange.gameOver)
         {
             StartCoroutine(ShuffleBoard());
             Debug.Log("Deadlocked!!");
@@ -413,55 +426,59 @@ public class Board : MonoBehaviour
 
     private IEnumerator ShuffleBoard()
     {
-        yield return new WaitForSeconds(1.2f);
-        //Create list of game objects
-        List<GameObject> newBoard = new List<GameObject>();
-        //Add every piece on the board to this list
-        for (int i = 0; i < width; i++)
+        if (!sliderChange.gameOver)
         {
-            for (int j = 0; j < height; j++)
+
+            currentState = GameState.wait;
+            yield return new WaitForSeconds(1.2f);
+            //Create list of game objects
+            List<GameObject> newBoard = new List<GameObject>();
+            //Add every piece on the board to this list
+            for (int i = 0; i < width; i++)
             {
-                if (allIcons[i, j] != null)
+                for (int j = 0; j < height; j++)
                 {
-                    newBoard.Add(allIcons[i, j]);
+                    if (allIcons[i, j] != null)
+                    {
+                        newBoard.Add(allIcons[i, j]);
+                    }
                 }
             }
-        }
-        yield return new WaitForSeconds(0.7f);
-        //for ever spot on the board...
-        for (int i = 0; i < width; i++)
-        {
-            for (int j = 0; j < height; j++)
+            yield return new WaitForSeconds(0.7f);
+            //for ever spot on the board...
+            for (int i = 0; i < width; i++)
             {
-                int pieceToUse = Random.Range(0, newBoard.Count);
-
-                //Assign the column to the piece
-                int maxIterations = 0;
-
-                while (MatchesAt(i, j, newBoard[pieceToUse]) && maxIterations < 100)
+                for (int j = 0; j < height; j++)
                 {
-                    pieceToUse = Random.Range(0, newBoard.Count);
-                    maxIterations++;
-                    Debug.Log(maxIterations);
-                }
+                    int pieceToUse = Random.Range(0, newBoard.Count);
 
-                //make container for gem piece
-                Icon piece = newBoard[pieceToUse].GetComponent<Icon>();
-                maxIterations = 0;
-                piece.column = i;
-                //Assign the row of the piece
-                piece.row = j;
-                //Fill in the array with this new piece
-                allIcons[i, j] = newBoard[pieceToUse];
-                //Remove it from teh list
-                newBoard.Remove(newBoard[pieceToUse]);
+                    //Assign the column to the piece
+                    int maxIterations = 0;
+
+                    while (MatchesAt(i, j, newBoard[pieceToUse]) && maxIterations < 100)
+                    {
+                        pieceToUse = Random.Range(0, newBoard.Count);
+                        maxIterations++;
+                        Debug.Log(maxIterations);
+                    }
+
+                    //make container for gem piece
+                    Icon piece = newBoard[pieceToUse].GetComponent<Icon>();
+                    maxIterations = 0;
+                    piece.column = i;
+                    //Assign the row of the piece
+                    piece.row = j;
+                    //Fill in the array with this new piece
+                    allIcons[i, j] = newBoard[pieceToUse];
+                    //Remove it from teh list
+                    newBoard.Remove(newBoard[pieceToUse]);
+                }
             }
-        }
-        //Check if it's still deadlocked!
-        if (IsDeadlocked())
-        {
-            StartCoroutine(ShuffleBoard());
+            //Check if it's still deadlocked!
+            if (IsDeadlocked())
+            {
+                StartCoroutine(ShuffleBoard());
+            }
         }
     }
-
 }

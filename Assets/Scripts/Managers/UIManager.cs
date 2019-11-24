@@ -29,11 +29,12 @@ public class UIManager : MonoBehaviour
     public bool IsPaused = false;
     public int CurrentScreen;
     private int PauseScreen = 0;
-    public int PrePauseScreen;
+    public int PrePauseScreen, playOnce;
     public string PreviousScreenName = "Level";
     public GameObject currentLevel;
 
     private Board board;
+    private SliderChange sliderChange;
 
     #endregion
 
@@ -41,6 +42,8 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
+        playOnce = 0;
+
         // Singleton behavior
         if (main == null)
         {
@@ -50,12 +53,14 @@ public class UIManager : MonoBehaviour
         {
             GameObject.Destroy(gameObject);
         }
+
         
     }
 
     void Start()
     {
         board = FindObjectOfType<Board>();
+        sliderChange = FindObjectOfType<SliderChange>();
         int i = 0;
         foreach (Screen s in Screens)
         {
@@ -74,7 +79,15 @@ public class UIManager : MonoBehaviour
     // Displays the screen with the given name
     public void ShowScreen(string name)
     {
-        AudioManager.main.PlaySingle(Confirm);
+        
+
+        if (playOnce == 0)
+        { 
+            AudioManager.main.PlaySingle(Confirm);
+            playOnce++;
+        }
+        
+        Time.timeScale = 1;
 
         PreviousScreenName = Screens[CurrentScreen].name;
         for (int i = 0; i < Screens.Count; i++)
