@@ -910,7 +910,7 @@ PrefabInstance:
     - target: {fileID: 472513307709024216, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
       propertyPath: icons.Array.size
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 472513307709024216, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
