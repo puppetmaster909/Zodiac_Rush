@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -20,10 +21,11 @@ public class PauseMenu : MonoBehaviour
 
     public void Back()
     {
-
-        
+        if (SceneManager.GetActiveScene().name != "MainMenu_Scene")
+        {
             UIManager.main.UnPauseGame();
             UIManager.main.IsPaused = false;
+        }
         
             GameObject noButton = gameObject.transform.Find("ConfirmBackground").gameObject;
             noButton.SetActive(false);
@@ -36,10 +38,7 @@ public class PauseMenu : MonoBehaviour
     {
         UIManager.main.ShowScreen("Settings");
     }
-    private void GetButtonName()
-    {
-
-    }
+   
     public void confirmScreen()
     {
         UIManager.main.ShowScreen("ConfirmScreen");
@@ -54,6 +53,7 @@ public class PauseMenu : MonoBehaviour
         {
             confirmMessage.text = "Are you sure you want to exit?";
             yesButton.onClick.AddListener(delegate { UIManager.main.LoadLevel("LevelSelection_Scene");});
+
             
         } 
     }
