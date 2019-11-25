@@ -6,15 +6,17 @@ using UnityEngine.UI;
 public class SliderChange : MonoBehaviour
 {
     #region Variables
-
+    private int doOnce, previousHIGHscore;
     public int currentScore;
+    public int OneStar, TwoStar;
     public float VictoryDelay = 10f;
     public float maxScore;
     public bool gameOver;
+    
     public Slider slider;
+
     public GameObject TrappedZodiac;
     public GameObject FreedomParticle;
-    public GameObject TryAgainScreen;
     
     private Board theBoard;
     private HintManager Hint;
@@ -24,6 +26,7 @@ public class SliderChange : MonoBehaviour
     public Text scoreText; // 10:11
     public Text earnedScore;
     public Text previousHighScore;
+    public Text NewHighScore;
     #endregion
 
     #region MonoBehaviour
@@ -34,7 +37,10 @@ public class SliderChange : MonoBehaviour
         theBoard = FindObjectOfType<Board>();
         theScore = FindObjectOfType<ScoreManager>();
 
+        previousHIGHscore = PlayerPrefs.GetInt("HighScore:" + theScore.thisLevel.ToString());
+        doOnce = 0;
         gameOver = false;
+
     }
 
     // Update is called once per frame
@@ -45,7 +51,7 @@ public class SliderChange : MonoBehaviour
         scoreText.text = currentScore.ToString(); // 11:32
 
 
-
+        //FOR DEBUG PURPOSES
         if (Input.GetKeyDown(KeyCode.LeftControl) == true)
         {
             IncreaseScore(500);
@@ -85,9 +91,29 @@ public class SliderChange : MonoBehaviour
             //Change Values on TryAgain Screen
             earnedScore.text = getScore().ToString();
             previousHighScore.text = theScore.GetHighScore().ToString();
+
+            //If player gets a new HighScore display "New Highscore!"
+            if(getScore() > previousHIGHscore)
+            {
+                NewHighScore.transform.gameObject.SetActive(true);
+            }
+
+            //Change Stars Displayed
+
+            if(PlayerPrefs.GetInt("HighScore:" + theScore.thisLevel.ToString()) >= OneStar && PlayerPrefs.GetInt("HighScore:" + theScore.thisLevel.ToString()) < TwoStar)
+            {
+                
+                Debug.Log("Displaying One Star");
+            }
+            if (PlayerPrefs.GetInt("HighScore:" + theScore.thisLevel.ToString()) >= TwoStar)
+            {
+                Debug.Log("Displaying Two Star");
+            }
+            
             //Show Progress Screen
             theBoard.currentState = GameState.move;
             gameOver = true;
+            
             UIManager.main.ShowScreen("TryAgain");
         }
 
@@ -107,7 +133,11 @@ public class SliderChange : MonoBehaviour
 
             gameOver = true;
             //Play Victory Animation then Show Win Screen
-            StartCoroutine(ShowVictoryScreen(VictoryDelay));
+            if (doOnce == 0)
+            { 
+                StartCoroutine(ShowVictoryScreen(VictoryDelay));
+                doOnce++;
+            }
 
         }
 }

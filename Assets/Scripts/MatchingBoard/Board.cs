@@ -267,6 +267,7 @@ public class Board : MonoBehaviour
 
     private void RefillBoard()
     {
+        currentState = GameState.wait;
         if (!sliderChange.gameOver)
         {
             for (int i = 0; i < width; i++)
