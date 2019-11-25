@@ -30,6 +30,10 @@ public class PauseMenu : MonoBehaviour
             GameObject noButton = gameObject.transform.Find("ConfirmBackground").gameObject;
             noButton.SetActive(false);
     }
+    public void confirmBack()
+    {
+        this.gameObject.SetActive(false);
+    }
     private void RestartLevel()
     {
         UIManager.main.RestartLevel();

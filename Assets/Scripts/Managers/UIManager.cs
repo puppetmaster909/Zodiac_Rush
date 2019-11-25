@@ -89,7 +89,8 @@ public class UIManager : MonoBehaviour
         
         Time.timeScale = 1;
 
-        PreviousScreenName = Screens[CurrentScreen].name;
+        if (Screens[CurrentScreen].name != "ConfirmScreen")
+        { PreviousScreenName = Screens[CurrentScreen].name; }
         for (int i = 0; i < Screens.Count; i++)
         {
             if (Screens[i].name.Equals(name))
