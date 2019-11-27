@@ -32,6 +32,10 @@ TagManager:
   - Level3_2Star
   - Level3_3Star
   - FreeZodiac
+  - Grid
+  - HUD
+  - Cat
+  - WhiteCrystal
   layers:
   - Default
   - TransparentFX

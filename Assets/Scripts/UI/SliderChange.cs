@@ -8,8 +8,8 @@ public class SliderChange : MonoBehaviour
     #region Variables
     private int doOnce, previousHIGHscore;
     public int currentScore;
-    public int OneStar, TwoStar;
     public float VictoryDelay = 10f;
+    public float scaleRatio = 1.0f;
     public float maxScore;
     public bool gameOver;
     
@@ -17,6 +17,7 @@ public class SliderChange : MonoBehaviour
 
     public GameObject TrappedZodiac;
     public GameObject FreedomParticle;
+    public SpriteRenderer whiteCrystal;
     
     private Board theBoard;
     private HintManager Hint;
@@ -98,18 +99,6 @@ public class SliderChange : MonoBehaviour
                 NewHighScore.transform.gameObject.SetActive(true);
             }
 
-            //Change Stars Displayed
-
-            if(PlayerPrefs.GetInt("HighScore:" + theScore.thisLevel.ToString()) >= OneStar && PlayerPrefs.GetInt("HighScore:" + theScore.thisLevel.ToString()) < TwoStar)
-            {
-                
-                Debug.Log("Displaying One Star");
-            }
-            if (PlayerPrefs.GetInt("HighScore:" + theScore.thisLevel.ToString()) >= TwoStar)
-            {
-                Debug.Log("Displaying Two Star");
-            }
-            
             //Show Progress Screen
             theBoard.currentState = GameState.move;
             gameOver = true;
@@ -144,6 +133,12 @@ public class SliderChange : MonoBehaviour
 
     IEnumerator ShowVictoryScreen(float time)
     {
+        GameObject HUD = GameObject.FindGameObjectWithTag("HUD");
+        GameObject Grid = GameObject.FindGameObjectWithTag("Grid");
+        GameObject Cat = GameObject.FindGameObjectWithTag("Cat");
+        Cat.SetActive(false);
+        HUD.SetActive(false);
+        Grid.SetActive(false);
         yield return new WaitForSeconds(1.2f);
         StartCoroutine(MoveTrappedZodiac());
         yield return new WaitForSeconds(time);
@@ -156,44 +151,72 @@ public class SliderChange : MonoBehaviour
     {
         //Move Zodiac Animal to Center of Board
         
-        StartCoroutine(MoveOverSeconds(TrappedZodiac, new Vector3(2.9f, 3.1f, 40.0f), 2.5f));
-        yield return new WaitForSeconds(5f);
+        StartCoroutine(MoveOverSeconds(TrappedZodiac, new Vector3(3.0f, 7.1f, 40.0f), 1.5f));
+        yield return new WaitForSeconds(2.0f);
         StartCoroutine(ShowFreeZodiac());
+        yield return new WaitForSeconds(3.5f);
+        StartCoroutine(FadeOut());
     }
     IEnumerator ShowFreeZodiac()
     {
         SpriteRenderer sprite;
         GameObject FreeZodiac = GameObject.FindGameObjectWithTag("FreeZodiac");
 
-        FreedomParticle = Instantiate(FreedomParticle, FreeZodiac.transform.position, Quaternion.identity);
+        //FreedomParticle = Instantiate(FreedomParticle, FreeZodiac.transform.position, Quaternion.identity);
 
-        yield return new WaitForSeconds(2f);
-        StartCoroutine(FadeOut());
+        StartCoroutine(FadeIn());
+        yield return new WaitForSeconds(3.8f);
         sprite = FreeZodiac.GetComponent<SpriteRenderer>();
         Color c = sprite.color;
         c.a = 1;
         sprite.color = c;
         
     }
+
+    private IEnumerator FadeIn()
+    {
+        SpriteRenderer crystal;
+
+        crystal = whiteCrystal;
+        for (float f = 0f; f <= 1.5f; f += 0.10f)
+        {
+            
+            Color c = crystal.color;
+            c.a = f;
+            
+            crystal.color = c;
+            yield return new WaitForSeconds(0.20f);
+        }
+        TrappedZodiac.SetActive(false);
+        
+    }
+
     private IEnumerator FadeOut()
     {
-        Image image;
+        SpriteRenderer crystal;
 
-        image = TrappedZodiac.GetComponent<Image>();
-        for (float f = 1f; f >= -0.05f; f -= 0.15f)
+        crystal = whiteCrystal ;
+        for (float f = 1f; f >= -0.5f; f -= 0.10f)
         {
-            Color c = image.color;
+            Color c = crystal.color;
             c.a = f;
-            image.color = c;
-            yield return new WaitForSeconds(0.05f);
+            crystal.color = c;
+            yield return new WaitForSeconds(0.10f);
         }
+        yield return new WaitForSeconds(5f);
     }
     public IEnumerator MoveOverSeconds(GameObject objectToMove, Vector3 end, float seconds)
     {
-        float elapsedTime = 0;
+        float elapsedTime = 0f;
+        
+        Vector3 startingScale = objectToMove.transform.localScale;
         Vector3 startingPos = objectToMove.transform.position;
+
+        
         while (elapsedTime < seconds)
         {
+
+            objectToMove.transform.localScale = Vector3.Lerp(startingScale, startingScale * scaleRatio, (elapsedTime / seconds));
             objectToMove.transform.position = Vector3.Lerp(startingPos, end, (elapsedTime / seconds));
             elapsedTime += Time.deltaTime;
             yield return new WaitForEndOfFrame();
