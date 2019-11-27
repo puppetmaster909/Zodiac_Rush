@@ -23,7 +23,7 @@ public class Icon : MonoBehaviour
     private ButtonManager buttonManager;
     private PowerUpPoints powerUpPoints;
 
-    private GameObject otherIcon;
+    public GameObject otherIcon; //changed from private to public
     private Vector2 firstTouchPosition;
     private Vector2 finalTouchPosition;
     private Vector2 tempPosition;
@@ -121,11 +121,13 @@ public class Icon : MonoBehaviour
         //FindMatches(); // for testing binch 
         //FindDiagonalMatches(); // for testing binch 
 
+        // he commented out the if matched statement
         if (isMatched)
         {
             SpriteRenderer mySprite = GetComponent<SpriteRenderer>();
             mySprite.color = new Color(0f, 0f, 0f, .2f);
         }
+
         targetX = column;
         targetY = row;
 
@@ -184,6 +186,7 @@ public class Icon : MonoBehaviour
             otherIcon.GetComponent<Icon>().isMatched = true;
         }
 
+        /*
         if (isAreaBomb)
         {
             FindMatches();
@@ -195,6 +198,7 @@ public class Icon : MonoBehaviour
             FindMatches();
             otherIcon.GetComponent<Icon>().isMatched = true;
         }
+        */
 
         // Maria Edit
 
@@ -227,6 +231,8 @@ public class Icon : MonoBehaviour
                 
             }
             otherIcon = null;
+            // otherIcon = null; would comment this out 
+
         }
 
     }
@@ -320,8 +326,10 @@ public class Icon : MonoBehaviour
             board.currentState = GameState.wait;
             swipeAngle = Mathf.Atan2(finalTouchPosition.y - firstTouchPosition.y, finalTouchPosition.x - firstTouchPosition.x) * 180 / Mathf.PI;
             movePieces();
-            
-            
+
+
+            //board.currentIcon = this; //Edit
+
         }
         else
         {
@@ -415,29 +423,6 @@ public class Icon : MonoBehaviour
                     isMatched = true;
                 }
             }
-
-            
-            // this is a change too
-            if(row < board.height - 1 && isAreaBomb == true) // isAreaBomb change
-            {
-                GameObject upperLeft = board.allIcons[column - 1, row + 1]; //something wrong
-                GameObject upperRight = board.allIcons[column + 1, row + 1]; //something wrong??
-                GameObject current = board.allIcons[column, row];
-
-                if (upperLeft != null && upperRight != null && current != null)
-                {
-                    //if (upperLeft.tag == this.gameObject.tag && upperRight.tag == this.gameObject.tag)
-                    //{
-                        upperLeft.GetComponent<Icon>().isMatched = true;
-                        upperRight.GetComponent<Icon>().isMatched = true;
-                        leftIcon1.GetComponent<Icon>().isMatched = true;
-                        rightIcon1.GetComponent<Icon>().isMatched = true;
-                        current.GetComponent<Icon>().isMatched = true;
-                    isMatched = true;
-                    //}
-                }
-            }
-            //change end
             
         }
 
@@ -456,25 +441,6 @@ public class Icon : MonoBehaviour
                 }
             }
 
-            // change here
-            if (row > 0 && row < board.height - 1 && column < board.width - 1 && column > 0 && isAreaBomb == true)
-            {
-                GameObject lowerLeft = board.allIcons[column - 1, row - 1]; //something wrong
-                GameObject lowerRight = board.allIcons[column + 1, row - 1]; //something wrong
-                GameObject current = board.allIcons[column, row];
-
-                //if (lowerLeft.tag == this.gameObject.tag && lowerRight.tag == this.gameObject.tag)
-                //{
-                lowerLeft.GetComponent<Icon>().isMatched = true;
-                    lowerRight.GetComponent<Icon>().isMatched = true;
-                    upIcon1.GetComponent<Icon>().isMatched = true;
-                    downIcon1.GetComponent<Icon>().isMatched = true;
-                    current.GetComponent<Icon>().isMatched = true;
-                isMatched = true;
-                //}
-            }
-
-            //change here
         }
 
 
@@ -508,7 +474,7 @@ public class Icon : MonoBehaviour
         if(isAreaBomb)
         {
             yield return new WaitForSeconds(.05f);
-            FindMatches();
+            findMatches.FindAllMatches();
             yield return new WaitForSeconds(.05f);
             board.DestroyMatches();
         }
