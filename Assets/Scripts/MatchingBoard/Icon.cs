@@ -36,6 +36,8 @@ public class Icon : MonoBehaviour
     #region Powerups
     public bool isColorBomb;
     public GameObject colorBomb;
+
+    // Maria Edit 
     
     public bool isAreaBomb; 
     public GameObject areaBomb;
@@ -56,8 +58,6 @@ public class Icon : MonoBehaviour
 
         isColumnBomb = false;
         isRowBomb = false;
-
-        isColorBomb = false;
         
         //Use this for initialization
         board = FindObjectOfType<Board>();
@@ -129,7 +129,6 @@ public class Icon : MonoBehaviour
         targetX = column;
         targetY = row;
 
-        Debug.Log(isMatched);
         if(Mathf.Abs(targetX - transform.position.x) > .1)
         {
             //Move towards target
@@ -419,14 +418,14 @@ public class Icon : MonoBehaviour
 
             
             // this is a change too
-            if(row < board.height - 1 && isAreaBomb == true) 
+            if(row < board.height - 1 && isAreaBomb == true) // isAreaBomb change
             {
-                GameObject upperLeft = board.allIcons[column - 1, row + 1]; 
-                GameObject upperRight = board.allIcons[column + 1, row + 1]; 
+                GameObject upperLeft = board.allIcons[column - 1, row + 1]; //something wrong
+                GameObject upperRight = board.allIcons[column + 1, row + 1]; //something wrong??
                 GameObject current = board.allIcons[column, row];
 
-                //if (upperLeft != null && upperRight != null && current != null)
-                //{
+                if (upperLeft != null && upperRight != null && current != null)
+                {
                     //if (upperLeft.tag == this.gameObject.tag && upperRight.tag == this.gameObject.tag)
                     //{
                         upperLeft.GetComponent<Icon>().isMatched = true;
@@ -436,7 +435,7 @@ public class Icon : MonoBehaviour
                         current.GetComponent<Icon>().isMatched = true;
                     isMatched = true;
                     //}
-                //}
+                }
             }
             //change end
             
@@ -466,7 +465,7 @@ public class Icon : MonoBehaviour
 
                 //if (lowerLeft.tag == this.gameObject.tag && lowerRight.tag == this.gameObject.tag)
                 //{
-                    lowerLeft.GetComponent<Icon>().isMatched = true;
+                lowerLeft.GetComponent<Icon>().isMatched = true;
                     lowerRight.GetComponent<Icon>().isMatched = true;
                     upIcon1.GetComponent<Icon>().isMatched = true;
                     downIcon1.GetComponent<Icon>().isMatched = true;
@@ -508,17 +507,17 @@ public class Icon : MonoBehaviour
 
         if(isAreaBomb)
         {
-            yield return new WaitForSeconds(.1f);
+            yield return new WaitForSeconds(.05f);
             FindMatches();
-            yield return new WaitForSeconds(.1f);
+            yield return new WaitForSeconds(.05f);
             board.DestroyMatches();
         }
 
         if(isRowBomb && isColumnBomb)
         {
-            //yield return new WaitForSeconds(.01f);
+            yield return new WaitForSeconds(.04f);
             findMatches.FindAllMatches();
-            //yield return new WaitForSeconds(.01f);
+            yield return new WaitForSeconds(.04f);
             board.DestroyMatches();
         }
 

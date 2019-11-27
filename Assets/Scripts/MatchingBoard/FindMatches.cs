@@ -21,71 +21,6 @@ public class FindMatches : MonoBehaviour
         StartCoroutine(FindAllMatchesCo());
     }
 
-    private List<GameObject> IsRowBomb(Icon icon1, Icon icon2, Icon icon3)
-    {
-        List<GameObject> currentIcons = new List<GameObject>();
-
-        if (icon1.isRowBomb)
-        {
-            CurrentMatches.Union(GetRowPieces(icon1.row));
-        }
-
-        if (icon2.isRowBomb)
-        {
-            CurrentMatches.Union(GetRowPieces(icon2.row));
-        }
-
-        if (icon3.isRowBomb)
-        {
-            CurrentMatches.Union(GetRowPieces(icon3.row));
-        }
-
-        return currentIcons;
-    }
-
-    private List<GameObject> IsColumnBomb(Icon icon1, Icon icon2, Icon icon3)
-    {
-        List<GameObject> currentIcons = new List<GameObject>();
-
-        if (icon1.isColumnBomb)
-        {
-            CurrentMatches.Union(GetColumnPieces(icon1.column));
-        }
-
-        if (icon2.isColumnBomb)
-        {
-            CurrentMatches.Union(GetColumnPieces(icon2.column));
-        }
-
-        if (icon3.isColumnBomb)
-        {
-            CurrentMatches.Union(GetColumnPieces(icon3.column));
-        }
-
-        return currentIcons;
-    }
-
-    private void AddToListAndMatch(GameObject icon)
-    {
-        if (!CurrentMatches.Contains(icon))
-        {
-            CurrentMatches.Add(icon);
-        }
-
-        icon.GetComponent<Icon>().isMatched = true;
-    }
-
-    private void GetNearByPieces(GameObject icon1, GameObject icon2, GameObject icon3)
-    {
-        AddToListAndMatch(icon1);
-
-        AddToListAndMatch(icon2);
-
-        AddToListAndMatch(icon3);
-
-    }
-
-
     private IEnumerator FindAllMatchesCo()
     {
 
@@ -97,17 +32,13 @@ public class FindMatches : MonoBehaviour
             for (int j = 0; j < board.height; j++)
             {
                 GameObject currentIcon = board.allIcons[i, j];
-                Icon currentIconIcon = currentIcon.GetComponent<Icon>();
 
                 if (currentIcon != null)
                 {
                     if (i > 0 && i < board.width - 1)
                     {
                         GameObject leftIcon = board.allIcons[i - 1, j];
-                        Icon leftIconIcon = leftIcon.GetComponent<Icon>();
-
                         GameObject rightIcon = board.allIcons[i + 1, j];
-                        Icon rightIconIcon = rightIcon.GetComponent<Icon>();
 
                         // Maria Edit
                         if (leftIcon != null && rightIcon != null)
@@ -116,13 +47,55 @@ public class FindMatches : MonoBehaviour
                             {
 
                                 // Maria Edit
-                                CurrentMatches.Union(IsRowBomb(leftIconIcon, currentIconIcon, rightIconIcon));
+                                if (currentIcon.GetComponent<Icon>().isRowBomb
+                                || leftIcon.GetComponent<Icon>().isRowBomb
+                                || rightIcon.GetComponent<Icon>().isRowBomb)
+                                {
 
-                                CurrentMatches.Union(IsColumnBomb(leftIconIcon, currentIconIcon, rightIconIcon));
+                                    CurrentMatches.Union(GetRowPieces(j));
 
-                                GetNearByPieces(leftIcon, currentIcon, rightIcon);
+                                }
+
+                                if (currentIcon.GetComponent<Icon>().isColumnBomb)
+                                {
+                                    CurrentMatches.Union(GetColumnPieces(i));
+                                }
+
+                                if (leftIcon.GetComponent<Icon>().isColumnBomb)
+                                {
+                                    CurrentMatches.Union(GetColumnPieces(i - 1));
+                                }
+
+                                if (rightIcon.GetComponent<Icon>().isColumnBomb)
+                                {
+                                    CurrentMatches.Union(GetColumnPieces(i + 1));
+                                }
+
+
+
+                                // Upper Area Bomb
+
 
                                 // Maria Edit
+
+
+
+                                if (!CurrentMatches.Contains(leftIcon))
+                                {
+                                    CurrentMatches.Add(leftIcon);
+                                }
+                                leftIcon.GetComponent<Icon>().isMatched = true;
+                                if (!CurrentMatches.Contains(rightIcon))
+                                {
+                                    CurrentMatches.Add(rightIcon);
+                                }
+                                rightIcon.GetComponent<Icon>().isMatched = true;
+                                if (!CurrentMatches.Contains(currentIcon))
+                                {
+                                    CurrentMatches.Add(currentIcon);
+                                }
+                                currentIcon.GetComponent<Icon>().isMatched = true;
+
                             }
                         }
                     }
@@ -130,24 +103,60 @@ public class FindMatches : MonoBehaviour
                     if (j > 0 && j < board.height - 1)
                     {
                         GameObject upIcon = board.allIcons[i, j + 1];
-                        Icon upIconIcon = upIcon.GetComponent<Icon>();    
-
                         GameObject downIcon = board.allIcons[i, j - 1];
-                        Icon downIconIcon = downIcon.GetComponent<Icon>();
 
                     // Maria Edit 
                     if (upIcon != null && downIcon != null)
                     {
 
-                        CurrentMatches.Union(IsColumnBomb(upIconIcon, currentIconIcon, downIconIcon));
+                        if (currentIcon.GetComponent<Icon>().isColumnBomb
+                                || upIcon.GetComponent<Icon>().isColumnBomb
+                                || downIcon.GetComponent<Icon>().isColumnBomb)
+                        {
 
-                        CurrentMatches.Union(IsRowBomb(upIconIcon, currentIconIcon, downIconIcon));
+                            CurrentMatches.Union(GetColumnPieces(i));
 
-                        GetNearByPieces(upIcon, currentIcon, downIcon);
+                        }
+
+                        if (currentIcon.GetComponent<Icon>().isRowBomb)
+                        {
+                            CurrentMatches.Union(GetRowPieces(j));
+                        }
+
+                        if (upIcon.GetComponent<Icon>().isRowBomb)
+                        {
+                            CurrentMatches.Union(GetRowPieces(j + 1));
+                        }
+
+                        if (downIcon.GetComponent<Icon>().isRowBomb)
+                        {
+                            CurrentMatches.Union(GetRowPieces(j - 1));
+                        }
 
                         // Edit
 
-                        
+                        if (upIcon != null && downIcon != null)
+                        {
+                            if (upIcon.tag == currentIcon.tag && downIcon.tag == currentIcon.tag)
+                            {
+                                if (!CurrentMatches.Contains(upIcon))
+                                {
+                                    CurrentMatches.Add(upIcon);
+                                }
+                                upIcon.GetComponent<Icon>().isMatched = true;
+                                if (!CurrentMatches.Contains(downIcon))
+                                {
+                                    CurrentMatches.Add(downIcon);
+                                }
+                                downIcon.GetComponent<Icon>().isMatched = true;
+                                if (!CurrentMatches.Contains(currentIcon))
+                                {
+                                    CurrentMatches.Add(currentIcon);
+                                }
+                                currentIcon.GetComponent<Icon>().isMatched = true;
+
+                            }
+                        }
                     }
 
                 }
@@ -157,23 +166,53 @@ public class FindMatches : MonoBehaviour
 
     
 
-    List<GameObject> GetAreaBomb(int column, int row)
+    public void AreaBomb()
     {
-        List<GameObject> icons = new List<GameObject>();
-        for(int i = column - 1; i <= column + 1; i++)
+        for (int i = 0; i < board.width; i++)
         {
-            for(int j = row - 1; j <= row + 1; j++)
+            for(int j = 0; j < board.height; j++)
             {
-                //Check if the piece is inside the board
-                if(i >= 0 && i < board.width && j >= 0 && j < board.height)
+
+                if(board.allIcons[i, j] != null)
                 {
-                    icons.Add(board.allIcons[i, j]);
-                    board.allIcons[i, j].GetComponent<Icon>().isMatched = true;
+                    if (i > 0 && i < board.width - 1 && j < board.height - 1) // may have to change this 
+                    {
+                        GameObject upperLeft = board.allIcons[i - 1, j + 1]; //something wrong
+                        GameObject upperRight = board.allIcons[i + 1, j + 1]; //something wrong??
+
+                        if (upperLeft != null && upperRight != null)
+                        {
+                            if (upperLeft.tag == this.gameObject.tag && upperRight.tag == this.gameObject.tag)
+                            {
+                                upperLeft.GetComponent<Icon>().isMatched = true;
+                                upperRight.GetComponent<Icon>().isMatched = true;
+                                board.allIcons[i, j].GetComponent<Icon>().isMatched = true;
+                            }
+                        }
+
+                    }
+
+
+                    if (j > 0 && j < board.height - 1 && i < board.width - 1 & i > 0) // may have to change this
+                    {
+                        GameObject lowerLeft = board.allIcons[i - 1, j - 1]; //something wrong
+                        GameObject lowerRight = board.allIcons[i + 1, j - 1]; //something wrong
+
+                        if (lowerLeft.tag == this.gameObject.tag && lowerRight.tag == this.gameObject.tag)
+                        {
+                            lowerLeft.GetComponent<Icon>().isMatched = true;
+                            lowerRight.GetComponent<Icon>().isMatched = true;
+                            board.allIcons[i, j].GetComponent<Icon>().isMatched = true;
+                        }
+
+                    }
+
                 }
+
             }
+
         }
 
-        return icons;
     }
 
     
