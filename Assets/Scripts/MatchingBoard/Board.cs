@@ -149,7 +149,7 @@ public class Board : MonoBehaviour
     {
         if (allIcons[column, row].GetComponent<Icon>().isMatched)
         {
-            findMatches.CurrentMatches.Remove(allIcons[column, row]);
+            findMatches.CurrentMatches.Remove(allIcons[column, row]); // Maria Edit
             Destroy(allIcons[column, row]);
             if (!sliderChange.gameOver)
             {
