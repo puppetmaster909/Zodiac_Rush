@@ -603,6 +603,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1656847493728769291, guid: 33f4fb93396a25d4faac7b46ad536c0d,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4500862986484059378, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
       propertyPath: PauseScreen
@@ -891,7 +896,7 @@ PrefabInstance:
     - target: {fileID: 472513307709024216, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
       propertyPath: moveCounter
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 472513307709024216, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
@@ -1237,11 +1242,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Cat
-      objectReference: {fileID: 0}
-    - target: {fileID: 1656847493728769291, guid: 33f4fb93396a25d4faac7b46ad536c0d,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6058270218919769407, guid: 33f4fb93396a25d4faac7b46ad536c0d, type: 3}

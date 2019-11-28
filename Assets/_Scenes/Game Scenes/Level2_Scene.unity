@@ -930,7 +930,7 @@ PrefabInstance:
     - target: {fileID: 472513307709024216, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
       propertyPath: moveCounter
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2242333319256305931, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
@@ -1232,16 +1232,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: RestartLevel
       objectReference: {fileID: 0}
-    - target: {fileID: 1835729512660311242, guid: 33f4fb93396a25d4faac7b46ad536c0d,
-        type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 97d5411efbdce7b4989b11a049f7280c, type: 3}
-    - target: {fileID: 7026797113250770176, guid: 33f4fb93396a25d4faac7b46ad536c0d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6911994287085831844, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1252,17 +1242,27 @@ PrefabInstance:
       propertyPath: m_TagString
       value: HUD
       objectReference: {fileID: 0}
+    - target: {fileID: 8342682624906876479, guid: 33f4fb93396a25d4faac7b46ad536c0d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Grid
+      objectReference: {fileID: 0}
+    - target: {fileID: 1835729512660311242, guid: 33f4fb93396a25d4faac7b46ad536c0d,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 97d5411efbdce7b4989b11a049f7280c, type: 3}
+    - target: {fileID: 7026797113250770176, guid: 33f4fb93396a25d4faac7b46ad536c0d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1754830652233445318, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 21ca77f062fd5b040acf73dc24a529f6,
         type: 3}
-    - target: {fileID: 8342682624906876479, guid: 33f4fb93396a25d4faac7b46ad536c0d,
-        type: 3}
-      propertyPath: m_TagString
-      value: Grid
-      objectReference: {fileID: 0}
     - target: {fileID: 8664805384392478775, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
       propertyPath: m_Sprite

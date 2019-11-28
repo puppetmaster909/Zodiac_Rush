@@ -591,15 +591,15 @@ MonoBehaviour:
   - {fileID: 237248627}
   numOfLevels: 3
   LevelPassed: 
-  Level1_Star1: 600
-  Level1_Star2: 1000
-  Level1_Star3: 1500
-  Level2_Star1: 800
-  Level2_Star2: 1200
-  Level2_Star3: 2000
-  Level3_Star1: 1200
-  Level3_Star2: 2000
-  Level3_Star3: 3000
+  Level1_Star1: 800
+  Level1_Star2: 1200
+  Level1_Star3: 2000
+  Level2_Star1: 1200
+  Level2_Star2: 2500
+  Level2_Star3: 3500
+  Level3_Star1: 2500
+  Level3_Star2: 3750
+  Level3_Star3: 5000
 --- !u!1 &302896086
 GameObject:
   m_ObjectHideFlags: 0
