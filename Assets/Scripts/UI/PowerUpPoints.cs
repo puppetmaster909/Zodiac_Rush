@@ -25,9 +25,14 @@ public class PowerUpPoints : MonoBehaviour
 
     public void IncreasePoints(int amountToIncrease)
     {
-        if(points >= 0 && points < ratMaxReached || points < tigerReached || points < dragonReached)
+        if(points >= 0)
         {
             points += amountToIncrease;
+        }
+
+        if (points < 0)
+        {
+            points = 0;
         }
         
     }

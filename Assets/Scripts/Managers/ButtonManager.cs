@@ -60,14 +60,14 @@ public class ButtonManager : MonoBehaviour
             myButtons[1].interactable = false;
         }
 
-        if (powerUpPoints.points == powerUpPoints.ratMaxReached)
+        if (powerUpPoints.points >= powerUpPoints.ratMaxReached)
         {
             myButtons[2].interactable = true;
         }
-        else
-        {
-            myButtons[2].interactable = false;
-        }
+        //else
+        //{
+        //    myButtons[2].interactable = false;
+        //}
     }
 
     public void TigerButton()
@@ -77,8 +77,8 @@ public class ButtonManager : MonoBehaviour
             {
                 clickedTiger = true;
 
-                myButtons[1].interactable = false;
-                myButtons[2].interactable = false;
+                //myButtons[1].interactable = false;
+                //myButtons[2].interactable = false;
 
                 //powerUpPoints.points -= powerUpPoints.tigerReached;
 

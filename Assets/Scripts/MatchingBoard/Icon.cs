@@ -262,8 +262,7 @@ public class Icon : MonoBehaviour
                 powerUpPoints.points -= powerUpPoints.tigerReached;
 
                 buttonManager.clickedTiger = false;
-
-                //works for this one because FindMatches is in this script
+                
                 StartCoroutine(WaitandDestroy()); 
             }
 

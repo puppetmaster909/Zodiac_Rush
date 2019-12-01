@@ -159,7 +159,7 @@ public class Board : MonoBehaviour
             // Time Stamps: 16:24
             sliderChange.IncreaseScore(basePieceValue * streakValue);
 
-            powerUpPoints.IncreasePoints(pointsValue);
+            //powerUpPoints.IncreasePoints(pointsValue);
 
             allIcons[column, row] = null;
         }
@@ -190,25 +190,14 @@ public class Board : MonoBehaviour
             {
                 moveCounter--;
                 moveCounterText.text = moveCounter.ToString();
+                powerUpPoints.IncreasePoints(pointsValue);
                 playerMatch = false;
             }
             StartCoroutine(DecreaseRowCo2());
 
 
         }
-
-        if (powerUpPoints.GetPoints() <= powerUpPoints.ratMaxReached 
-            ||powerUpPoints.GetPoints() <= powerUpPoints.dragonReached
-            ||powerUpPoints.GetPoints() <= powerUpPoints.tigerReached)
-        {
-            if(pointsValue >= 0 && playerMatch)
-            {
-                powerUpPoints.IncreasePoints(pointsValue);
-                pointsValueText.text = pointsValue.ToString();
-                playerMatch = false;
-
-            }
-        }
+        
     }
     private IEnumerator DecreaseRowCo2()
     {
