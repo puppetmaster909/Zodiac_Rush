@@ -123,6 +123,10 @@ public class ScoreManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("Level2Complete", BoolToInt(true));
         }
+        if (PlayerPrefs.GetInt("HighScore:" + thisLevel.ToString()) >= Level3_Star3 && thisLevel == 3)
+        {
+            PlayerPrefs.SetInt("Level3Complete", BoolToInt(true));
+        }
     }
 
     private void CheckStars()
