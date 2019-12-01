@@ -33,10 +33,12 @@ public class ScoreManager : MonoBehaviour
 
     private SliderChange theScore;
     Board board;
+    ButtonManager buttonManager;
     private void Start()
     {
 
         board = FindObjectOfType<Board>();
+        buttonManager = FindObjectOfType<ButtonManager>();
 
         if (SceneManager.GetActiveScene().name == "LevelSelection_Scene")
         {
@@ -143,6 +145,10 @@ public class ScoreManager : MonoBehaviour
             TwoStars.SetActive(false);
             OneStar.SetActive(false);
             ZeroStars.SetActive(false);
+
+            buttonManager.myButtons[0].gameObject.SetActive(true);
+            buttonManager.myButtons[1].gameObject.SetActive(true);
+            buttonManager.myButtons[2].gameObject.SetActive(true);
 
 
             GameObject ThreeStars = GameObject.FindGameObjectWithTag("Level3_3Star");
