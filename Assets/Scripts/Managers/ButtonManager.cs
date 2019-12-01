@@ -42,7 +42,9 @@ public class ButtonManager : MonoBehaviour
 
         // Enable Buttons when certain points are made 
 
-        if (powerUpPoints.points >= powerUpPoints.tigerReached)
+        if (powerUpPoints.points >= powerUpPoints.tigerReached 
+            && clickedDragon != true
+            && clickedRat != true)
         {
             myButtons[0].interactable = true;
         }
@@ -51,7 +53,9 @@ public class ButtonManager : MonoBehaviour
             myButtons[0].interactable = false;
         }
 
-        if (powerUpPoints.points >= powerUpPoints.dragonReached)
+        if (powerUpPoints.points >= powerUpPoints.dragonReached
+            && clickedTiger != true
+            && clickedRat != true)
         {
             myButtons[1].interactable = true;
         }
@@ -60,14 +64,16 @@ public class ButtonManager : MonoBehaviour
             myButtons[1].interactable = false;
         }
 
-        if (powerUpPoints.points >= powerUpPoints.ratMaxReached)
+        if (powerUpPoints.points >= powerUpPoints.ratMaxReached
+            && clickedTiger != true
+            && clickedDragon != true)
         {
             myButtons[2].interactable = true;
         }
-        //else
-        //{
-        //    myButtons[2].interactable = false;
-        //}
+        else
+        {
+            myButtons[2].interactable = false;
+        }
     }
 
     public void TigerButton()

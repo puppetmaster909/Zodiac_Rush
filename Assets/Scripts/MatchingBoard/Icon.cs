@@ -256,9 +256,6 @@ public class Icon : MonoBehaviour
                 GameObject area = Instantiate(areaBomb, transform.position, Quaternion.identity);
                 area.transform.parent = this.transform;
 
-                buttonManager.myButtons[1].interactable = false;
-                buttonManager.myButtons[2].interactable = false;
-
                 powerUpPoints.points -= powerUpPoints.tigerReached;
 
                 buttonManager.clickedTiger = false;
@@ -277,9 +274,6 @@ public class Icon : MonoBehaviour
                 GameObject cBomb = Instantiate(columnBomb, transform.position, Quaternion.identity);
                 cBomb.transform.parent = this.transform;
 
-                buttonManager.myButtons[0].interactable = false;
-                buttonManager.myButtons[2].interactable = false;
-
                 powerUpPoints.points -= powerUpPoints.dragonReached;
 
                 buttonManager.clickedDragon = false;
@@ -292,9 +286,6 @@ public class Icon : MonoBehaviour
                 isColorBomb = true;
                 GameObject color = Instantiate(colorBomb, transform.position, Quaternion.identity);
                 color.transform.parent = this.transform;
-
-                buttonManager.myButtons[0].interactable = false;
-                buttonManager.myButtons[1].interactable = false;
 
                 powerUpPoints.points -= powerUpPoints.ratMaxReached;
 
