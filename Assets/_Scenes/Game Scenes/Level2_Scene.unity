@@ -466,11 +466,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
-    - target: {fileID: 5197105081193609673, guid: 3eac7b2c3582fa940969b1e6b8cbd7c3,
-        type: 3}
-      propertyPath: orthographic size
-      value: 7.5
-      objectReference: {fileID: 0}
     - target: {fileID: 5197105081193609672, guid: 3eac7b2c3582fa940969b1e6b8cbd7c3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -550,6 +545,11 @@ PrefabInstance:
         type: 3}
       propertyPath: cameraOffset
       value: -60
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197105081193609673, guid: 3eac7b2c3582fa940969b1e6b8cbd7c3,
+        type: 3}
+      propertyPath: orthographic size
+      value: 7.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3eac7b2c3582fa940969b1e6b8cbd7c3, type: 3}
@@ -1251,6 +1251,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_audioClip
       value: 
+      objectReference: {fileID: 8300000, guid: 240e3d218a4115047868bd66d7b02c7a, type: 3}
+    - target: {fileID: 5454252703991473542, guid: 33f4fb93396a25d4faac7b46ad536c0d,
+        type: 3}
+      propertyPath: MainMenuMusic
+      value: 
       objectReference: {fileID: 8300000, guid: 97d5411efbdce7b4989b11a049f7280c, type: 3}
     - target: {fileID: 7026797113250770176, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
@@ -1317,6 +1322,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 152b37726928c58479400efa2eabbee8,
         type: 3}
+    - target: {fileID: 6989166180047587658, guid: 33f4fb93396a25d4faac7b46ad536c0d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.4700012
+      objectReference: {fileID: 0}
+    - target: {fileID: 6989166180291088972, guid: 33f4fb93396a25d4faac7b46ad536c0d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 7.4974976
+      objectReference: {fileID: 0}
     - target: {fileID: 8146982222169401351, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
