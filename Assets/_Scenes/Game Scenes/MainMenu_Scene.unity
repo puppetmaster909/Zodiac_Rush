@@ -567,6 +567,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &783012508 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5240611075326050013, guid: ae9ad39993486b345bdc9479e79e1463,
+    type: 3}
+  m_PrefabInstance: {fileID: 1356603429}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 2109663825, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &818048155 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8103040230200901078, guid: d83498ea7cb38b744a09d1c57db75bdd,
@@ -1227,6 +1239,21 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1277420148781821356, guid: ae9ad39993486b345bdc9479e79e1463,
+        type: 3}
+      propertyPath: SFXmute
+      value: 
+      objectReference: {fileID: 783012508}
+    - target: {fileID: 5240611075326050013, guid: ae9ad39993486b345bdc9479e79e1463,
+        type: 3}
+      propertyPath: m_IsOn
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1929737453946560773, guid: ae9ad39993486b345bdc9479e79e1463,
+        type: 3}
+      propertyPath: m_IsOn
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae9ad39993486b345bdc9479e79e1463, type: 3}
 --- !u!1001 &1563503043
@@ -1236,16 +1263,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 937169026}
     m_Modifications:
-    - target: {fileID: 8103040230200901078, guid: d83498ea7cb38b744a09d1c57db75bdd,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 937169029}
-    - target: {fileID: 8103040230200901078, guid: d83498ea7cb38b744a09d1c57db75bdd,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Quit
-      objectReference: {fileID: 0}
     - target: {fileID: 7213363153012544034, guid: d83498ea7cb38b744a09d1c57db75bdd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1355,6 +1372,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ConfirmBackground
+      objectReference: {fileID: 0}
+    - target: {fileID: 8103040230200901078, guid: d83498ea7cb38b744a09d1c57db75bdd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 937169029}
+    - target: {fileID: 8103040230200901078, guid: d83498ea7cb38b744a09d1c57db75bdd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Quit
       objectReference: {fileID: 0}
     - target: {fileID: 6872937737947707197, guid: d83498ea7cb38b744a09d1c57db75bdd,
         type: 3}

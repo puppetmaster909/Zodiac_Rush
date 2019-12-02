@@ -6,10 +6,12 @@ using UnityEngine.UI;
 public class SettingsMenu : MonoBehaviour
 {
     #region MonoBehavior
-
+    public Toggle BGMmute;
+    public Toggle SFXmute;
     // Start is called before the first frame update
     void Start()
     {
+
         AudioManager.main.Mixer.SetFloat("BGMVol", PlayerPrefs.GetFloat("BGMVol"));
         AudioManager.main.Mixer.SetFloat("SFXVol", PlayerPrefs.GetFloat("SFXVol"));
     }
@@ -43,5 +45,32 @@ public class SettingsMenu : MonoBehaviour
         PlayerPrefs.SetFloat("SFXVol", SFX.value);
     }
 
+    public void muteBGM()
+    {
+        bool muted = BGMmute.GetComponent<Toggle>().isOn;
+
+        if(muted)
+        {
+            BGM.value = -45;
+        }
+        else
+        {
+            BGM.value = -15 ;
+        }
+    }
+
+    public void muteSFX()
+    {
+        bool muted = SFXmute.GetComponent<Toggle>().isOn;
+
+        if (muted)
+        {
+            SFX.value = -45;
+        }
+        else
+        {
+            SFX.value = -15;
+        }
+    }
     #endregion
 }
