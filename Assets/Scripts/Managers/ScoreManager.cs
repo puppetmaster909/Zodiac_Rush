@@ -33,10 +33,12 @@ public class ScoreManager : MonoBehaviour
 
     private SliderChange theScore;
     Board board;
+    ButtonManager buttonManager;
     private void Start()
     {
 
         board = FindObjectOfType<Board>();
+        buttonManager = FindObjectOfType<ButtonManager>();
 
         if (SceneManager.GetActiveScene().name == "LevelSelection_Scene")
         {
@@ -126,6 +128,9 @@ public class ScoreManager : MonoBehaviour
         if (PlayerPrefs.GetInt("HighScore:" + thisLevel.ToString()) >= Level3_Star3 && thisLevel == 3)
         {
             PlayerPrefs.SetInt("Level3Complete", BoolToInt(true));
+            buttonManager.myButtons[0].gameObject.SetActive(true);
+            buttonManager.myButtons[1].gameObject.SetActive(true);
+            buttonManager.myButtons[2].gameObject.SetActive(true);
         }
     }
 
