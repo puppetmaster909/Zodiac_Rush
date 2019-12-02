@@ -8,28 +8,30 @@ public class SettingsMenu : MonoBehaviour
     #region MonoBehavior
     public Toggle BGMmute;
     public Toggle SFXmute;
-    public Slider BGMslider;
-    public Slider SFXslider;
 
+    
+    #region Runtime Members
+    private float previousBGMVol, previousSFXVol;
+    public Slider BGM;
+    public Slider SFX;
+
+    #endregion
     // Start is called before the first frame update
     void Start()
     {
-
-        AudioManager.main.Mixer.SetFloat("BGMVol", PlayerPrefs.GetFloat("BGMVol"));
-        AudioManager.main.Mixer.SetFloat("SFXVol", PlayerPrefs.GetFloat("SFXVol"));
-        SFXslider.value = PlayerPrefs.GetFloat("SFXVol");
-        BGMslider.value = PlayerPrefs.GetFloat("BGMvol");
+        previousBGMVol = PlayerPrefs.GetFloat("BGMVol");
+        previousSFXVol = PlayerPrefs.GetFloat("SFXVol");
+        //AudioManager.main.Mixer.SetFloat("BGMVol", PlayerPrefs.GetFloat("BGMVol"));
+        //AudioManager.main.Mixer.SetFloat("SFXVol", PlayerPrefs.GetFloat("SFXVol"));
+        
+        SFX.value = PlayerPrefs.GetFloat("SFXVol");
+        BGM.value = PlayerPrefs.GetFloat("BGMVol");
 
     }
 
     #endregion
 
-    #region Runtime Members
-
-    public Slider BGM;
-    public Slider SFX;
-
-    #endregion
+    
 
     #region Public Methods
 
@@ -53,29 +55,29 @@ public class SettingsMenu : MonoBehaviour
 
     public void muteBGM()
     {
-        bool muted = BGMmute.GetComponent<Toggle>().isOn;
+        bool BGMmuted = BGMmute.GetComponent<Toggle>().isOn;
 
-        if(muted)
+        if(BGMmuted)
         {
             BGM.value = -45;
         }
         else
         {
-            BGM.value = SFX.value = PlayerPrefs.GetFloat("BGMVol");
+            BGM.value = previousBGMVol;
         }
     }
 
     public void muteSFX()
     {
-        bool muted = SFXmute.GetComponent<Toggle>().isOn;
+        bool SFXmuted = SFXmute.GetComponent<Toggle>().isOn;
 
-        if (muted)
+        if (SFXmuted)
         {
             SFX.value = -45;
         }
         else
         {
-            SFX.value = PlayerPrefs.GetFloat("SFXVol");
+            SFX.value = previousSFXVol;
         }
     }
     #endregion
