@@ -61,7 +61,7 @@ public class SettingsMenu : MonoBehaviour
         }
         else
         {
-            BGM.value = -15 ;
+            BGM.value = SFX.value = PlayerPrefs.GetFloat("BGMVol");
         }
     }
 
@@ -75,7 +75,7 @@ public class SettingsMenu : MonoBehaviour
         }
         else
         {
-            SFX.value = -15;
+            SFX.value = PlayerPrefs.GetFloat("SFXVol");
         }
     }
     #endregion
