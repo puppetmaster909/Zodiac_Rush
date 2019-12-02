@@ -7,13 +7,14 @@ using System.Linq; // Maria Edit
 public class FindMatches : MonoBehaviour
 {
     private Board board;
+    private SliderChange slide;
     public List<GameObject> CurrentMatches = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
     {
         board = FindObjectOfType<Board>();
-
+        slide = FindObjectOfType<SliderChange>();
     }
 
     public void FindAllMatches()
@@ -107,119 +108,120 @@ public class FindMatches : MonoBehaviour
 
     private IEnumerator FindAllMatchesCo()
     {
-
-        // I changed the WaitForSeconds here Original: .2f
-        yield return new WaitForSeconds(.2f);
-
-        for (int i = 0; i < board.width; i++)
+        if (!slide.gameOver)
         {
-            for (int j = 0; j < board.height; j++)
+            // I changed the WaitForSeconds here Original: .2f
+            yield return new WaitForSeconds(.2f);
+
+            for (int i = 0; i < board.width; i++)
             {
-                GameObject currentIcon = board.allIcons[i, j];
-                Icon currentIconIcon = currentIcon.GetComponent<Icon>(); //Edit
-
-                if (currentIcon != null)
+                for (int j = 0; j < board.height; j++)
                 {
-                    if (i > 0 && i < board.width - 1)
+                    GameObject currentIcon = board.allIcons[i, j];
+                    Icon currentIconIcon = currentIcon.GetComponent<Icon>(); //Edit
+
+                    if (currentIcon != null)
                     {
-                        GameObject leftIcon = board.allIcons[i - 1, j];
-                        Icon leftIconIcon = leftIcon.GetComponent<Icon>(); //Edit
-
-                        GameObject rightIcon = board.allIcons[i + 1, j];
-                        Icon rightIconIcon = rightIcon.GetComponent<Icon>(); //Edit
-
-                        // Maria Edit
-                        if (leftIcon != null && rightIcon != null)
+                        if (i > 0 && i < board.width - 1)
                         {
-                            if (leftIcon.tag == currentIcon.tag && rightIcon.tag == currentIcon.tag)
+                            GameObject leftIcon = board.allIcons[i - 1, j];
+                            Icon leftIconIcon = leftIcon.GetComponent<Icon>(); //Edit
+
+                            GameObject rightIcon = board.allIcons[i + 1, j];
+                            Icon rightIconIcon = rightIcon.GetComponent<Icon>(); //Edit
+
+                            // Maria Edit
+                            if (leftIcon != null && rightIcon != null)
                             {
-
-                                //CurrentMatches.Union(IsRowBomb(leftIconIcon, currentIconIcon, rightIconIcon));
-                                /*
-                                 * ^
-                                 * ^
-                                 * ^
-                                 * delete later
-                                // Maria Edit
-                                if (currentIcon.GetComponent<Icon>().isRowBomb
-                                || leftIcon.GetComponent<Icon>().isRowBomb
-                                || rightIcon.GetComponent<Icon>().isRowBomb)
+                                if (leftIcon.tag == currentIcon.tag && rightIcon.tag == currentIcon.tag)
                                 {
 
-                                    CurrentMatches.Union(GetRowPieces(j));
+                                    //CurrentMatches.Union(IsRowBomb(leftIconIcon, currentIconIcon, rightIconIcon));
+                                    /*
+                                     * ^
+                                     * ^
+                                     * ^
+                                     * delete later
+                                    // Maria Edit
+                                    if (currentIcon.GetComponent<Icon>().isRowBomb
+                                    || leftIcon.GetComponent<Icon>().isRowBomb
+                                    || rightIcon.GetComponent<Icon>().isRowBomb)
+                                    {
+
+                                        CurrentMatches.Union(GetRowPieces(j));
+
+                                    }
+                                    */
+
+                                    //CurrentMatches.Union(IsColumnBomb(leftIconIcon, currentIconIcon, rightIconIcon));
+                                    /*
+                                     * ^
+                                     * ^
+                                     * ^
+                                     * delete later
+                                    if (currentIcon.GetComponent<Icon>().isColumnBomb)
+                                    {
+                                        CurrentMatches.Union(GetColumnPieces(i));
+                                    }
+
+                                    if (leftIcon.GetComponent<Icon>().isColumnBomb)
+                                    {
+                                        CurrentMatches.Union(GetColumnPieces(i - 1));
+                                    }
+
+                                    if (rightIcon.GetComponent<Icon>().isColumnBomb)
+                                    {
+                                        CurrentMatches.Union(GetColumnPieces(i + 1));
+                                    }
+                                    */
+
+
+                                    // Upper Area Bomb
+
+                                    //CurrentMatches.Union(IsAreaBomb(leftIconIcon, currentIconIcon, rightIconIcon));
+
+                                    // Maria Edit
+
+                                    GetNearbyPieces(leftIcon, currentIcon, rightIcon);
+
+                                    /*
+                                     * ^
+                                     * ^
+                                     * ^
+                                     * delete later
+                                    if (!CurrentMatches.Contains(leftIcon))
+                                    {
+                                        CurrentMatches.Add(leftIcon);
+                                    }
+                                    leftIcon.GetComponent<Icon>().isMatched = true;
+                                    if (!CurrentMatches.Contains(rightIcon))
+                                    {
+                                        CurrentMatches.Add(rightIcon);
+                                    }
+                                    rightIcon.GetComponent<Icon>().isMatched = true;
+                                    if (!CurrentMatches.Contains(currentIcon))
+                                    {
+                                        CurrentMatches.Add(currentIcon);
+                                    }
+                                    currentIcon.GetComponent<Icon>().isMatched = true;
+
+                                    */
 
                                 }
-                                */
 
-                                //CurrentMatches.Union(IsColumnBomb(leftIconIcon, currentIconIcon, rightIconIcon));
-                                /*
-                                 * ^
-                                 * ^
-                                 * ^
-                                 * delete later
-                                if (currentIcon.GetComponent<Icon>().isColumnBomb)
-                                {
-                                    CurrentMatches.Union(GetColumnPieces(i));
-                                }
+                                //test
 
-                                if (leftIcon.GetComponent<Icon>().isColumnBomb)
-                                {
-                                    CurrentMatches.Union(GetColumnPieces(i - 1));
-                                }
+                                CurrentMatches.Union(IsRowBomb(leftIconIcon, currentIconIcon, rightIconIcon));
+                                CurrentMatches.Union(IsColumnBomb(leftIconIcon, currentIconIcon, rightIconIcon));
+                                CurrentMatches.Union(IsAreaBomb(leftIconIcon, currentIconIcon, rightIconIcon));
 
-                                if (rightIcon.GetComponent<Icon>().isColumnBomb)
-                                {
-                                    CurrentMatches.Union(GetColumnPieces(i + 1));
-                                }
-                                */
+                                //test
 
 
-                                // Upper Area Bomb
-
-                                //CurrentMatches.Union(IsAreaBomb(leftIconIcon, currentIconIcon, rightIconIcon));
-
-                                // Maria Edit
-
-                                GetNearbyPieces(leftIcon, currentIcon, rightIcon);
-
-                                /*
-                                 * ^
-                                 * ^
-                                 * ^
-                                 * delete later
-                                if (!CurrentMatches.Contains(leftIcon))
-                                {
-                                    CurrentMatches.Add(leftIcon);
-                                }
-                                leftIcon.GetComponent<Icon>().isMatched = true;
-                                if (!CurrentMatches.Contains(rightIcon))
-                                {
-                                    CurrentMatches.Add(rightIcon);
-                                }
-                                rightIcon.GetComponent<Icon>().isMatched = true;
-                                if (!CurrentMatches.Contains(currentIcon))
-                                {
-                                    CurrentMatches.Add(currentIcon);
-                                }
-                                currentIcon.GetComponent<Icon>().isMatched = true;
-
-                                */
 
                             }
-
-                            //test
-
-                            CurrentMatches.Union(IsRowBomb(leftIconIcon, currentIconIcon, rightIconIcon));
-                            CurrentMatches.Union(IsColumnBomb(leftIconIcon, currentIconIcon, rightIconIcon));
-                            CurrentMatches.Union(IsAreaBomb(leftIconIcon, currentIconIcon, rightIconIcon));
-
-                            //test
-
-
-
                         }
                     }
-                }
                     if (j > 0 && j < board.height - 1)
                     {
                         GameObject upIcon = board.allIcons[i, j + 1];
@@ -228,92 +230,93 @@ public class FindMatches : MonoBehaviour
                         GameObject downIcon = board.allIcons[i, j - 1];
                         Icon downIconIcon = downIcon.GetComponent<Icon>(); //Edit
 
-                    // Maria Edit 
-                    if (upIcon != null && downIcon != null)
-                    {
-             
+                        // Maria Edit 
                         if (upIcon != null && downIcon != null)
                         {
-                            if (upIcon.tag == currentIcon.tag && downIcon.tag == currentIcon.tag)
+
+                            if (upIcon != null && downIcon != null)
                             {
-
-
-                                //CurrentMatches.Union(IsColumnBomb(upIconIcon, currentIconIcon, downIconIcon));
-                                /*
-                                 * ^
-                                 * ^
-                                 * ^
-                                 * delete later
-                                if (currentIcon.GetComponent<Icon>().isColumnBomb
-                               || upIcon.GetComponent<Icon>().isColumnBomb
-                               || downIcon.GetComponent<Icon>().isColumnBomb)
+                                if (upIcon.tag == currentIcon.tag && downIcon.tag == currentIcon.tag)
                                 {
 
-                                    CurrentMatches.Union(GetColumnPieces(i));
 
-                                }
-                                */
+                                    //CurrentMatches.Union(IsColumnBomb(upIconIcon, currentIconIcon, downIconIcon));
+                                    /*
+                                     * ^
+                                     * ^
+                                     * ^
+                                     * delete later
+                                    if (currentIcon.GetComponent<Icon>().isColumnBomb
+                                   || upIcon.GetComponent<Icon>().isColumnBomb
+                                   || downIcon.GetComponent<Icon>().isColumnBomb)
+                                    {
 
-                                //CurrentMatches.Union(IsRowBomb(upIconIcon, currentIconIcon, downIconIcon));
-                                /*
-                                 * ^
-                                 * ^
-                                 * ^
-                                 * delete later
-                                if (currentIcon.GetComponent<Icon>().isRowBomb)
-                                {
-                                    CurrentMatches.Union(GetRowPieces(j));
-                                }
+                                        CurrentMatches.Union(GetColumnPieces(i));
 
-                                if (upIcon.GetComponent<Icon>().isRowBomb)
-                                {
-                                    CurrentMatches.Union(GetRowPieces(j + 1));
-                                }
+                                    }
+                                    */
 
-                                if (downIcon.GetComponent<Icon>().isRowBomb)
-                                {
-                                    CurrentMatches.Union(GetRowPieces(j - 1));
-                                }
-                                */
+                                    //CurrentMatches.Union(IsRowBomb(upIconIcon, currentIconIcon, downIconIcon));
+                                    /*
+                                     * ^
+                                     * ^
+                                     * ^
+                                     * delete later
+                                    if (currentIcon.GetComponent<Icon>().isRowBomb)
+                                    {
+                                        CurrentMatches.Union(GetRowPieces(j));
+                                    }
 
-                                //CurrentMatches.Union(IsAreaBomb(upIconIcon, currentIconIcon, downIconIcon));
+                                    if (upIcon.GetComponent<Icon>().isRowBomb)
+                                    {
+                                        CurrentMatches.Union(GetRowPieces(j + 1));
+                                    }
 
-                                // Edit
+                                    if (downIcon.GetComponent<Icon>().isRowBomb)
+                                    {
+                                        CurrentMatches.Union(GetRowPieces(j - 1));
+                                    }
+                                    */
 
-                                GetNearbyPieces(upIcon, currentIcon, downIcon);
-                                /*
-                                 * ^
-                                 * ^
-                                 * ^
-                                 * delete later
-                                if (!CurrentMatches.Contains(upIcon))
-                                {
-                                    CurrentMatches.Add(upIcon);
+                                    //CurrentMatches.Union(IsAreaBomb(upIconIcon, currentIconIcon, downIconIcon));
+
+                                    // Edit
+
+                                    GetNearbyPieces(upIcon, currentIcon, downIcon);
+                                    /*
+                                     * ^
+                                     * ^
+                                     * ^
+                                     * delete later
+                                    if (!CurrentMatches.Contains(upIcon))
+                                    {
+                                        CurrentMatches.Add(upIcon);
+                                    }
+                                    upIcon.GetComponent<Icon>().isMatched = true;
+                                    if (!CurrentMatches.Contains(downIcon))
+                                    {
+                                        CurrentMatches.Add(downIcon);
+                                    }
+                                    downIcon.GetComponent<Icon>().isMatched = true;
+                                    if (!CurrentMatches.Contains(currentIcon))
+                                    {
+                                        CurrentMatches.Add(currentIcon);
+                                    }
+                                    currentIcon.GetComponent<Icon>().isMatched = true;
+                                    */
                                 }
-                                upIcon.GetComponent<Icon>().isMatched = true;
-                                if (!CurrentMatches.Contains(downIcon))
-                                {
-                                    CurrentMatches.Add(downIcon);
-                                }
-                                downIcon.GetComponent<Icon>().isMatched = true;
-                                if (!CurrentMatches.Contains(currentIcon))
-                                {
-                                    CurrentMatches.Add(currentIcon);
-                                }
-                                currentIcon.GetComponent<Icon>().isMatched = true;
-                                */
                             }
+
+                            //test
+                            CurrentMatches.Union(IsColumnBomb(upIconIcon, currentIconIcon, downIconIcon));
+                            CurrentMatches.Union(IsRowBomb(upIconIcon, currentIconIcon, downIconIcon));
+                            CurrentMatches.Union(IsAreaBomb(upIconIcon, currentIconIcon, downIconIcon));
+                            //test
+
+
                         }
 
-                        //test
-                        CurrentMatches.Union(IsColumnBomb(upIconIcon, currentIconIcon, downIconIcon));
-                        CurrentMatches.Union(IsRowBomb(upIconIcon, currentIconIcon, downIconIcon));
-                        CurrentMatches.Union(IsAreaBomb(upIconIcon, currentIconIcon, downIconIcon));
-                        //test
-
-
                     }
-
                 }
             }
         }

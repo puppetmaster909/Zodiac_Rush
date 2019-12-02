@@ -347,15 +347,15 @@ MonoBehaviour:
   - {fileID: 1267687456}
   numOfLevels: 3
   LevelPassed: 
-  Level1_Star1: 600
-  Level1_Star2: 1000
-  Level1_Star3: 1500
-  Level2_Star1: 800
-  Level2_Star2: 1200
-  Level2_Star3: 2000
-  Level3_Star1: 1200
-  Level3_Star2: 2000
-  Level3_Star3: 3000
+  Level1_Star1: 800
+  Level1_Star2: 1200
+  Level1_Star3: 2000
+  Level2_Star1: 1200
+  Level2_Star2: 2500
+  Level2_Star3: 3500
+  Level3_Star1: 2500
+  Level3_Star2: 3750
+  Level3_Star3: 5000
 --- !u!1001 &1240331354
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -522,6 +522,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1656847493728769291, guid: 33f4fb93396a25d4faac7b46ad536c0d,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4500862986484059378, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
@@ -1137,11 +1142,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 7.4974976
-      objectReference: {fileID: 0}
-    - target: {fileID: 1656847493728769291, guid: 33f4fb93396a25d4faac7b46ad536c0d,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1448834574357180336, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}

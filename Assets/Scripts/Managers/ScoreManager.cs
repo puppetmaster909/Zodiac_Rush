@@ -17,19 +17,19 @@ public class ScoreManager : MonoBehaviour
     public bool[] LevelPassed;
 
     [Header("Level 1 Star Requirements")]
-    public int Level1_Star1 = 600;
-    public int Level1_Star2 = 1000;
-    public int Level1_Star3 = 1500;
+    public int Level1_Star1 = 800;
+    public int Level1_Star2 = 1200;
+    public int Level1_Star3 = 2000;
 
     [Header("Level 2 Star Requirements")]
-    public int Level2_Star1 = 800;
-    public int Level2_Star2 = 1200;
-    public int Level2_Star3 = 2000;
+    public int Level2_Star1 = 1200;
+    public int Level2_Star2 = 2500;
+    public int Level2_Star3 = 3500;
 
     [Header("Level 3 Star Requirements")]
-    public int Level3_Star1 = 1200;
-    public int Level3_Star2 = 2000;
-    public int Level3_Star3 = 3000;
+    public int Level3_Star1 = 2500;
+    public int Level3_Star2 = 3750;
+    public int Level3_Star3 = 5000;
 
     private SliderChange theScore;
     Board board;

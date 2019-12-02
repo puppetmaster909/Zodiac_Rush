@@ -74,12 +74,12 @@ public class SliderChange : MonoBehaviour
     {
     int width = theBoard.width;
     int height = theBoard.height;
-
-        if (currentScore<maxScore && theBoard.moveCounter <= 0)
+        yield return new WaitForSeconds(0.3f);
+        if (currentScore < maxScore && theBoard.moveCounter <= 0)
         {
-            yield return new WaitForSeconds(0.1f);
+            
             theBoard.currentState = GameState.wait;
-            Time.timeScale = 0;
+            //Time.timeScale = 0;
             for (int i = 0; i<width; i++)
             {
                 for (int j = 0; j<height; j++)
@@ -87,6 +87,7 @@ public class SliderChange : MonoBehaviour
                     //Destory the board and current Hint Particle
                     Destroy(theBoard.allIcons[j, i]);
                     Hint.DestroyHint();
+                    yield return new WaitForSeconds(0.030f);
                 }
             }
             //Change Values on TryAgain Screen
@@ -116,8 +117,10 @@ public class SliderChange : MonoBehaviour
                     //Destory the board and current Hint Particle
                     Destroy(theBoard.allIcons[j, i]);
                     Hint.DestroyHint();
+                    yield return new WaitForSeconds(0.030f);
                 }
             }
+            
             Debug.Log("Level Complete!");
 
             gameOver = true;
@@ -136,6 +139,8 @@ public class SliderChange : MonoBehaviour
         GameObject HUD = GameObject.FindGameObjectWithTag("HUD");
         GameObject Grid = GameObject.FindGameObjectWithTag("Grid");
         GameObject Cat = GameObject.FindGameObjectWithTag("Cat");
+        Hint.DestroyHint();
+        yield return new WaitForSeconds(1.0f);
         Cat.SetActive(false);
         HUD.SetActive(false);
         Grid.SetActive(false);

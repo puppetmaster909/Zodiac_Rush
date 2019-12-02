@@ -300,7 +300,7 @@ public class Board : MonoBehaviour
     private IEnumerator FillBoardCo()
     {
         RefillBoard();
-        yield return new WaitForSeconds(.3f);
+        yield return new WaitForSeconds(0.3f);
 
         while (MatchesOnBoard())
         {
@@ -308,11 +308,12 @@ public class Board : MonoBehaviour
             // Time Stamps: 15:39
             streakValue++;
 
-            yield return new WaitForSeconds(.1f);
+            yield return new WaitForSeconds(0.1f);
             DestroyMatches();
         }
         findMatches.CurrentMatches.Clear();
 
+        yield return new WaitForSeconds(0.5f);
         if (IsDeadlocked() && !sliderChange.gameOver)
         {
             StartCoroutine(ShuffleBoard());

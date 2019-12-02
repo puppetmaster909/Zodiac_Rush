@@ -371,15 +371,15 @@ MonoBehaviour:
   - {fileID: 1267687456}
   numOfLevels: 3
   LevelPassed: 
-  Level1_Star1: 600
-  Level1_Star2: 1000
-  Level1_Star3: 1500
-  Level2_Star1: 800
-  Level2_Star2: 1200
-  Level2_Star3: 2000
-  Level3_Star1: 1200
-  Level3_Star2: 2000
-  Level3_Star3: 3000
+  Level1_Star1: 800
+  Level1_Star2: 1200
+  Level1_Star3: 2000
+  Level2_Star1: 1200
+  Level2_Star2: 2500
+  Level2_Star3: 3500
+  Level3_Star1: 2500
+  Level3_Star2: 3750
+  Level3_Star3: 5000
 --- !u!1001 &1240331354
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -546,11 +546,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7026797113250770176, guid: 33f4fb93396a25d4faac7b46ad536c0d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4500862986484059378, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
@@ -1172,6 +1167,16 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Grid
       objectReference: {fileID: 0}
+    - target: {fileID: 6989166180047587658, guid: 33f4fb93396a25d4faac7b46ad536c0d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.4700012
+      objectReference: {fileID: 0}
+    - target: {fileID: 6989166180291088972, guid: 33f4fb93396a25d4faac7b46ad536c0d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 7.4974976
+      objectReference: {fileID: 0}
     - target: {fileID: 1835729512660311242, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
       propertyPath: m_audioClip
@@ -1182,6 +1187,11 @@ PrefabInstance:
       propertyPath: MainMenuMusic
       value: 
       objectReference: {fileID: 8300000, guid: 97d5411efbdce7b4989b11a049f7280c, type: 3}
+    - target: {fileID: 7026797113250770176, guid: 33f4fb93396a25d4faac7b46ad536c0d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1754830652233445318, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
       propertyPath: m_Sprite
@@ -1242,16 +1252,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 152b37726928c58479400efa2eabbee8,
         type: 3}
-    - target: {fileID: 6989166180047587658, guid: 33f4fb93396a25d4faac7b46ad536c0d,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 1.4700012
-      objectReference: {fileID: 0}
-    - target: {fileID: 6989166180291088972, guid: 33f4fb93396a25d4faac7b46ad536c0d,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 7.4974976
-      objectReference: {fileID: 0}
     - target: {fileID: 8146982222169401351, guid: 33f4fb93396a25d4faac7b46ad536c0d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
