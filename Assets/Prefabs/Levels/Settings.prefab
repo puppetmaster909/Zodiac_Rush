@@ -306,7 +306,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BGMmute: {fileID: 1929737453946560773}
-  SFXmute: {fileID: 0}
+  SFXmute: {fileID: 5240611075326050013}
+  BGMslider: {fileID: 1587737968203794192}
+  SFXslider: {fileID: 1587737968865262309}
   BGM: {fileID: 1587737968203794192}
   SFX: {fileID: 1587737968865262309}
 --- !u!1 &1313650546949947530

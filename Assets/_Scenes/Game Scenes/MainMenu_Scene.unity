@@ -748,6 +748,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1004099053}
   m_CullTransparentMesh: 0
+--- !u!114 &1050304848 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1587737968203794192, guid: ae9ad39993486b345bdc9479e79e1463,
+    type: 3}
+  m_PrefabInstance: {fileID: 1356603429}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -113659843, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1059797636
 GameObject:
   m_ObjectHideFlags: 0
@@ -1244,6 +1256,16 @@ PrefabInstance:
       propertyPath: SFXmute
       value: 
       objectReference: {fileID: 783012508}
+    - target: {fileID: 1277420148781821356, guid: ae9ad39993486b345bdc9479e79e1463,
+        type: 3}
+      propertyPath: SFXslider
+      value: 
+      objectReference: {fileID: 1863172727}
+    - target: {fileID: 1277420148781821356, guid: ae9ad39993486b345bdc9479e79e1463,
+        type: 3}
+      propertyPath: BGMslider
+      value: 
+      objectReference: {fileID: 1050304848}
     - target: {fileID: 5240611075326050013, guid: ae9ad39993486b345bdc9479e79e1463,
         type: 3}
       propertyPath: m_IsOn
@@ -1677,6 +1699,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1771485618}
   m_CullTransparentMesh: 0
+--- !u!114 &1863172727 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1587737968865262309, guid: ae9ad39993486b345bdc9479e79e1463,
+    type: 3}
+  m_PrefabInstance: {fileID: 1356603429}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -113659843, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1883348652 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1277420148781821357, guid: ae9ad39993486b345bdc9479e79e1463,

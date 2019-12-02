@@ -35,7 +35,7 @@ public class UIManager : MonoBehaviour
 
     private Board board;
     private SliderChange sliderChange;
-
+    private HintManager hint;
     #endregion
 
     #region MonoBehavior
@@ -61,6 +61,7 @@ public class UIManager : MonoBehaviour
     {
         board = FindObjectOfType<Board>();
         sliderChange = FindObjectOfType<SliderChange>();
+        hint = FindObjectOfType<HintManager>();
         int i = 0;
         foreach (Screen s in Screens)
         {
@@ -140,6 +141,7 @@ public class UIManager : MonoBehaviour
     // Pauses game for menu that requires it
     public void PauseGame()
     {
+        hint.DestroyHint();
         AudioManager.main.PlaySingle(Confirm);
         Debug.Log("Game Paused");
         Time.timeScale = 0;
