@@ -8,12 +8,18 @@ public class SettingsMenu : MonoBehaviour
     #region MonoBehavior
     public Toggle BGMmute;
     public Toggle SFXmute;
+    public Slider BGMslider;
+    public Slider SFXslider;
+
     // Start is called before the first frame update
     void Start()
     {
 
         AudioManager.main.Mixer.SetFloat("BGMVol", PlayerPrefs.GetFloat("BGMVol"));
         AudioManager.main.Mixer.SetFloat("SFXVol", PlayerPrefs.GetFloat("SFXVol"));
+        SFXslider.value = PlayerPrefs.GetFloat("SFXVol");
+        BGMslider.value = PlayerPrefs.GetFloat("BGMvol");
+
     }
 
     #endregion
