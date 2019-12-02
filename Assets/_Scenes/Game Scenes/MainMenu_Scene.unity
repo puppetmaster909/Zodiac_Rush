@@ -481,7 +481,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -7061155727883385852, guid: 6469a1c388c653247ae73fbd912dd96c,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 97d5411efbdce7b4989b11a049f7280c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b55e4d1651a2f6a4591777ef6e07f8e2, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -645,7 +645,7 @@ MonoBehaviour:
   Mixer: {fileID: 24100000, guid: 6469a1c388c653247ae73fbd912dd96c, type: 2}
   FxSource: {fileID: 1059797640}
   MusicSource: {fileID: 412034323}
-  MainMenuMusic: {fileID: 8300000, guid: 97d5411efbdce7b4989b11a049f7280c, type: 3}
+  MainMenuMusic: {fileID: 8300000, guid: b55e4d1651a2f6a4591777ef6e07f8e2, type: 3}
   Level1Music: {fileID: 8300000, guid: 240e3d218a4115047868bd66d7b02c7a, type: 3}
 --- !u!114 &937169028
 MonoBehaviour:
@@ -1266,12 +1266,12 @@ PrefabInstance:
       propertyPath: BGMslider
       value: 
       objectReference: {fileID: 1050304848}
-    - target: {fileID: 5240611075326050013, guid: ae9ad39993486b345bdc9479e79e1463,
+    - target: {fileID: 1929737453946560773, guid: ae9ad39993486b345bdc9479e79e1463,
         type: 3}
       propertyPath: m_IsOn
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1929737453946560773, guid: ae9ad39993486b345bdc9479e79e1463,
+    - target: {fileID: 5240611075326050013, guid: ae9ad39993486b345bdc9479e79e1463,
         type: 3}
       propertyPath: m_IsOn
       value: 0
@@ -1285,6 +1285,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 937169026}
     m_Modifications:
+    - target: {fileID: 8103040230200901078, guid: d83498ea7cb38b744a09d1c57db75bdd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 937169029}
+    - target: {fileID: 8103040230200901078, guid: d83498ea7cb38b744a09d1c57db75bdd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Quit
+      objectReference: {fileID: 0}
     - target: {fileID: 7213363153012544034, guid: d83498ea7cb38b744a09d1c57db75bdd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1394,16 +1404,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ConfirmBackground
-      objectReference: {fileID: 0}
-    - target: {fileID: 8103040230200901078, guid: d83498ea7cb38b744a09d1c57db75bdd,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 937169029}
-    - target: {fileID: 8103040230200901078, guid: d83498ea7cb38b744a09d1c57db75bdd,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Quit
       objectReference: {fileID: 0}
     - target: {fileID: 6872937737947707197, guid: d83498ea7cb38b744a09d1c57db75bdd,
         type: 3}
