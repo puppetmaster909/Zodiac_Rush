@@ -8,12 +8,18 @@ public class SettingsMenu : MonoBehaviour
     #region MonoBehavior
     public Toggle BGMmute;
     public Toggle SFXmute;
+    public Slider BGMslider;
+    public Slider SFXslider;
+
     // Start is called before the first frame update
     void Start()
     {
 
         AudioManager.main.Mixer.SetFloat("BGMVol", PlayerPrefs.GetFloat("BGMVol"));
         AudioManager.main.Mixer.SetFloat("SFXVol", PlayerPrefs.GetFloat("SFXVol"));
+        SFXslider.value = PlayerPrefs.GetFloat("SFXVol");
+        BGMslider.value = PlayerPrefs.GetFloat("BGMvol");
+
     }
 
     #endregion
@@ -55,7 +61,7 @@ public class SettingsMenu : MonoBehaviour
         }
         else
         {
-            BGM.value = -15 ;
+            BGM.value = SFX.value = PlayerPrefs.GetFloat("BGMVol");
         }
     }
 
@@ -69,7 +75,7 @@ public class SettingsMenu : MonoBehaviour
         }
         else
         {
-            SFX.value = -15;
+            SFX.value = PlayerPrefs.GetFloat("SFXVol");
         }
     }
     #endregion
