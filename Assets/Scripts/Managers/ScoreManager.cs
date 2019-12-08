@@ -128,9 +128,9 @@ public class ScoreManager : MonoBehaviour
         if (PlayerPrefs.GetInt("HighScore:" + thisLevel.ToString()) >= Level3_Star3 && thisLevel == 3)
         {
             PlayerPrefs.SetInt("Level3Complete", BoolToInt(true));
-            //buttonManager.myButtons[0].gameObject.SetActive(true);
-            //buttonManager.myButtons[1].gameObject.SetActive(true);
-            //buttonManager.myButtons[2].gameObject.SetActive(true);
+            buttonManager.myButtons[0].gameObject.SetActive(true);
+            buttonManager.myButtons[1].gameObject.SetActive(true);
+            buttonManager.myButtons[2].gameObject.SetActive(true);
         }
     }
 
@@ -256,6 +256,7 @@ public class ScoreManager : MonoBehaviour
             OneStar.SetActive(false);
             ZeroStars.SetActive(false);
 
+
             GameObject ThreeStars = GameObject.FindGameObjectWithTag("Level1_3Star");
             image = ThreeStars.GetComponent<Image>();
             Color c = image.color;
@@ -271,7 +272,7 @@ public class ScoreManager : MonoBehaviour
             ThreeStars.SetActive(false);
             OneStar.SetActive(false);
             ZeroStars.SetActive(false);
-            
+
 
             GameObject TwoStars = GameObject.FindGameObjectWithTag("Level1_2Star");
             image = TwoStars.GetComponent<Image>();
