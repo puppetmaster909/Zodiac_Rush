@@ -958,7 +958,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: f8b78c73b410851429311b289a3c1e23, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
@@ -2963,6 +2963,7 @@ MonoBehaviour:
   TrappedZodiac: {fileID: 0}
   FreedomParticle: {fileID: 0}
   whiteCrystal: {fileID: 0}
+  Sparkles: {fileID: 0}
   scoreText: {fileID: 850964434415744853}
   earnedScore: {fileID: 0}
   previousHighScore: {fileID: 0}
@@ -4377,21 +4378,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1587737969436216740, guid: ae9ad39993486b345bdc9479e79e1463,
-        type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1587737969436216740, guid: ae9ad39993486b345bdc9479e79e1463,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1587737969436216740, guid: ae9ad39993486b345bdc9479e79e1463,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1587737968231357613, guid: ae9ad39993486b345bdc9479e79e1463,
         type: 3}
       propertyPath: m_AnchorMin.x
@@ -4413,6 +4399,21 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1587737968610230463, guid: ae9ad39993486b345bdc9479e79e1463,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1587737969436216740, guid: ae9ad39993486b345bdc9479e79e1463,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1587737969436216740, guid: ae9ad39993486b345bdc9479e79e1463,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1587737969436216740, guid: ae9ad39993486b345bdc9479e79e1463,
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 1

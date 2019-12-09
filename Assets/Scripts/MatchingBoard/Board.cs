@@ -15,6 +15,9 @@ public class Board : MonoBehaviour
     public int width, height;
     public int offSet;
 
+    public GameObject matchingParticle;
+    private GameObject matchParticle;
+
     public float Delay;
 
     public GameObject tilePrefab;
@@ -336,6 +339,7 @@ public class Board : MonoBehaviour
         allIcons[column + (int)direction.x, row + (int)direction.y] = allIcons[column, row];
         //Set the first piece to be the second piece
         allIcons[column, row] = holder;
+        matchParticle = Instantiate(matchingParticle, allIcons[column, row].transform.position, Quaternion.identity);
     }
 
     private bool CheckForMatches()

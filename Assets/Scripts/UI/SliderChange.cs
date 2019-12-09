@@ -18,7 +18,9 @@ public class SliderChange : MonoBehaviour
     public GameObject TrappedZodiac;
     public GameObject FreedomParticle;
     public SpriteRenderer whiteCrystal;
-    
+
+    public GameObject Sparkles;
+    private GameObject SparklesParticle;
     private Board theBoard;
     private HintManager Hint;
     private ScoreManager theScore;
@@ -140,6 +142,8 @@ public class SliderChange : MonoBehaviour
         GameObject Grid = GameObject.FindGameObjectWithTag("Grid");
         GameObject Cat = GameObject.FindGameObjectWithTag("Cat");
         Hint.DestroyHint();
+
+        
         yield return new WaitForSeconds(1.0f);
         Cat.SetActive(false);
         HUD.SetActive(false);
@@ -167,10 +171,11 @@ public class SliderChange : MonoBehaviour
         SpriteRenderer sprite;
         GameObject FreeZodiac = GameObject.FindGameObjectWithTag("FreeZodiac");
 
-        //FreedomParticle = Instantiate(FreedomParticle, FreeZodiac.transform.position, Quaternion.identity);
+        SparklesParticle = Instantiate(Sparkles, TrappedZodiac.transform.position, Quaternion.identity);
 
         StartCoroutine(FadeIn());
         yield return new WaitForSeconds(3.8f);
+        Destroy(SparklesParticle);
         sprite = FreeZodiac.GetComponent<SpriteRenderer>();
         Color c = sprite.color;
         c.a = 1;
