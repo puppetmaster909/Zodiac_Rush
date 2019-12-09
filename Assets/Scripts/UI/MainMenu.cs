@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
-       
+        PlayerPrefs.SetInt("ComicViewed", 0);
     }
 
     void Update()
